@@ -1,0 +1,135 @@
+.page-layout {
+  min-height: 100vh;
+  background: #f6f8fc;
+}
+
+.main-content {
+  margin-left: 245px;
+}
+
+.page-content {
+  padding: 32px;
+}
+
+.heading span {
+  color: #94a3b8;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.heading h1 {
+  margin: 6px 0;
+  color: #172033;
+  font-size: 30px;
+}
+
+.heading p {
+  color: #64748b;
+  font-size: 13px;
+}
+
+.research-grid {
+  margin-top: 25px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.research-card {
+  padding: 22px;
+  background: white;
+  border: 1px solid #e5eaf0;
+  border-radius: 14px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.top span {
+  color: #2563eb;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.top b {
+  color: #16a34a;
+  font-size: 10px;
+}
+
+.research-card h2 {
+  margin: 18px 0;
+  color: #172033;
+  font-size: 17px;
+}
+
+.research-info,
+.funding {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.research-info div,
+.funding div {
+  padding: 12px;
+  background: #f8fafc;
+  border-radius: 8px;
+}
+
+.research-info span,
+.funding span,
+.progress span {
+  display: block;
+  color: #94a3b8;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.research-info strong,
+.funding strong {
+  display: block;
+  margin-top: 5px;
+  color: #334155;
+  font-size: 12px;
+}
+
+.funding {
+  margin-top: 10px;
+}
+
+.progress {
+  margin-top: 18px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.progress strong {
+  color: #2563eb;
+  font-size: 10px;
+}
+
+.track {
+  height: 7px;
+  margin-top: 7px;
+  background: #edf1f6;
+  border-radius: 10px;
+}
+
+.track div {
+  height: 100%;
+  background: #2563eb;
+  border-radius: 10px;
+}
+
+@media(max-width:900px) {
+
+  .main-content {
+    margin-left: 0;
+  }
+
+  .research-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,131 @@
+<aside class="sidebar">
+
+  <!-- LOGO -->
+
+  <div class="sidebar-brand">
+
+    <div class="brand-logo">
+      P
+    </div>
+
+    <div class="brand-text">
+
+      <strong>
+        ProjectTrack
+      </strong>
+
+      <span>
+        Academic Management
+      </span>
+
+    </div>
+
+  </div>
+
+
+  <!-- USER -->
+
+  <div class="user-card">
+
+    <div class="user-avatar">
+      P
+    </div>
+
+    <div class="user-details">
+
+      <strong>
+        Praneeth
+      </strong>
+
+      <span>
+        Student
+      </span>
+
+    </div>
+
+  </div>
+
+
+  <!-- NAVIGATION -->
+
+  <div class="navigation-title">
+    MAIN MENU
+  </div>
+
+
+  <nav class="sidebar-navigation">
+
+    @for (item of menuItems; track item.route) {
+
+      <a
+        [routerLink]="item.route"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{
+          exact: true
+        }"
+        class="nav-item">
+
+        <span class="nav-icon">
+          {{ item.icon }}
+        </span>
+
+        <span class="nav-label">
+          {{ item.label }}
+        </span>
+
+      </a>
+
+    }
+
+  </nav>
+
+
+  <!-- BOTTOM -->
+
+  <div class="sidebar-bottom">
+
+
+    <!-- NOTIFICATIONS -->
+
+    <a
+      routerLink="/student/notifications"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{
+        exact: true
+      }"
+      class="nav-item">
+
+      <span class="nav-icon">
+        🔔
+      </span>
+
+      <span class="nav-label">
+        Notifications
+      </span>
+
+      <span class="notification-badge">
+        3
+      </span>
+
+    </a>
+
+
+    <!-- LOGOUT -->
+
+    <a
+      routerLink="/login"
+      class="nav-item logout">
+
+      <span class="nav-icon">
+        ⇥
+      </span>
+
+      <span class="nav-label">
+        Logout
+      </span>
+
+    </a>
+
+  </div>
+
+</aside>

@@ -1,0 +1,104 @@
+<div class="page-layout">
+
+  <app-teacher-sidebar></app-teacher-sidebar>
+
+  <main class="main-content">
+
+    <app-header></app-header>
+
+    <div class="page-content">
+
+      <div class="heading">
+
+        <span>ANALYTICS</span>
+
+        <h1>Project Reports</h1>
+
+        <p>
+          Overview of student and project performance.
+        </p>
+
+      </div>
+
+
+      <div class="report-summary">
+
+        <div>
+          <span>STUDENTS</span>
+          <strong>{{ students }}</strong>
+        </div>
+
+        <div>
+          <span>ACTIVE PROJECTS</span>
+          <strong>{{ activeProjects }}</strong>
+        </div>
+
+        <div>
+          <span>COMPLETED PROJECTS</span>
+          <strong>{{ completedProjects }}</strong>
+        </div>
+
+        <div>
+          <span>UNDER REVIEW</span>
+          <strong>{{ underReview }}</strong>
+        </div>
+
+      </div>
+
+
+      <section class="report-card">
+
+        <h2>
+          Phase Completion Report
+        </h2>
+
+        <p>
+          Student completion across project phases.
+        </p>
+
+
+        @for (item of phaseData; track item.phase) {
+
+          <div class="phase-row">
+
+            <div class="phase-name">
+
+              <strong>
+                {{ item.phase }}
+              </strong>
+
+              <span>
+                {{ item.completed }} / {{ item.total }} students
+              </span>
+
+            </div>
+
+
+            <div class="report-progress">
+
+              <div>
+
+                <div
+                  [style.width.%]="item.percentage">
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <strong>
+              {{ item.percentage }}%
+            </strong>
+
+          </div>
+
+        }
+
+      </section>
+
+    </div>
+
+  </main>
+
+</div>

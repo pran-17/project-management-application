@@ -1,0 +1,585 @@
+<div class="project-layout">
+
+  <!-- SIDEBAR -->
+
+  <app-sidebar></app-sidebar>
+
+
+  <!-- MAIN CONTENT -->
+
+  <main class="main-content">
+
+    <app-header></app-header>
+
+
+    <div class="project-content">
+
+      <!-- PAGE HEADER -->
+
+      <section class="page-header">
+
+        <div>
+
+          <span class="page-label">
+            PROJECT MANAGEMENT
+          </span>
+
+          <h1>
+            My Project
+          </h1>
+
+          <p>
+            View your project information, team, phases and guide feedback.
+          </p>
+
+        </div>
+
+
+        <div class="project-id">
+
+          <span>
+            PROJECT ID
+          </span>
+
+          <strong>
+            {{ project.projectId }}
+          </strong>
+
+        </div>
+
+      </section>
+
+
+      <!-- PROJECT OVERVIEW -->
+
+      <section class="overview-card">
+
+        <div class="overview-top">
+
+          <div class="project-title-area">
+
+            <div class="project-logo">
+              AI
+            </div>
+
+            <div>
+
+              <span class="category">
+                {{ project.category }}
+              </span>
+
+              <h2>
+                {{ project.name }}
+              </h2>
+
+              <div class="project-type">
+
+                <span class="type-badge">
+                  {{ project.type }}
+                </span>
+
+                <span class="separator">
+                  •
+                </span>
+
+                <span>
+                  {{ project.department }}
+                </span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="status-badge">
+
+            <span class="status-dot"></span>
+
+            {{ project.status }}
+
+          </div>
+
+        </div>
+
+
+        <div class="overview-divider"></div>
+
+
+        <div class="overview-details">
+
+          <div class="detail-item">
+
+            <span class="detail-label">
+              PROJECT GUIDE
+            </span>
+
+            <strong>
+              {{ project.guide }}
+            </strong>
+
+          </div>
+
+
+          <div class="detail-item">
+
+            <span class="detail-label">
+              CO-GUIDE
+            </span>
+
+            <strong>
+              {{ project.coGuide }}
+            </strong>
+
+          </div>
+
+
+          <div class="detail-item">
+
+            <span class="detail-label">
+              START DATE
+            </span>
+
+            <strong>
+              {{ project.startDate }}
+            </strong>
+
+          </div>
+
+
+          <div class="detail-item">
+
+            <span class="detail-label">
+              EXPECTED COMPLETION
+            </span>
+
+            <strong>
+              {{ project.expectedCompletion }}
+            </strong>
+
+          </div>
+
+
+          <div class="detail-item">
+
+            <span class="detail-label">
+              TEAM SIZE
+            </span>
+
+            <strong>
+              {{ project.teamSize }} Members
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <div class="overall-progress">
+
+          <div class="progress-heading">
+
+            <span>
+              Overall Project Progress
+            </span>
+
+            <strong>
+              {{ project.progress }}%
+            </strong>
+
+          </div>
+
+          <div class="progress-track">
+
+            <div
+              class="progress-fill"
+              [style.width.%]="project.progress">
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- DESCRIPTION -->
+
+      <section class="content-grid">
+
+        <div class="content-card description-card">
+
+          <div class="card-heading">
+
+            <div class="heading-icon">
+              i
+            </div>
+
+            <div>
+
+              <h3>
+                Project Description
+              </h3>
+
+              <span>
+                About the project
+              </span>
+
+            </div>
+
+          </div>
+
+          <p class="description">
+            {{ project.description }}
+          </p>
+
+        </div>
+
+
+        <!-- GUIDE -->
+
+        <div class="content-card guide-card">
+
+          <div class="card-heading">
+
+            <div class="heading-icon guide-icon">
+              G
+            </div>
+
+            <div>
+
+              <h3>
+                Project Guide
+              </h3>
+
+              <span>
+                Assigned supervisor
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="guide-profile">
+
+            <div class="guide-avatar">
+              D
+            </div>
+
+            <div class="guide-details">
+
+              <strong>
+                {{ project.guide }}
+              </strong>
+
+              <span>
+                Project Guide
+              </span>
+
+              <small>
+                Computer Science & Engineering
+              </small>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- OBJECTIVES + TECHNOLOGIES -->
+
+      <section class="content-grid">
+
+        <div class="content-card">
+
+          <div class="card-heading">
+
+            <div class="heading-icon">
+              ✓
+            </div>
+
+            <div>
+
+              <h3>
+                Project Objectives
+              </h3>
+
+              <span>
+                Main goals of the project
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="objective-list">
+
+            @for (
+              objective of objectives;
+              track objective
+            ) {
+
+              <div class="objective-item">
+
+                <span class="check">
+                  ✓
+                </span>
+
+                <span>
+                  {{ objective }}
+                </span>
+
+              </div>
+
+            }
+
+          </div>
+
+        </div>
+
+
+        <div class="content-card">
+
+          <div class="card-heading">
+
+            <div class="heading-icon tech-icon">
+              &lt;/&gt;
+            </div>
+
+            <div>
+
+              <h3>
+                Technologies
+              </h3>
+
+              <span>
+                Technology stack
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="technology-list">
+
+            @for (
+              technology of technologies;
+              track technology
+            ) {
+
+              <span class="technology">
+                {{ technology }}
+              </span>
+
+            }
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- TEAM -->
+
+
+
+      <!-- PHASES -->
+
+      <section class="content-card phases-card">
+
+        <div class="section-header">
+
+          <div>
+
+            <span class="section-label">
+              PROJECT WORKFLOW
+            </span>
+
+            <h3>
+              Project Phases
+            </h3>
+
+          </div>
+
+          <span class="phase-progress">
+            {{ project.progress }}% Complete
+          </span>
+
+        </div>
+
+
+        <div class="phases">
+
+          @for (
+            phase of phases;
+            track phase.name;
+            let i = $index
+          ) {
+
+            <div
+              class="phase-item"
+              [class.completed]="phase.status === 'completed'"
+              [class.current]="phase.status === 'current'">
+
+
+              <div class="phase-number">
+
+                @if (phase.status === 'completed') {
+
+                  ✓
+
+                } @else {
+
+                  {{ getPhaseNumber(i) }}
+
+                }
+
+              </div>
+
+
+              <div class="phase-content">
+
+                <div class="phase-title-row">
+
+                  <h4>
+                    {{ phase.name }}
+                  </h4>
+
+                  @if (phase.status === 'completed') {
+
+                    <span class="phase-status completed-status">
+                      Completed
+                    </span>
+
+                  }
+
+                  @if (phase.status === 'current') {
+
+                    <span class="phase-status current-status">
+                      In Progress
+                    </span>
+
+                  }
+
+                  @if (phase.status === 'upcoming') {
+
+                    <span class="phase-status upcoming-status">
+                      Upcoming
+                    </span>
+
+                  }
+
+                </div>
+
+
+                <p>
+                  {{ phase.description }}
+                </p>
+
+
+                <div class="phase-dates">
+
+                  <span>
+                    {{ phase.startDate }}
+                  </span>
+
+                  <span>
+                    →
+                  </span>
+
+                  <span>
+                    {{ phase.endDate }}
+                  </span>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          }
+
+        </div>
+
+      </section>
+
+
+      <!-- REMARKS -->
+
+      <section class="content-card remarks-card">
+
+        <div class="section-header">
+
+          <div>
+
+            <span class="section-label">
+              GUIDE FEEDBACK
+            </span>
+
+            <h3>
+              Teacher Remarks
+            </h3>
+
+          </div>
+
+          <span class="remarks-label">
+            Latest Feedback
+          </span>
+
+        </div>
+
+
+        <div class="remarks-list">
+
+          @for (
+            remark of teacherRemarks;
+            track remark.date
+          ) {
+
+            <div class="remark">
+
+              <div class="remark-avatar">
+                D
+              </div>
+
+              <div class="remark-body">
+
+                <div class="remark-header">
+
+                  <strong>
+                    {{ remark.teacher }}
+                  </strong>
+
+                  <span>
+                    {{ remark.date }}
+                  </span>
+
+                </div>
+
+                <p>
+                  {{ remark.remark }}
+                </p>
+
+              </div>
+
+            </div>
+
+          }
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+</div>

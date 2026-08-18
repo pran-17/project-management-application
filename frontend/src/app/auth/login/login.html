@@ -1,0 +1,261 @@
+<div class="login-page">
+
+  <div class="login-container">
+
+    <!-- LEFT SIDE -->
+    <section class="login-info">
+
+      <div class="brand">
+
+        <div class="brand-icon">
+          P
+        </div>
+
+        <div>
+          <h2>ProjectTrack</h2>
+          <span>Academic Project Management</span>
+        </div>
+
+      </div>
+
+
+      <div class="welcome-content">
+
+        <span class="welcome-label">
+          FINAL YEAR PROJECT MANAGEMENT
+        </span>
+
+        <h1>
+          Manage Projects.
+          <br>
+          Track Progress.
+          <br>
+          Achieve Results.
+        </h1>
+
+        <p>
+          A centralized platform for students and teachers
+          to manage final-year projects, research activities,
+          project phases and academic progress.
+        </p>
+
+      </div>
+
+
+      <div class="feature-list">
+
+        <div class="feature-item">
+          <span class="feature-check">✓</span>
+          <span>Project Phase Tracking</span>
+        </div>
+
+        <div class="feature-item">
+          <span class="feature-check">✓</span>
+          <span>Student & Team Management</span>
+        </div>
+
+        <div class="feature-item">
+          <span class="feature-check">✓</span>
+          <span>Research & Funding Management</span>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- RIGHT SIDE -->
+    <section class="login-form-section">
+
+      <div class="login-card">
+
+        <div class="mobile-brand">
+
+          <div class="brand-icon">
+            P
+          </div>
+
+          <h2>ProjectTrack</h2>
+
+        </div>
+
+
+        <div class="form-heading">
+
+          <h2>Welcome Back</h2>
+
+          <p>
+            Sign in to continue to your dashboard
+          </p>
+
+        </div>
+
+
+        <!-- ROLE -->
+        <div class="form-group">
+
+          <label>
+            Select User Type
+          </label>
+
+          <div class="role-options">
+
+            <button
+              type="button"
+              [class.active]="selectedRole === 'student'"
+              (click)="selectRole('student')">
+
+              <span class="role-icon">🎓</span>
+
+              <span>Student</span>
+
+            </button>
+
+
+            <button
+              type="button"
+              [class.active]="selectedRole === 'teacher'"
+              (click)="selectRole('teacher')">
+
+              <span class="role-icon">👨‍🏫</span>
+
+              <span>Teacher</span>
+
+            </button>
+
+
+            <button
+              type="button"
+              [class.active]="selectedRole === 'admin'"
+              (click)="selectRole('admin')">
+
+              <span class="role-icon">⚙️</span>
+
+              <span>Admin</span>
+
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- EMAIL -->
+        <div class="form-group">
+
+          <label for="email">
+            Email Address
+          </label>
+
+          <input
+            id="email"
+            type="email"
+            [(ngModel)]="email"
+            placeholder="Enter your email"
+            autocomplete="email">
+
+        </div>
+
+
+        <!-- PASSWORD -->
+        <div class="form-group">
+
+          <label for="password">
+            Password
+          </label>
+
+          <input
+            id="password"
+            type="password"
+            [(ngModel)]="password"
+            placeholder="Enter your password"
+            autocomplete="current-password">
+
+        </div>
+
+
+        <!-- OPTIONS -->
+        <div class="form-options">
+
+          <label class="remember-me">
+
+            <input
+              type="checkbox"
+              [(ngModel)]="rememberMe">
+
+            <span>
+              Remember me
+            </span>
+
+          </label>
+
+          <button
+            type="button"
+            class="forgot-button">
+
+            Forgot Password?
+
+          </button>
+
+        </div>
+
+
+        <!-- LOGIN -->
+        <button
+          type="button"
+          class="login-button"
+          (click)="login()">
+
+          <span>Sign In</span>
+
+          <span class="arrow">
+            →
+          </span>
+
+        </button>
+
+
+        <!-- ERROR -->
+        @if (errorMessage) {
+
+          <div class="error-message">
+            {{ errorMessage }}
+          </div>
+
+        }
+
+
+        <!-- DEMO -->
+        <div class="demo-box">
+
+          <div class="demo-title">
+            Demo Login
+          </div>
+
+          <div>
+            Student:
+            <strong>student@test.com</strong>
+            / 123456
+          </div>
+
+          <div>
+            Teacher:
+            <strong>teacher@test.com</strong>
+            / 123456
+          </div>
+
+          <div>
+            Admin:
+            <strong>admin@test.com</strong>
+            / 123456
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </div>
+
+</div>

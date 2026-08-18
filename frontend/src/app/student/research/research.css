@@ -1,0 +1,794 @@
+:host {
+  display: block;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+/* =========================
+   PAGE LAYOUT
+========================= */
+
+.page-layout {
+  min-height: 100vh;
+
+  background: #f6f8fc;
+}
+
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+.main-content {
+  margin-left: 245px;
+
+  width: calc(100% - 245px);
+
+  min-height: 100vh;
+}
+
+
+/* =========================
+   PAGE CONTENT
+========================= */
+
+.page-content {
+  padding: 30px 32px 45px;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.page-header {
+  margin-bottom: 25px;
+}
+
+
+.page-header span {
+  display: block;
+
+  color: #196bde;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  letter-spacing: 1px;
+}
+
+
+.page-header h1 {
+  margin: 7px 0;
+
+  color: #172033;
+
+  font-size: 28px;
+
+  font-weight: 700;
+}
+
+
+.page-header p {
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 14px;
+
+  line-height: 1.5;
+}
+
+
+/* =========================
+   RESEARCH OVERVIEW
+========================= */
+
+.research-overview {
+  padding: 22px;
+
+  margin-bottom: 20px;
+
+  background: #ffffff;
+
+  border: 1px solid #dbe7f5;
+
+  border-radius: 13px;
+}
+
+
+/* =========================
+   RESEARCH TITLE
+========================= */
+
+.research-title span:first-child {
+  color: #196bde;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  letter-spacing: .8px;
+}
+
+
+.research-title h2 {
+  margin: 7px 0 6px;
+
+  color: #172033;
+
+  font-size: 22px;
+
+  font-weight: 700;
+}
+
+
+.research-title p {
+  margin: 0 0 12px;
+
+  color: #64748b;
+
+  font-size: 14px;
+
+  line-height: 1.6;
+}
+
+
+/* =========================
+   ACTIVE STATUS
+========================= */
+
+.active-status {
+  display: inline-flex;
+
+  padding: 7px 12px;
+
+  background: #dcfce7;
+
+  color: #16a34a;
+
+  border-radius: 14px;
+
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+
+/* =========================
+   RESEARCH DETAILS
+========================= */
+
+.research-details {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 12px;
+
+  margin-top: 20px;
+}
+
+
+.research-details div {
+  padding: 14px;
+
+  background: #f8fafc;
+
+  border: 1px solid #edf2f7;
+
+  border-radius: 8px;
+}
+
+
+.research-details span {
+  display: block;
+
+  color: #196bde;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: .5px;
+}
+
+
+.research-details strong {
+  display: block;
+
+  margin-top: 6px;
+
+  color: #334155;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  line-height: 1.5;
+}
+
+
+/* =========================
+   SECTION
+========================= */
+
+.section {
+  padding: 21px;
+
+  margin-bottom: 20px;
+
+  background: #ffffff;
+
+  border: 1px solid #dbe7f5;
+
+  border-radius: 13px;
+}
+
+
+/* =========================
+   SECTION HEADER
+========================= */
+
+.section-header {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-bottom: 18px;
+
+  gap: 15px;
+}
+
+
+.section-header span:first-child {
+  color: #196bde;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  letter-spacing: .8px;
+}
+
+
+.section-header h2 {
+  margin: 5px 0 0;
+
+  color: #172033;
+
+  font-size: 21px;
+
+  font-weight: 700;
+}
+
+
+/* =========================
+   FUNDING
+========================= */
+
+.funding-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(5, minmax(0, 1fr));
+
+  gap: 10px;
+}
+
+
+.funding-card {
+  padding: 15px;
+
+  background: #f8fafc;
+
+  border: 1px solid #edf2f7;
+
+  border-radius: 8px;
+}
+
+
+.funding-card span {
+  display: block;
+
+  color: #196bde;
+
+  font-size: 11px;
+
+  font-weight: 700;
+}
+
+
+.funding-card strong {
+  display: block;
+
+  margin-top: 7px;
+
+  color: #334155;
+
+  font-size: 15px;
+
+  font-weight: 600;
+}
+
+
+.funding-card.remaining {
+  background: #ffffff;
+
+  border-color: #bfdbfe;
+}
+
+
+.funding-card.remaining strong {
+  color: #196bde;
+
+  font-size: 16px;
+}
+
+
+/* =========================
+   FUNDING PROGRESS
+========================= */
+
+.funding-progress {
+  margin-top: 19px;
+}
+
+
+.funding-progress-header {
+  display: flex;
+
+  justify-content: space-between;
+
+  margin-bottom: 7px;
+}
+
+
+.funding-progress-header span {
+  color: #64748b;
+
+  font-size: 13px;
+
+  font-weight: 600;
+}
+
+
+.funding-progress-header strong {
+  color: #196bde;
+
+  font-size: 14px;
+
+  font-weight: 700;
+}
+
+
+.funding-track {
+  height: 8px;
+
+  background: #e2e8f0;
+
+  border-radius: 10px;
+
+  overflow: hidden;
+}
+
+
+.funding-track div {
+  height: 100%;
+
+  background: #196bde;
+
+  border-radius: 10px;
+}
+
+
+.funding-progress p {
+  margin: 7px 0 0;
+
+  color: #64748b;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+}
+
+
+/* =========================
+   TEAM
+========================= */
+
+.team-count {
+  padding: 7px 12px;
+
+  background: #eff6ff;
+
+  color: #196bde;
+
+  border: 1px solid #bfdbfe;
+
+  border-radius: 14px;
+
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+
+.research-team {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 12px;
+}
+
+
+.member-card {
+  padding: 15px;
+
+  background: #f8fafc;
+
+  border: 1px solid #edf2f7;
+
+  border-radius: 9px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+
+.member-avatar {
+  width: 40px;
+  height: 40px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #eff6ff;
+
+  color: #196bde;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 13px;
+
+  font-weight: 800;
+}
+
+
+.member-card strong {
+  display: block;
+
+  color: #334155;
+
+  font-size: 14px;
+
+  font-weight: 700;
+}
+
+
+.member-card span {
+  display: block;
+
+  margin-top: 3px;
+
+  color: #64748b;
+
+  font-size: 12px;
+}
+
+
+.member-card small {
+  display: block;
+
+  margin-top: 4px;
+
+  color: #196bde;
+
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+
+/* =========================
+   MILESTONES
+========================= */
+
+.milestone-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 11px;
+}
+
+
+.milestone-card {
+  padding: 15px;
+
+  background: #ffffff;
+
+  border: 1px solid #dbe7f5;
+
+  border-radius: 9px;
+
+  display: flex;
+
+  gap: 12px;
+}
+
+
+.milestone-status {
+  width: 38px;
+  height: 38px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 12px;
+
+  font-weight: 800;
+}
+
+
+.milestone-status.completed {
+  background: #dcfce7;
+
+  color: #16a34a;
+}
+
+
+.milestone-status.active {
+  background: #eff6ff;
+
+  color: #196bde;
+}
+
+
+.milestone-status.pending {
+  background: #f1f5f9;
+
+  color: #64748b;
+}
+
+
+/* =========================
+   MILESTONE MAIN
+========================= */
+
+.milestone-main {
+  flex: 1;
+
+  min-width: 0;
+}
+
+
+.milestone-header {
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 15px;
+}
+
+
+.milestone-header h3 {
+  margin: 0;
+
+  color: #172033;
+
+  font-size: 16px;
+
+  font-weight: 700;
+}
+
+
+.milestone-header p {
+  margin: 5px 0 0;
+
+  color: #0d0d0d;
+
+  font-size: 15px;
+
+  line-height: 1.6;
+}
+
+
+/* =========================
+   MILESTONE BADGE
+========================= */
+
+.milestone-badge {
+  height: fit-content;
+
+  padding: 6px 10px;
+
+  border-radius: 13px;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+
+.milestone-badge.completed {
+  background: #dcfce7;
+
+  color: #16a34a;
+}
+
+
+.milestone-badge.active {
+  background: #eff6ff;
+
+  color: #196bde;
+}
+
+
+.milestone-badge.pending {
+  background: #f1f5f9;
+
+  color: #64748b;
+}
+
+
+/* =========================
+   MILESTONE PROGRESS
+========================= */
+
+.milestone-progress {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  margin-top: 11px;
+}
+
+
+.milestone-track {
+  flex: 1;
+
+  height: 7px;
+
+  background: #e2e8f0;
+
+  border-radius: 10px;
+
+  overflow: hidden;
+}
+
+
+.milestone-track div {
+  height: 100%;
+
+  background: #196bde;
+
+  border-radius: 10px;
+}
+
+
+.milestone-progress strong {
+  color: #0c0c0c;
+
+  font-size: 14px;
+
+  font-weight: 700;
+}
+
+
+/* =========================
+   DUE DATE
+========================= */
+
+.due-date {
+  display: block;
+
+  margin-top: 6px;
+
+  color: #f01826;
+
+  font-size: 16px;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1050px) {
+
+  .funding-grid {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+  }
+
+  .research-team {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+
+@media (max-width: 700px) {
+
+  .main-content {
+    margin-left: 0;
+
+    width: 100%;
+  }
+
+  .page-content {
+    padding: 20px;
+  }
+
+  .research-details,
+  .funding-grid,
+  .research-team {
+    grid-template-columns: 1fr;
+  }
+
+  .milestone-header {
+    flex-direction: column;
+  }
+
+  .section-header {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+}
+
+
+@media (max-width: 500px) {
+
+  .page-header h1 {
+    font-size: 25px;
+  }
+
+  .research-title h2 {
+    font-size: 25px;
+  }
+
+  .section-header h2 {
+    font-size: 22px;
+  }
+
+  .milestone-card {
+    padding: 13px;
+  }
+
+  .milestone-header h3 {
+    font-size: 15px;
+  }
+
+}

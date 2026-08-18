@@ -1,0 +1,527 @@
+<div class="dashboard-layout">
+
+  <!-- SIDEBAR -->
+
+  <app-sidebar></app-sidebar>
+
+
+  <!-- MAIN -->
+
+  <main class="main-content">
+
+    <app-header></app-header>
+
+
+    <div class="dashboard-content">
+
+      <!-- WELCOME -->
+
+      <section class="welcome-section">
+
+        <div>
+
+          <span class="welcome-label">
+            
+          </span>
+
+          <h1>
+            Welcome back, {{ studentName }} 👋
+          </h1>
+
+          <p>
+            Here's what's happening with your final-year project.
+          </p>
+
+        </div>
+
+
+        <div class="project-status">
+
+          <span class="status-dot"></span>
+
+          <div>
+            <small>PROJECT STATUS</small>
+            <strong>In Progress</strong>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- PROJECT SUMMARY -->
+
+      <section class="project-summary">
+
+        <div class="project-info">
+
+          <div class="project-icon">
+            AI
+          </div>
+
+          <div>
+
+            <span class="section-label">
+              CURRENT PROJECT
+            </span>
+
+            <h2>
+              {{ project.title }}
+            </h2>
+
+            <div class="project-meta">
+
+              <span>
+                {{ project.type }}
+              </span>
+
+              <span>•</span>
+
+              <span>
+                Guide: {{ project.guide }}
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="project-progress">
+
+          <div class="progress-header">
+
+            <span>
+              Overall Progress
+            </span>
+
+            <strong>
+              {{ project.progress }}%
+            </strong>
+
+          </div>
+
+          <div class="progress-track">
+
+            <div
+              class="progress-fill"
+              [style.width.%]="project.progress">
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- STAT CARDS -->
+
+      <section class="stats-grid">
+
+        @for (stat of stats; track stat.title) {
+
+          <div class="stat-card">
+
+            <div class="stat-top">
+
+              <div class="stat-icon">
+                {{ stat.icon }}
+              </div>
+
+              <span class="stat-arrow">
+                →
+              </span>
+
+            </div>
+
+            <div class="stat-value">
+              {{ stat.value }}
+            </div>
+
+            <div class="stat-title">
+              {{ stat.title }}
+            </div>
+
+            <div class="stat-description">
+              {{ stat.description }}
+            </div>
+
+          </div>
+
+        }
+
+      </section>
+
+
+      <!-- MAIN GRID -->
+
+      <section class="dashboard-grid">
+
+
+        <!-- TIMELINE -->
+
+        <div class="dashboard-card timeline-card">
+
+          <div class="card-header">
+
+            <div>
+
+              <span class="section-label">
+                
+              </span>
+
+              <h3>
+                Project Timeline
+              </h3>
+
+            </div>
+
+            <button>
+              View Details →
+            </button>
+
+          </div>
+
+
+          <div class="timeline">
+
+            @for (
+              item of timeline;
+              track item.title;
+              let i = $index
+            ) {
+
+              <div
+                class="timeline-item"
+                [class.completed]="item.status === 'completed'"
+                [class.current]="item.status === 'current'">
+
+                <div class="timeline-marker">
+
+                  @if (item.status === 'completed') {
+                    ✓
+                  }
+
+                  @if (item.status === 'current') {
+                    ●
+                  }
+
+                  @if (item.status === 'upcoming') {
+                    {{ i + 1 }}
+                  }
+
+                </div>
+
+
+                <div class="timeline-content">
+
+                  <strong>
+                    {{ item.title }}
+                  </strong>
+
+                  <span>
+                    {{ item.date }}
+                  </span>
+
+                </div>
+
+              </div>
+
+            }
+
+          </div>
+
+        </div>
+
+
+        <!-- TEAM -->
+
+        <div class="dashboard-card">
+
+          <div class="card-header">
+
+            <div>
+
+              <span class="section-label">
+                
+              </span>
+
+              <h3>
+                Team Members
+              </h3>
+
+            </div>
+
+            <button>
+              View Team →
+            </button>
+
+          </div>
+
+
+          <div class="team-list">
+
+            <div class="team-member">
+
+              <div class="member-avatar">
+                P
+              </div>
+
+              <div class="member-info">
+
+                <strong>
+                  Praneeth
+                </strong>
+
+                <span>
+                  Frontend Developer
+                </span>
+
+              </div>
+
+              <span class="member-progress">
+                90%
+              </span>
+
+            </div>
+
+
+            <div class="team-member">
+
+              <div class="member-avatar purple">
+                R
+              </div>
+
+              <div class="member-info">
+
+                <strong>
+                  Rahul
+                </strong>
+
+                <span>
+                  Backend Developer
+                </span>
+
+              </div>
+
+              <span class="member-progress">
+                80%
+              </span>
+
+            </div>
+
+
+            <div class="team-member">
+
+              <div class="member-avatar green">
+                A
+              </div>
+
+              <div class="member-info">
+
+                <strong>
+                  Arun
+                </strong>
+
+                <span>
+                  Database Developer
+                </span>
+
+              </div>
+
+              <span class="member-progress">
+                95%
+              </span>
+
+            </div>
+
+
+            <div class="team-member">
+
+              <div class="member-avatar orange">
+                K
+              </div>
+
+              <div class="member-info">
+
+                <strong>
+                  Karthik
+                </strong>
+
+                <span>
+                  Testing
+                </span>
+
+              </div>
+
+              <span class="member-progress">
+                60%
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- RECENT WORK -->
+
+        <div class="dashboard-card work-card">
+
+          <div class="card-header">
+
+            <div>
+
+              <span class="section-label">
+                
+              </span>
+
+              <h3>
+                RECENT ACTIVITY
+              </h3>
+
+            </div>
+
+            <button>
+              View All →
+            </button>
+
+          </div>
+
+
+          <div class="work-list">
+
+            @for (
+              update of recentUpdates;
+              track update.task
+            ) {
+
+              <div class="work-item">
+
+                <div class="work-status">
+
+                  @if (update.status === 'Approved') {
+                    ✓
+                  } @else {
+                    ◷
+                  }
+
+                </div>
+
+                <div class="work-details">
+
+                  <strong>
+                    {{ update.task }}
+                  </strong>
+
+                  <span>
+                    {{ update.description }}
+                  </span>
+
+                </div>
+
+                <div class="work-meta">
+
+                  <span
+                    [class.pending]="
+                      update.status === 'Pending Review'
+                    "
+                    [class.approved]="
+                      update.status === 'Approved'
+                    ">
+
+                    {{ update.status }}
+
+                  </span>
+
+                  <small>
+                    {{ update.date }}
+                  </small>
+
+                </div>
+
+              </div>
+
+            }
+
+          </div>
+
+        </div>
+
+
+        <!-- TEACHER REMARKS -->
+
+        <div class="dashboard-card">
+
+          <div class="card-header">
+
+            <div>
+
+              <span class="section-label">
+                
+              </span>
+
+              <h3>
+                Teacher Remarks
+              </h3>
+
+            </div>
+
+            <span class="remarks-count">
+              2 New
+            </span>
+
+          </div>
+
+
+          <div class="remarks-list">
+
+            @for (
+              remark of teacherRemarks;
+              track remark.remark
+            ) {
+
+              <div class="remark-item">
+
+                <div class="remark-avatar">
+                  D
+                </div>
+
+                <div class="remark-content">
+
+                  <div class="remark-top">
+
+                    <strong>
+                      {{ remark.teacher }}
+                    </strong>
+
+                    <small>
+                      {{ remark.date }}
+                    </small>
+
+                  </div>
+
+                  <p>
+                    {{ remark.remark }}
+                  </p>
+
+                </div>
+
+              </div>
+
+            }
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+</div>

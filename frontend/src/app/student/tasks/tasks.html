@@ -1,0 +1,774 @@
+<div class="tasks-layout">
+
+  <app-sidebar></app-sidebar>
+
+
+  <main class="main-content">
+
+    <app-header></app-header>
+
+
+    <div class="tasks-content">
+
+      <!-- PAGE HEADER -->
+
+      <section class="page-header">
+
+        <div>
+
+          <span class="page-label">
+            PROJECT WORK
+          </span>
+
+          <h1>
+            Tasks & Work Updates
+          </h1>
+
+          <p>
+            Manage your assigned tasks and submit completed work for teacher review.
+          </p>
+
+        </div>
+
+
+        <div class="phase-badge">
+
+          <span>
+            CURRENT PHASE
+          </span>
+
+          <strong>
+            Phase 2 - Development
+          </strong>
+
+        </div>
+
+      </section>
+
+
+      <!-- STATISTICS -->
+
+      <section class="stats-grid">
+
+        <div class="stat-card">
+
+          <div class="stat-icon completed-icon">
+            ✓
+          </div>
+
+          <div>
+
+            <span>
+              COMPLETED
+            </span>
+
+            <strong>
+              {{ getCompletedCount() }}
+            </strong>
+
+            <small>
+              Tasks completed
+            </small>
+
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-icon progress-icon">
+            ◔
+          </div>
+
+          <div>
+
+            <span>
+              IN PROGRESS
+            </span>
+
+            <strong>
+              {{ getProgressCount() }}
+            </strong>
+
+            <small>
+              Currently working
+            </small>
+
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-icon review-icon">
+            ◷
+          </div>
+
+          <div>
+
+            <span>
+              UNDER REVIEW
+            </span>
+
+            <strong>
+              {{ getReviewCount() }}
+            </strong>
+
+            <small>
+              Waiting for teacher
+            </small>
+
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-icon pending-icon">
+            !
+          </div>
+
+          <div>
+
+            <span>
+              PENDING
+            </span>
+
+            <strong>
+              {{ getPendingCount() }}
+            </strong>
+
+            <small>
+              Not started
+            </small>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- FILTER -->
+
+      <section class="filter-section">
+
+        <div class="filter-left">
+
+          <span class="filter-label">
+            FILTER TASKS
+          </span>
+
+
+          <button
+            type="button"
+            [class.active]="selectedFilter === 'All'"
+            (click)="selectedFilter = 'All'">
+
+            All
+
+          </button>
+
+
+          <button
+            type="button"
+            [class.active]="selectedFilter === 'In Progress'"
+            (click)="selectedFilter = 'In Progress'">
+
+            In Progress
+
+          </button>
+
+
+          <button
+            type="button"
+            [class.active]="selectedFilter === 'Under Review'"
+            (click)="selectedFilter = 'Under Review'">
+
+            Under Review
+
+          </button>
+
+
+          <button
+            type="button"
+            [class.active]="selectedFilter === 'Completed'"
+            (click)="selectedFilter = 'Completed'">
+
+            Completed
+
+          </button>
+
+
+          <button
+            type="button"
+            [class.active]="selectedFilter === 'Pending'"
+            (click)="selectedFilter = 'Pending'">
+
+            Pending
+
+          </button>
+
+        </div>
+
+      </section>
+
+
+      <!-- TASK LIST -->
+
+      <section class="tasks-section">
+
+        <div class="section-header">
+
+          <div>
+
+            <span class="section-label">
+              ASSIGNED WORK
+            </span>
+
+            <h2>
+              My Tasks
+            </h2>
+
+          </div>
+
+          <span class="task-count">
+            {{ filteredTasks.length }} Tasks
+          </span>
+
+        </div>
+
+
+        <div class="task-list">
+
+          @for (
+            task of filteredTasks;
+            track task.id
+          ) {
+
+            <div class="task-card">
+
+              <!-- TASK TOP -->
+
+              <div class="task-top">
+
+                <div class="task-title-area">
+
+                  <div class="task-number">
+                    {{ task.id }}
+                  </div>
+
+                  <div>
+
+                    <h3>
+                      {{ task.title }}
+                    </h3>
+
+                    <div class="task-meta">
+
+                      <span>
+                        {{ task.module }}
+                      </span>
+
+                      <span>•</span>
+
+                      <span>
+                        {{ task.phase }}
+                      </span>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+
+                <div class="task-badges">
+
+                  <span
+                    class="priority-badge"
+                    [class]="getPriorityClass(task.priority)">
+
+                    {{ task.priority }} Priority
+
+                  </span>
+
+
+                  <span
+                    class="status-badge"
+                    [class]="getStatusClass(task.status)">
+
+                    <span class="status-dot"></span>
+
+                    {{ task.status }}
+
+                  </span>
+
+                </div>
+
+              </div>
+
+
+              <!-- DESCRIPTION -->
+
+              <p class="task-description">
+                {{ task.description }}
+              </p>
+
+
+              <!-- PROGRESS -->
+
+              <div class="task-progress">
+
+                <div class="progress-heading">
+
+                  <span>
+                    Task Progress
+                  </span>
+
+                  <strong>
+                    {{ task.progress }}%
+                  </strong>
+
+                </div>
+
+
+                <div class="progress-track">
+
+                  <div
+                    class="progress-fill"
+                    [style.width.%]="task.progress">
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <!-- BOTTOM -->
+
+              <div class="task-bottom">
+
+                <div class="dates">
+
+                  <div>
+
+                    <span>
+                      ASSIGNED
+                    </span>
+
+                    <strong>
+                      {{ task.assignedDate }}
+                    </strong>
+
+                  </div>
+
+
+                  <div>
+
+                    <span>
+                      DUE DATE
+                    </span>
+
+                    <strong>
+                      {{ task.dueDate }}
+                    </strong>
+
+                  </div>
+
+                </div>
+
+
+                <button
+                  type="button"
+                  class="view-task-button"
+                  (click)="selectTask(task)">
+
+                  View & Update
+
+                  <span>
+                    →
+                  </span>
+
+                </button>
+
+              </div>
+
+
+              <!-- TEACHER REMARK -->
+
+              @if (task.teacherRemark) {
+
+                <div class="teacher-remark">
+
+                  <div class="remark-icon">
+                    T
+                  </div>
+
+                  <div>
+
+                    <span>
+                      TEACHER REMARK
+                    </span>
+
+                    <p>
+                      {{ task.teacherRemark }}
+                    </p>
+
+                  </div>
+
+                </div>
+
+              }
+
+            </div>
+
+          }
+
+
+          @if (filteredTasks.length === 0) {
+
+            <div class="empty-state">
+
+              <div>
+                ✓
+              </div>
+
+              <h3>
+                No tasks found
+              </h3>
+
+              <p>
+                There are no tasks matching the selected filter.
+              </p>
+
+            </div>
+
+          }
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+<!-- TASK DETAIL MODAL -->
+
+@if (selectedTask) {
+
+  <div
+    class="modal-overlay"
+    (click)="closeTask()">
+
+
+    <div
+      class="task-modal"
+      (click)="$event.stopPropagation()">
+
+
+      <!-- MODAL HEADER -->
+
+      <div class="modal-header">
+
+        <div>
+
+          <span class="modal-label">
+            TASK DETAILS
+          </span>
+
+          <h2>
+            {{ selectedTask.title }}
+          </h2>
+
+        </div>
+
+
+        <button
+          type="button"
+          class="close-button"
+          (click)="closeTask()">
+
+          ×
+
+        </button>
+
+      </div>
+
+
+      <!-- DETAILS -->
+
+      <div class="modal-body">
+
+        <div class="detail-grid">
+
+          <div>
+
+            <span>
+              MODULE
+            </span>
+
+            <strong>
+              {{ selectedTask.module }}
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              PROJECT PHASE
+            </span>
+
+            <strong>
+              {{ selectedTask.phase }}
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              ASSIGNED DATE
+            </span>
+
+            <strong>
+              {{ selectedTask.assignedDate }}
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              DUE DATE
+            </span>
+
+            <strong>
+              {{ selectedTask.dueDate }}
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <div class="description-box">
+
+          <span>
+            TASK DESCRIPTION
+          </span>
+
+          <p>
+            {{ selectedTask.description }}
+          </p>
+
+        </div>
+
+
+        <!-- UPDATE FORM -->
+
+        @if (!showUpdateForm) {
+
+          <div class="current-progress-box">
+
+            <div>
+
+              <span>
+                CURRENT PROGRESS
+              </span>
+
+              <strong>
+                {{ selectedTask.progress }}%
+              </strong>
+
+            </div>
+
+
+            <div class="modal-progress-track">
+
+              <div
+                class="modal-progress-fill"
+                [style.width.%]="selectedTask.progress">
+              </div>
+
+            </div>
+
+          </div>
+
+
+          @if (selectedTask.teacherRemark) {
+
+            <div class="modal-remark">
+
+              <span>
+                TEACHER REMARK
+              </span>
+
+              <p>
+                {{ selectedTask.teacherRemark }}
+              </p>
+
+            </div>
+
+          }
+
+
+          <button
+            type="button"
+            class="primary-button"
+            (click)="openUpdateForm()">
+
+            Update My Work
+
+            <span>
+              →
+            </span>
+
+          </button>
+
+        }
+
+
+        @if (showUpdateForm) {
+
+          <div class="update-form">
+
+            <div class="form-title">
+
+              <h3>
+                Submit Work Update
+              </h3>
+
+              <p>
+                Describe the work you have completed.
+              </p>
+
+            </div>
+
+
+            <!-- PROGRESS -->
+
+            <div class="form-group">
+
+              <label>
+                Work Progress: {{ updateProgress }}%
+              </label>
+
+              <input
+                type="range"
+                min="0"
+                max="100"
+                step="5"
+                [(ngModel)]="updateProgress">
+
+            </div>
+
+
+            <!-- DESCRIPTION -->
+
+            <div class="form-group">
+
+              <label>
+                Work Description
+              </label>
+
+              <textarea
+                [(ngModel)]="workDescription"
+                rows="5"
+                placeholder="Describe what you completed, what you implemented and any important details...">
+              </textarea>
+
+            </div>
+
+
+            <!-- REMARK -->
+
+            <div class="form-group">
+
+              <label>
+                Student Remark
+              </label>
+
+              <textarea
+                [(ngModel)]="studentRemark"
+                rows="3"
+                placeholder="Add any additional remarks for your teacher...">
+              </textarea>
+
+            </div>
+
+
+            <!-- INFO -->
+
+            <div class="submission-info">
+
+              <span>
+                i
+              </span>
+
+              <p>
+                After submission, your teacher will review the work and either
+                approve it or request changes.
+              </p>
+
+            </div>
+
+
+            @if (submissionMessage) {
+
+              <div class="submission-message">
+
+                {{ submissionMessage }}
+
+              </div>
+
+            }
+
+
+            <!-- BUTTONS -->
+
+            <div class="form-buttons">
+
+              <button
+                type="button"
+                class="cancel-button"
+                (click)="cancelUpdate()">
+
+                Cancel
+
+              </button>
+
+
+              <button
+                type="button"
+                class="submit-button"
+                (click)="submitWorkUpdate()">
+
+                Submit for Teacher Review
+
+              </button>
+
+            </div>
+
+          </div>
+
+        }
+
+      </div>
+
+    </div>
+
+  </div>
+
+}

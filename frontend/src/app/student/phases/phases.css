@@ -1,0 +1,631 @@
+:host {
+  display: block;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+/* =========================
+   PAGE LAYOUT
+========================= */
+
+.page-layout {
+  min-height: 100vh;
+  background: #f6f8fc;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+.main-content {
+  margin-left: 245px;
+
+  width: calc(100% - 245px);
+
+  min-height: 100vh;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================
+   CONTENT
+========================= */
+
+.page-content {
+  padding: 30px 32px 45px;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.page-header {
+  margin-bottom: 25px;
+}
+
+
+.page-header span {
+  display: block;
+
+  color: #196bde;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  letter-spacing: 1px;
+}
+
+
+.page-header h1 {
+  margin: 7px 0;
+
+  color: #172033;
+
+  font-size: 28px;
+
+  font-weight: 700;
+}
+
+
+.page-header p {
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 14px;
+
+  line-height: 1.5;
+}
+
+
+/* =========================
+   SUMMARY
+========================= */
+
+.summary-card {
+  padding: 20px 22px;
+
+  margin-bottom: 20px;
+
+  background: #ffffff;
+
+  border: 1px solid #dbe7f5;
+
+  border-radius: 12px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+}
+
+
+.summary-icon {
+  width: 48px;
+  height: 48px;
+
+  flex-shrink: 0;
+
+  border-radius: 10px;
+
+  background: #eff6ff;
+
+  color: #196bde;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 18px;
+
+  font-weight: 800;
+}
+
+
+.summary-card > div:nth-child(2) {
+  min-width: 190px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+
+.summary-card span {
+  color: #196bde;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  letter-spacing: .5px;
+}
+
+
+.summary-card strong {
+  color: #334155;
+
+  font-size: 15px;
+
+  font-weight: 600;
+}
+
+
+/* =========================
+   SUMMARY PROGRESS
+========================= */
+
+.summary-progress {
+  flex: 1;
+
+  margin-left: auto;
+
+  max-width: 330px;
+}
+
+
+.summary-progress > span {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color: #64748b;
+
+  font-size: 13px;
+}
+
+
+.summary-progress > strong {
+  float: right;
+
+  margin-top: -19px;
+
+  color: #196bde;
+
+  font-size: 14px;
+}
+
+
+.summary-track {
+  height: 8px;
+
+  background: #e2e8f0;
+
+  border-radius: 10px;
+
+  overflow: hidden;
+}
+
+
+.summary-track div {
+  height: 100%;
+
+  background: #196bde;
+
+  border-radius: 10px;
+}
+
+
+/* =========================
+   PHASE GRID
+========================= */
+
+.phase-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 18px;
+}
+
+
+/* =========================
+   PHASE CARD
+========================= */
+
+.phase-card {
+  padding: 22px;
+
+  background: #ffffff;
+
+  border: 1px solid #dbe7f5;
+
+  border-radius: 13px;
+
+  box-sizing: border-box;
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease;
+}
+
+
+.phase-card:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 25px
+    rgba(15, 23, 42, .06);
+}
+
+
+.phase-card.current-phase {
+  border-color: #bfdbfe;
+
+  box-shadow:
+    0 0 0 1px #dbeafe;
+}
+
+
+/* =========================
+   PHASE TOP
+========================= */
+
+.phase-top {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+}
+
+
+.phase-number {
+  width: 44px;
+  height: 44px;
+
+  border-radius: 10px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 14px;
+
+  font-weight: 800;
+}
+
+
+.phase-number.completed {
+  background: #dcfce7;
+
+  color: #16a34a;
+}
+
+
+.phase-number.active {
+  background: #eff6ff;
+
+  color: #196bde;
+}
+
+
+.phase-number.pending {
+  background: #f1f5f9;
+
+  color: #64748b;
+}
+
+
+/* =========================
+   STATUS
+========================= */
+
+.phase-status {
+  padding: 7px 12px;
+
+  border-radius: 15px;
+
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+
+.phase-status.completed {
+  background: #dcfce7;
+
+  color: #16a34a;
+}
+
+
+.phase-status.active {
+  background: #eff6ff;
+
+  color: #196bde;
+}
+
+
+.phase-status.pending {
+  background: #f1f5f9;
+
+  color: #64748b;
+}
+
+
+/* =========================
+   PHASE TITLE
+========================= */
+
+.phase-card h2 {
+  margin: 17px 0 9px;
+
+  color: #172033;
+
+  font-size: 20px;
+
+  line-height: 1.4;
+
+  font-weight: 700;
+}
+
+
+/* =========================
+   DESCRIPTION
+========================= */
+
+.description {
+  min-height: 48px;
+
+  color: #196bde;
+
+  font-size: 14px;
+
+  line-height: 1.7;
+}
+
+
+/* =========================
+   DATES
+========================= */
+
+.dates {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 10px;
+
+  margin-top: 18px;
+}
+
+
+.dates div {
+  padding: 13px;
+
+  background: #f8fafc;
+
+  border: 1px solid #edf2f7;
+
+  border-radius: 8px;
+
+  min-width: 0;
+}
+
+
+.dates span {
+  display: block;
+
+  color: #196bde;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: .4px;
+}
+
+
+.dates strong {
+  display: block;
+
+  margin-top: 6px;
+
+  color: #334155;
+
+  font-size: 13px;
+
+  font-weight: 600;
+}
+
+
+/* =========================
+   PROGRESS
+========================= */
+
+.progress-area {
+  margin-top: 19px;
+}
+
+
+.progress-header {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-bottom: 7px;
+}
+
+
+.progress-header span {
+  color: #64748b;
+
+  font-size: 13px;
+}
+
+
+.progress-header strong {
+  color: #196bde;
+
+  font-size: 14px;
+
+  font-weight: 700;
+}
+
+
+.progress-track {
+  height: 8px;
+
+  background: #e2e8f0;
+
+  border-radius: 10px;
+
+  overflow: hidden;
+}
+
+
+.progress-track div {
+  height: 100%;
+
+  background: #196bde;
+
+  border-radius: 10px;
+
+  transition: width .4s ease;
+}
+
+
+/* =========================
+   GUIDE MESSAGE
+========================= */
+
+.guide-message {
+  margin-top: 20px;
+
+  padding: 18px;
+
+  background: #ffffff;
+
+  border: 1px solid #dbe7f5;
+
+  border-radius: 11px;
+
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 13px;
+}
+
+
+.message-icon {
+  width: 38px;
+  height: 38px;
+
+  flex-shrink: 0;
+
+  border-radius: 9px;
+
+  background: #eff6ff;
+
+  color: #196bde;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 14px;
+
+  font-weight: 800;
+}
+
+
+.guide-message h3 {
+  margin: 0 0 6px;
+
+  color: #172033;
+
+  font-size: 16px;
+
+  font-weight: 700;
+}
+
+
+.guide-message p {
+  margin: 0;
+
+  color: #196bde;
+
+  font-size: 14px;
+
+  line-height: 1.7;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 950px) {
+
+  .phase-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+@media (max-width: 700px) {
+
+  .main-content {
+    margin-left: 0;
+
+    width: 100%;
+  }
+
+  .page-content {
+    padding: 20px;
+  }
+
+  .summary-card {
+    align-items: flex-start;
+
+    flex-wrap: wrap;
+  }
+
+  .summary-progress {
+    width: 100%;
+
+    max-width: none;
+
+    margin-left: 0;
+  }
+
+}
+
+
+@media (max-width: 500px) {
+
+  .dates {
+    grid-template-columns: 1fr;
+  }
+
+  .page-header h1 {
+    font-size: 25px;
+  }
+
+  .phase-card {
+    padding: 18px;
+  }
+
+}

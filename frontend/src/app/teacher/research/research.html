@@ -1,0 +1,120 @@
+<div class="page-layout">
+
+  <app-teacher-sidebar></app-teacher-sidebar>
+
+  <main class="main-content">
+
+    <app-header></app-header>
+
+    <div class="page-content">
+
+      <div class="heading">
+
+        <span>RESEARCH MANAGEMENT</span>
+
+        <h1>Research Projects</h1>
+
+        <p>
+          Manage research projects, students and research funding.
+        </p>
+
+      </div>
+
+
+      <div class="research-grid">
+
+        @for (
+          project of researchProjects;
+          track project.id
+        ) {
+
+          <div class="research-card">
+
+            <div class="top">
+
+              <span>
+                {{ project.area }}
+              </span>
+
+              <b>
+                {{ project.status }}
+              </b>
+
+            </div>
+
+
+            <h2>
+              {{ project.title }}
+            </h2>
+
+
+            <div class="research-info">
+
+              <div>
+                <span>STUDENTS</span>
+                <strong>{{ project.students }}</strong>
+              </div>
+
+              <div>
+                <span>FUNDING</span>
+                <strong>
+                  ₹{{ project.funding | number }}
+                </strong>
+              </div>
+
+            </div>
+
+
+            <div class="funding">
+
+              <div>
+                <span>AMOUNT SPENT</span>
+
+                <strong>
+                  ₹{{ project.spent | number }}
+                </strong>
+              </div>
+
+              <div>
+                <span>REMAINING</span>
+
+                <strong>
+                  ₹{{ project.funding - project.spent | number }}
+                </strong>
+              </div>
+
+            </div>
+
+
+            <div class="progress">
+
+              <span>
+                Research Progress
+              </span>
+
+              <strong>
+                {{ project.progress }}%
+              </strong>
+
+            </div>
+
+
+            <div class="track">
+
+              <div
+                [style.width.%]="project.progress">
+              </div>
+
+            </div>
+
+          </div>
+
+        }
+
+      </div>
+
+    </div>
+
+  </main>
+
+</div>

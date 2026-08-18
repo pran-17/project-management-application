@@ -1,0 +1,134 @@
+.page-layout {
+  min-height: 100vh;
+  background: #f6f8fc;
+}
+
+.main-content {
+  margin-left: 245px;
+}
+
+.page-content {
+  padding: 32px;
+}
+
+.heading span {
+  color: #94a3b8;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.heading h1 {
+  margin: 6px 0;
+  color: #172033;
+  font-size: 30px;
+}
+
+.heading p {
+  color: #64748b;
+  font-size: 13px;
+}
+
+.funding-summary {
+  margin-top: 25px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+
+.summary-card {
+  padding: 22px;
+  background: white;
+  border: 1px solid #e5eaf0;
+  border-radius: 12px;
+}
+
+.summary-card span {
+  color: #94a3b8;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.summary-card strong {
+  display: block;
+  margin-top: 8px;
+  color: #172033;
+  font-size: 22px;
+}
+
+.remaining strong {
+  color: #16a34a;
+}
+
+.transaction-card {
+  margin-top: 22px;
+  background: white;
+  border: 1px solid #e5eaf0;
+  border-radius: 13px;
+  overflow: hidden;
+}
+
+.section-heading {
+  padding: 20px;
+  border-bottom: 1px solid #eef1f5;
+}
+
+.section-heading h2 {
+  margin: 0 0 5px;
+  color: #172033;
+  font-size: 18px;
+}
+
+.section-heading span {
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+.transaction-head,
+.transaction-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1.5fr 1fr;
+  gap: 15px;
+  align-items: center;
+  padding: 15px 20px;
+}
+
+.transaction-head {
+  background: #f8fafc;
+  color: #94a3b8;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.transaction-row {
+  border-top: 1px solid #eef1f5;
+  color: #64748b;
+  font-size: 11px;
+}
+
+.transaction-row strong {
+  color: #334155;
+}
+
+.transaction-row b {
+  color: #dc2626;
+}
+
+@media(max-width:900px) {
+
+  .main-content {
+    margin-left: 0;
+  }
+
+  .funding-summary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .transaction-card {
+    overflow-x: auto;
+  }
+
+  .transaction-head,
+  .transaction-row {
+    min-width: 800px;
+  }
+}

@@ -1,0 +1,131 @@
+<div class="page-layout">
+
+  <app-teacher-sidebar></app-teacher-sidebar>
+
+  <main class="main-content">
+
+    <app-header></app-header>
+
+    <div class="page-content">
+
+      <div class="heading">
+
+        <span>RESEARCH MANAGEMENT</span>
+
+        <h1>Research Funding</h1>
+
+        <p>
+          Track research funding, expenses and remaining budget.
+        </p>
+
+      </div>
+
+
+      <div class="funding-summary">
+
+
+        <div class="summary-card">
+
+          <span>TOTAL FUNDING</span>
+
+          <strong>
+            ₹{{ totalFunding | number }}
+          </strong>
+
+        </div>
+
+
+        <div class="summary-card">
+
+          <span>AMOUNT RECEIVED</span>
+
+          <strong>
+            ₹{{ totalReceived | number }}
+          </strong>
+
+        </div>
+
+
+        <div class="summary-card">
+
+          <span>AMOUNT SPENT</span>
+
+          <strong>
+            ₹{{ totalSpent | number }}
+          </strong>
+
+        </div>
+
+
+        <div class="summary-card remaining">
+
+          <span>REMAINING</span>
+
+          <strong>
+            ₹{{ remaining | number }}
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <section class="transaction-card">
+
+        <div class="section-heading">
+
+          <h2>
+            Funding Transactions
+          </h2>
+
+          <span>
+            Research expenses
+          </span>
+
+        </div>
+
+
+        <div class="transaction-head">
+
+          <span>DATE</span>
+          <span>RESEARCH PROJECT</span>
+          <span>DESCRIPTION</span>
+          <span>AMOUNT</span>
+
+        </div>
+
+
+        @for (
+          transaction of transactions;
+          track transaction.date + transaction.amount
+        ) {
+
+          <div class="transaction-row">
+
+            <span>
+              {{ transaction.date }}
+            </span>
+
+            <strong>
+              {{ transaction.research }}
+            </strong>
+
+            <span>
+              {{ transaction.description }}
+            </span>
+
+            <b>
+              ₹{{ transaction.amount | number }}
+            </b>
+
+          </div>
+
+        }
+
+      </section>
+
+    </div>
+
+  </main>
+
+</div>

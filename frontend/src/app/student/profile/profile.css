@@ -1,0 +1,422 @@
+.page-layout {
+  min-height: 100vh;
+  background: #f6f8fc;
+}
+
+
+/* ================================
+   MAIN CONTENT
+================================ */
+
+.main-content {
+  margin-left: 245px;
+
+  width: calc(100% - 245px);
+
+  min-height: 100vh;
+
+  box-sizing: border-box;
+}
+
+
+/* ================================
+   PAGE
+================================ */
+
+.page-content {
+  padding: 30px 32px 45px;
+}
+
+
+/* ================================
+   HEADER
+================================ */
+
+.page-header {
+  margin-bottom: 25px;
+}
+
+.page-header span {
+  color: #94a3b8;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  letter-spacing: 1px;
+}
+
+.page-header h1 {
+  margin: 8px 0;
+
+  color: #172033;
+
+  font-size: 32px;
+
+  font-weight: 700;
+}
+
+.page-header p {
+  margin: 0;
+
+  color: #266ff5;
+
+  font-size: 15px;
+
+  line-height: 1.5;
+}
+
+
+/* ================================
+   PROFILE CARD
+================================ */
+
+.profile-card,
+.project-card {
+  padding: 24px;
+
+  margin-bottom: 20px;
+
+  background: #ffffff;
+
+  border: 1px solid #e5eaf0;
+
+  border-radius: 13px;
+
+  box-sizing: border-box;
+}
+
+
+/* ================================
+   PROFILE TOP
+================================ */
+
+.profile-top {
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+}
+
+
+.profile-avatar {
+  width: 76px;
+  height: 76px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #dbeafe;
+
+  color: #2563eb;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 28px;
+
+  font-weight: 800;
+}
+
+
+.profile-name h2 {
+  margin: 0 0 7px;
+
+  color: #172033;
+
+  font-size: 24px;
+
+  font-weight: 700;
+}
+
+
+.profile-name span {
+  display: block;
+
+  color: #2563eb;
+
+  font-size: 13px;
+
+  font-weight: 700;
+}
+
+
+.profile-name small {
+  display: block;
+
+  margin-top: 6px;
+
+  color: #090909;
+
+  font-size: 14px;
+
+  line-height: 1.4;
+}
+
+
+/* ================================
+   DIVIDER
+================================ */
+
+.divider {
+  height: 1px;
+
+  margin: 22px 0;
+
+  background: #eef1f5;
+}
+
+
+/* ================================
+   SECTION LABEL
+================================ */
+
+.section-label {
+  margin-bottom: 14px;
+
+  color: #0b0b0b;
+
+  font-size: 14px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.8px;
+}
+
+
+/* ================================
+   INFORMATION
+================================ */
+
+.information-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 12px;
+}
+
+
+.information-item {
+  padding: 16px;
+
+  background: #f8fafc;
+
+  border-radius: 9px;
+
+  box-sizing: border-box;
+}
+
+
+/* LABEL */
+
+.information-item span,
+.project-item span {
+  display: block;
+
+  color: #196bde;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.5px;
+}
+
+
+/* VALUE */
+
+.information-item strong {
+  display: block;
+
+  margin-top: 7px;
+
+  color: #000000;
+
+  font-size: 14px;
+
+  line-height: 1.5;
+
+  font-weight: 600;
+}
+
+
+/* ================================
+   PROJECT
+================================ */
+
+.section-header {
+  margin-bottom: 20px;
+}
+
+
+.section-header span {
+  color: #111112;
+
+  font-size: 15px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.8px;
+}
+
+
+.section-header h2 {
+  margin: 6px 0 0;
+
+  color: #172033;
+
+  font-size: 21px;
+
+  font-weight: 700;
+}
+
+
+.project-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 12px;
+}
+
+
+.project-item {
+  padding: 16px;
+
+  background: #f8fafc;
+
+  border-radius: 9px;
+}
+
+
+.project-item strong {
+  display: block;
+
+  margin-top: 7px;
+
+  color: #0f0f0f;
+
+  font-size: 14px;
+
+  line-height: 1.5;
+
+  font-weight: 600;
+}
+
+
+/* ================================
+   PROFILE NOTE
+================================ */
+
+.profile-note {
+  padding: 18px;
+
+  background: #eff6ff;
+
+  border: 1px solid #dbeafe;
+
+  border-radius: 10px;
+
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 14px;
+}
+
+
+.note-icon {
+  width: 34px;
+  height: 34px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #dbeafe;
+
+  color: #2563eb;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 14px;
+
+  font-weight: 800;
+}
+
+
+.profile-note strong {
+  color: #334155;
+
+  font-size: 15px;
+
+  font-weight: 700;
+}
+
+
+.profile-note p {
+  margin: 6px 0 0;
+
+  color: #090909;
+
+  font-size: 15px;
+
+  line-height: 1.6;
+}
+
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 1000px) {
+
+  .information-grid {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+}
+
+
+@media (max-width: 700px) {
+
+  .main-content {
+    margin-left: 0;
+
+    width: 100%;
+  }
+
+  .page-content {
+    padding: 20px;
+  }
+
+  .information-grid,
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+@media (max-width: 500px) {
+
+  .profile-top {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+}

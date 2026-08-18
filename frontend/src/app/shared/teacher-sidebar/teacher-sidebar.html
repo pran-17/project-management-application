@@ -1,0 +1,326 @@
+<aside
+  class="teacher-sidebar"
+  [class.collapsed]="isCollapsed">
+
+
+  <!-- LOGO -->
+
+  <div class="sidebar-logo">
+
+    <div class="logo-icon">
+      PM
+    </div>
+
+    @if (!isCollapsed) {
+
+      <div class="logo-text">
+
+        <strong>
+          ProjectHub
+        </strong>
+
+        <span>
+          Teacher Portal
+        </span>
+
+      </div>
+
+    }
+
+  </div>
+
+
+  <!-- COLLAPSE BUTTON -->
+
+  <button
+    class="collapse-button"
+    type="button"
+    (click)="toggleSidebar()">
+
+    @if (isCollapsed) {
+      →
+    } @else {
+      ←
+    }
+
+  </button>
+
+
+  <!-- MENU -->
+
+  <nav class="sidebar-menu">
+
+
+    <!-- MAIN -->
+
+    @if (!isCollapsed) {
+
+      <div class="menu-title">
+        MAIN
+      </div>
+
+    }
+
+
+    <!-- DASHBOARD -->
+
+    <a
+      routerLink="/teacher/dashboard"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="menu-item">
+
+      <span class="menu-icon">
+        ⌂
+      </span>
+
+      @if (!isCollapsed) {
+
+        <span class="menu-text">
+          Dashboard
+        </span>
+
+      }
+
+    </a>
+
+
+    <!-- STUDENTS -->
+
+    <a
+      routerLink="/teacher/students"
+      routerLinkActive="active"
+      class="menu-item">
+
+      <span class="menu-icon">
+        👥
+      </span>
+
+      @if (!isCollapsed) {
+
+        <span class="menu-text">
+          My Students
+        </span>
+
+      }
+
+    </a>
+
+
+    <!-- PROJECTS -->
+
+    <a
+      routerLink="/teacher/projects"
+      routerLinkActive="active"
+      class="menu-item">
+
+      <span class="menu-icon">
+        ▣
+      </span>
+
+      @if (!isCollapsed) {
+
+        <span class="menu-text">
+          Projects
+        </span>
+
+      }
+
+    </a>
+
+
+    <!-- PROJECT PHASES -->
+
+    <a
+      routerLink="/teacher/phases"
+      routerLinkActive="active"
+      class="menu-item">
+
+      <span class="menu-icon">
+        ◫
+      </span>
+
+      @if (!isCollapsed) {
+
+        <span class="menu-text">
+          Project Phases
+        </span>
+
+      }
+
+    </a>
+
+
+    <!-- REVIEW -->
+
+    <a
+      routerLink="/teacher/review"
+      routerLinkActive="active"
+      class="menu-item">
+
+      <span class="menu-icon">
+        ✓
+      </span>
+
+      @if (!isCollapsed) {
+
+        <span class="menu-text">
+          Work Review
+        </span>
+
+        <span class="menu-badge">
+          2
+        </span>
+
+      }
+
+    </a>
+
+
+    <!-- RESEARCH -->
+
+    @if (!isCollapsed) {
+
+      <div class="menu-title research-title">
+        RESEARCH & FINANCE
+      </div>
+
+    }
+
+
+    <!-- RESEARCH PROJECTS -->
+
+    <a
+      routerLink="/teacher/research"
+      routerLinkActive="active"
+      class="menu-item">
+
+      <span class="menu-icon">
+        🔬
+      </span>
+
+      @if (!isCollapsed) {
+
+        <span class="menu-text">
+          Research Projects
+        </span>
+
+      }
+
+    </a>
+
+
+    <!-- FUNDING -->
+
+    <a
+      routerLink="/teacher/funding"
+      routerLinkActive="active"
+      class="menu-item">
+
+      <span class="menu-icon">
+        ₹
+      </span>
+
+      @if (!isCollapsed) {
+
+        <span class="menu-text">
+          Research Funding
+        </span>
+
+      }
+
+    </a>
+
+
+    <!-- REPORTS -->
+
+    @if (!isCollapsed) {
+
+      <div class="menu-title">
+        ANALYTICS
+      </div>
+
+    }
+
+
+    <a
+      routerLink="/teacher/reports"
+      routerLinkActive="active"
+      class="menu-item">
+
+      <span class="menu-icon">
+        ▥
+      </span>
+
+      @if (!isCollapsed) {
+
+        <span class="menu-text">
+          Reports
+        </span>
+
+      }
+
+    </a>
+
+
+  </nav>
+
+
+  <!-- BOTTOM -->
+
+  <div class="sidebar-bottom">
+
+
+    <!-- PROFILE -->
+
+    <a
+      routerLink="/teacher/profile"
+      class="profile-card">
+
+      <div class="profile-avatar">
+        T
+      </div>
+
+      @if (!isCollapsed) {
+
+        <div class="profile-info">
+
+          <strong>
+            Dr. Kumar
+          </strong>
+
+          <span>
+            Project Guide
+          </span>
+
+        </div>
+
+      }
+
+    </a>
+
+
+    <!-- LOGOUT -->
+
+    <button
+      type="button"
+      class="logout-button">
+
+      <span class="menu-icon">
+        ↪
+      </span>
+
+      @if (!isCollapsed) {
+
+        <span>
+          Logout
+        </span>
+
+      }
+
+    </button>
+
+
+  </div>
+
+</aside>

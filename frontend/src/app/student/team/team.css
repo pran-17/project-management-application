@@ -1,0 +1,969 @@
+:host {
+  display: block;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.team-layout {
+  min-height: 100vh;
+  background: #f6f8fc;
+}
+
+.main-content {
+  margin-left: 245px;
+  min-height: 100vh;
+}
+
+.team-content {
+  max-width: 1600px;
+  margin: auto;
+  padding: 32px 34px 55px;
+}
+
+
+/* =========================
+   PAGE HEADER
+========================= */
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 25px;
+}
+
+.page-label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: #0b0b0b;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.3px;
+}
+
+.page-header h1 {
+  margin: 0;
+
+  color: #172033;
+
+  font-size: 32px;
+
+  font-weight: 700;
+}
+
+.page-header p {
+  margin: 8px 0 0;
+
+  color: #2d7bea;
+
+  font-size: 14px;
+}
+
+.project-type-card {
+  padding: 13px 18px;
+
+  border: 1px solid #e5eaf1;
+
+  border-radius: 10px;
+
+  background: #ffffff;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+.project-type-card span {
+  color: #0e0e0e;
+
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+.project-type-card strong {
+  color: #2563eb;
+
+  font-size: 14px;
+}
+
+
+/* =========================
+   PROJECT BANNER
+========================= */
+
+.project-banner {
+  padding: 23px 25px;
+
+  background: #ffffff;
+
+  border: 1px solid #e6ebf1;
+
+  border-radius: 14px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-bottom: 20px;
+}
+
+.project-banner-left {
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+}
+
+.project-icon {
+  width: 58px;
+  height: 58px;
+
+  border-radius: 13px;
+
+  background: #eff6ff;
+
+  color: #2563eb;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 17px;
+
+  font-weight: 800;
+}
+
+.small-label {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #232222;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 1px;
+}
+
+.project-banner h2 {
+  margin: 0 0 7px;
+
+  color: #172033;
+
+  font-size: 19px;
+}
+
+.project-meta {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  color: #2275e9;
+
+  font-size: 12px;
+}
+
+.guide-section {
+  padding-left: 35px;
+
+  border-left: 1px solid #e9edf3;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+.guide-section span {
+  color: #2890f9;
+
+  font-size: 10px;
+
+  font-weight: 700;
+}
+
+.guide-section strong {
+  color: #030303;
+
+  font-size: 14px;
+}
+
+
+/* =========================
+   STATISTICS
+========================= */
+
+.stats-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 17px;
+
+  margin-bottom: 25px;
+}
+
+.stat-card {
+  padding: 20px;
+
+  background: #ffffff;
+
+  border: 1px solid #e6ebf1;
+
+  border-radius: 13px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+}
+
+.stat-icon {
+  width: 47px;
+  height: 47px;
+
+  flex-shrink: 0;
+
+  border-radius: 11px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 18px;
+
+  font-weight: 700;
+}
+
+.stat-icon.blue {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.stat-icon.green {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.stat-icon.purple {
+  background: #ede9fe;
+  color: #7c3aed;
+}
+
+.stat-icon.orange {
+  background: #ffedd5;
+  color: #ea580c;
+}
+
+.stat-card > div:last-child {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+.stat-card span {
+  color: #0e0e0e;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  letter-spacing: .5px;
+}
+
+.stat-card strong {
+  color: #172033;
+
+  font-size: 26px;
+
+  line-height: 1;
+}
+
+.stat-card small {
+  color: #2c7ced;
+
+  font-size: 13px;
+}
+
+
+/* =========================
+   SECTION
+========================= */
+
+.members-section {
+  margin-bottom: 25px;
+}
+
+.section-header {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-bottom: 17px;
+}
+
+.section-label {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #94a3b8;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.1px;
+}
+
+.section-header h2 {
+  margin: 0;
+
+  color: #172033;
+
+  font-size: 20px;
+}
+
+.member-count,
+.average-badge {
+  padding: 7px 11px;
+
+  border-radius: 20px;
+
+  background: #eff6ff;
+
+  color: #2563eb;
+
+  font-size: 11px;
+
+  font-weight: 700;
+}
+
+
+/* =========================
+   MEMBER CARDS
+========================= */
+
+.member-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 18px;
+}
+
+.member-card {
+  padding: 22px;
+
+  background: #ffffff;
+
+  border: 1px solid #e6ebf1;
+
+  border-radius: 14px;
+
+  transition: transform .2s ease,
+              box-shadow .2s ease;
+}
+
+.member-card:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 30px rgba(15, 23, 42, .07);
+}
+
+.member-card-header {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-bottom: 20px;
+}
+
+.member-profile {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+.member-avatar {
+  width: 48px;
+  height: 48px;
+
+  border-radius: 50%;
+
+  background: #dbeafe;
+
+  color: #2563eb;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 15px;
+
+  font-weight: 700;
+}
+
+.member-profile h3 {
+  margin: 0 0 4px;
+
+  color: #172033;
+
+  font-size: 17px;
+}
+
+.member-profile span {
+  color: #2875e1;
+
+  font-size: 14px;
+}
+
+.status-badge {
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  padding: 6px 10px;
+
+  border-radius: 20px;
+
+  font-size: 10px;
+
+  font-weight: 700;
+}
+
+.status-badge.active {
+  background: #dcfce7;
+
+  color: #16a34a;
+}
+
+.status-badge.completed {
+  background: #dbeafe;
+
+  color: #2563eb;
+}
+
+.status-badge.delayed {
+  background: #fee2e2;
+
+  color: #dc2626;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: currentColor;
+}
+
+
+/* ROLE */
+
+.member-role {
+  display: flex;
+
+  justify-content: space-between;
+
+  padding: 12px 0;
+
+  border-top: 1px solid #f0f2f5;
+
+  border-bottom: 1px solid #f0f2f5;
+}
+
+.member-role span,
+.module-box span,
+.current-task span {
+  color: #0f0f0f;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  letter-spacing: .5px;
+}
+
+.member-role strong {
+  color: #29292a;
+
+  font-size: 12px;
+}
+
+
+/* MODULE */
+
+.module-box {
+  padding: 13px 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 6px;
+}
+
+.module-box strong {
+  color: #2563eb;
+
+  font-size: 13px;
+}
+
+
+/* PROGRESS */
+
+.member-progress-section {
+  margin: 10px 0 18px;
+}
+
+.progress-header {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-bottom: 8px;
+}
+
+.progress-header span {
+  color: #080808;
+
+  font-size: 13px;
+}
+
+.progress-header strong {
+  color: #2563eb;
+
+  font-size: 14px;
+}
+
+.progress-track {
+  height: 8px;
+
+  background: #edf1f6;
+
+  border-radius: 20px;
+
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+
+  background: #2563eb;
+
+  border-radius: 20px;
+}
+
+
+/* TASK */
+
+.current-task {
+  padding: 13px;
+
+  background: #f8fafc;
+
+  border-radius: 9px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 6px;
+
+  margin-bottom: 16px;
+}
+
+.current-task strong {
+  color: #2c75db;
+
+  font-size: 14px;
+}
+
+
+/* TASK SUMMARY */
+
+.task-summary {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 10px;
+
+  margin-bottom: 17px;
+}
+
+.task-summary > div {
+  padding: 11px;
+
+  border: 1px solid #edf0f4;
+
+  border-radius: 8px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+.task-summary strong {
+  color: #296af6;
+
+  font-size: 20px;
+}
+
+.task-summary span {
+  color: #0b0b0b;
+
+  font-size: 14px;
+}
+
+
+/* BUTTON */
+
+.view-button {
+  width: 100%;
+
+  height: 43px;
+
+  border: 1px solid #dbe3ed;
+
+  border-radius: 8px;
+
+  background: #ffffff;
+
+  color: #2563eb;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  transition: .2s;
+}
+
+.view-button:hover {
+  background: #eff6ff;
+
+  border-color: #bfdbfe;
+}
+
+
+/* =========================
+   TEAM PROGRESS
+========================= */
+
+.team-progress-card {
+  padding: 23px;
+
+  margin-bottom: 20px;
+
+  background: #ffffff;
+
+  border: 1px solid #e6ebf1;
+
+  border-radius: 14px;
+}
+
+.progress-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 18px;
+}
+
+.progress-member {
+  display: flex;
+
+  align-items: center;
+
+  gap: 25px;
+}
+
+.progress-member-info {
+  width: 250px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+}
+
+.small-avatar {
+  width: 38px;
+  height: 38px;
+
+  border-radius: 50%;
+
+  background: #dbeafe;
+
+  color: #2563eb;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 11px;
+
+  font-weight: 700;
+}
+
+.progress-member-info > div:last-child {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+.progress-member-info strong {
+  color: #000000;
+
+  font-size: 15px;
+}
+
+.progress-member-info span {
+  color: #1a1a1b;
+
+  font-size: 14px;
+}
+
+.large-progress {
+  flex: 1;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+.large-progress-track {
+  height: 9px;
+
+  flex: 1;
+
+  background: #edf1f6;
+
+  border-radius: 20px;
+
+  overflow: hidden;
+}
+
+.large-progress-fill {
+  height: 100%;
+
+  background: #2563eb;
+
+  border-radius: 20px;
+}
+
+.large-progress > strong {
+  width: 40px;
+
+  color: #000000;
+
+  font-size: 15px;
+}
+
+
+/* =========================
+   INFORMATION
+========================= */
+
+.information-box {
+  padding: 18px;
+
+  background: #eff6ff;
+
+  border: 1px solid #dbeafe;
+
+  border-radius: 12px;
+
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 13px;
+}
+
+.information-icon {
+  width: 31px;
+  height: 31px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #dbeafe;
+
+  color: #2563eb;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 13px;
+
+  font-weight: 700;
+}
+
+.information-box h3 {
+  margin: 0 0 5px;
+
+  color: #1e3a8a;
+
+  font-size: 13px;
+}
+
+.information-box p {
+  margin: 0;
+
+  color: #3b82f6;
+
+  font-size: 11px;
+
+  line-height: 1.6;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1100px) {
+
+  .stats-grid {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+  .member-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+@media (max-width: 850px) {
+
+  .main-content {
+    margin-left: 0;
+  }
+
+  .team-content {
+    padding: 25px 20px 45px;
+  }
+
+  .project-banner {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 18px;
+  }
+
+  .guide-section {
+    padding-left: 0;
+
+    padding-top: 15px;
+
+    border-left: none;
+
+    border-top: 1px solid #e9edf3;
+
+    width: 100%;
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .page-header {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 15px;
+  }
+
+  .project-type-card {
+    width: 100%;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-header {
+    align-items: flex-start;
+
+    gap: 10px;
+  }
+
+  .member-card-header {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 12px;
+  }
+
+  .progress-member {
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 10px;
+  }
+
+  .progress-member-info {
+    width: 100%;
+  }
+
+}

@@ -1,0 +1,371 @@
+:host {
+  display: block;
+}
+
+
+/* ================================
+   SIDEBAR
+================================ */
+
+.sidebar {
+  width: 245px;
+  height: 100vh;
+
+  position: fixed;
+  left: 0;
+  top: 0;
+
+  z-index: 1000;
+
+  background: #ffffff;
+
+  border-right: 1px solid #e9edf3;
+
+  display: flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+
+/* ================================
+   BRAND
+================================ */
+
+.sidebar-brand {
+  min-height: 76px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  padding: 0 22px;
+
+  border-bottom: 1px solid #eef1f5;
+
+  box-sizing: border-box;
+}
+
+
+.brand-logo {
+  width: 38px;
+  height: 38px;
+
+  flex-shrink: 0;
+
+  border-radius: 10px;
+
+  background: #2563eb;
+
+  color: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 18px;
+
+  font-weight: 800;
+}
+
+
+.brand-text {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 2px;
+}
+
+
+.brand-text strong {
+  color: #172033;
+
+  font-size: 18px;
+
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+
+.brand-text span {
+  color: #94a3b8;
+
+  font-size: 12px;
+
+  white-space: nowrap;
+}
+
+
+/* ================================
+   USER CARD
+================================ */
+
+.user-card {
+  margin: 20px 15px;
+
+  padding: 12px;
+
+  border-radius: 10px;
+
+  background: #f7f9fc;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  box-sizing: border-box;
+}
+
+
+.user-avatar {
+  width: 36px;
+  height: 36px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #dbeafe;
+
+  color: #1d4ed8;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 15px;
+
+  font-weight: 700;
+}
+
+
+.user-details {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+
+.user-details strong {
+  color: #334155;
+
+  font-size: 18px;
+
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+
+.user-details span {
+  color: #1e77f4;
+
+  font-size: 12px;
+
+  white-space: nowrap;
+}
+
+
+/* ================================
+   NAVIGATION TITLE
+================================ */
+
+.navigation-title {
+  padding: 0 22px;
+
+  margin-bottom: 8px;
+
+  color: #a0a9b7;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  letter-spacing: 1px;
+}
+
+
+/* ================================
+   NAVIGATION
+================================ */
+
+.sidebar-navigation {
+  padding: 0 12px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+
+.nav-item {
+  min-height: 42px;
+
+  padding: 0 12px;
+
+  border-radius: 8px;
+
+  color: #0a0a0a;
+
+  text-decoration: none;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  font-size: 16px;
+
+  font-weight: 500;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+
+  position: relative;
+
+  box-sizing: border-box;
+
+  cursor: pointer;
+}
+
+
+.nav-item:hover {
+  background: #f5f8ff;
+
+  color: #2563eb;
+}
+
+
+.nav-item.active {
+  background: #eff6ff;
+
+  color: #2563eb;
+
+  font-weight: 600;
+}
+
+
+.nav-icon {
+  width: 22px;
+
+  min-width: 22px;
+
+  text-align: center;
+
+  font-size: 15px;
+
+  line-height: 1;
+}
+
+
+.nav-label {
+  flex: 1;
+
+  white-space: nowrap;
+}
+
+
+/* ================================
+   BOTTOM
+================================ */
+
+.sidebar-bottom {
+  margin-top: auto;
+
+  padding: 12px;
+
+  border-top: 1px solid #eef1f5;
+
+  background: #ffffff;
+
+  box-sizing: border-box;
+}
+
+
+/* ================================
+   NOTIFICATION
+================================ */
+
+.notification-badge {
+  width: 18px;
+  height: 18px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #ef4444;
+
+  color: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 9px;
+
+  font-weight: 700;
+}
+
+
+/* ================================
+   LOGOUT
+================================ */
+
+.logout:hover {
+  color: #dc2626;
+
+  background: #fef2f2;
+}
+
+
+/* ================================
+   SCROLLBAR
+================================ */
+
+.sidebar::-webkit-scrollbar {
+  width: 5px;
+}
+
+
+.sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: #e2e8f0;
+
+  border-radius: 10px;
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 700px) {
+
+  .sidebar {
+    width: 245px;
+
+    transform: translateX(-100%);
+
+    transition:
+      transform 0.25s ease;
+  }
+
+}

@@ -1,0 +1,86 @@
+<header class="header">
+
+  <!-- PAGE TITLE -->
+
+  <div class="page-title">
+
+    <span>
+      FINAL YEAR PROJECT
+    </span>
+
+    <h1>
+      {{ pageTitle }}
+    </h1>
+
+  </div>
+
+
+  <!-- RIGHT SIDE -->
+
+  <div class="header-right">
+
+
+    <!-- SEARCH -->
+
+    <div class="search-box">
+
+      <span class="search-icon">
+        🔍
+      </span>
+
+      <input
+        type="text"
+        placeholder="Search projects, tasks...">
+
+    </div>
+
+
+    <!-- NOTIFICATION -->
+
+    <button
+      type="button"
+      class="notification">
+
+      🔔
+
+      <span class="notification-count">
+        3
+      </span>
+
+    </button>
+
+
+    <!-- PROFILE -->
+
+    <div class="profile">
+
+      <div class="profile-avatar">
+
+        {{ userName.charAt(0) }}
+
+      </div>
+
+
+      <div class="profile-info">
+
+        <strong>
+          {{ userName }}
+        </strong>
+
+        <span>
+          {{ userRole }}
+        </span>
+
+      </div>
+
+
+      <span class="profile-arrow">
+        ▾
+      </span>
+
+    </div>
+
+
+  </div>
+
+</header>

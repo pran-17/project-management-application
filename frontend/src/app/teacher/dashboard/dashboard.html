@@ -1,0 +1,1206 @@
+<div class="dashboard-layout">
+
+  <!-- SIDEBAR -->
+  <app-teacher-sidebar></app-teacher-sidebar>
+
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+
+    <!-- HEADER -->
+    <app-header></app-header>
+
+
+    <div class="dashboard-content">
+
+      <!-- =========================================
+           PAGE HEADER
+      ========================================== -->
+
+      <section class="page-header">
+
+        <div>
+
+          <span class="page-label">
+            TEACHER WORKSPACE
+          </span>
+
+          <h1>
+            Teacher Dashboard
+          </h1>
+
+          <p>
+            Monitor student projects, review submitted work and track project progress.
+          </p>
+
+        </div>
+
+
+        <div class="guide-card">
+
+          <span>
+            PROJECT GUIDE
+          </span>
+
+          <strong>
+            Dr. Kumar
+          </strong>
+
+          <small>
+            Computer Science Department
+          </small>
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================================
+           OVERVIEW CARDS
+      ========================================== -->
+
+      <section class="overview-grid">
+
+
+        <!-- TOTAL STUDENTS -->
+
+        <div class="overview-card">
+
+          <div class="overview-icon blue">
+            👥
+          </div>
+
+          <div>
+
+            <span>
+              TOTAL STUDENTS
+            </span>
+
+            <strong>
+              24
+            </strong>
+
+            <small>
+              Students assigned
+            </small>
+
+          </div>
+
+        </div>
+
+
+        <!-- ACTIVE PROJECTS -->
+
+        <div class="overview-card">
+
+          <div class="overview-icon purple">
+            📁
+          </div>
+
+          <div>
+
+            <span>
+              ACTIVE PROJECTS
+            </span>
+
+            <strong>
+              8
+            </strong>
+
+            <small>
+              Currently working
+            </small>
+
+          </div>
+
+        </div>
+
+
+        <!-- UNDER REVIEW -->
+
+        <div class="overview-card">
+
+          <div class="overview-icon orange">
+            ◷
+          </div>
+
+          <div>
+
+            <span>
+              WORK UNDER REVIEW
+            </span>
+
+            <strong>
+              {{ getReviewCount() }}
+            </strong>
+
+            <small>
+              Need your attention
+            </small>
+
+          </div>
+
+        </div>
+
+
+        <!-- COMPLETED -->
+
+        <div class="overview-card">
+
+          <div class="overview-icon green">
+            ✓
+          </div>
+
+          <div>
+
+            <span>
+              COMPLETED REVIEWS
+            </span>
+
+            <strong>
+              {{ getApprovedCount() }}
+            </strong>
+
+            <small>
+              Approved submissions
+            </small>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================================
+           STUDENT PROJECT PROGRESS
+      ========================================== -->
+
+      <section class="project-section">
+
+
+        <div class="section-header">
+
+          <div>
+
+            <span class="section-label">
+              PROJECT MONITORING
+            </span>
+
+            <h2>
+              Student Project Progress
+            </h2>
+
+            <p>
+              Monitor individual student project work and current phases.
+            </p>
+
+          </div>
+
+
+          <button
+            type="button"
+            class="view-projects-button">
+
+            View All Projects
+            <span>→</span>
+
+          </button>
+
+        </div>
+
+
+        <div class="project-table-card">
+
+
+          <!-- TABLE HEADER -->
+
+          <div class="table-header">
+
+            <span>
+              STUDENT
+            </span>
+
+            <span>
+              PROJECT
+            </span>
+
+            <span>
+              TYPE
+            </span>
+
+            <span>
+              PHASE
+            </span>
+
+            <span>
+              PROGRESS
+            </span>
+
+            <span>
+              STATUS
+            </span>
+
+          </div>
+
+
+          <!-- PROJECT ROWS -->
+
+          <div class="project-row">
+
+
+            <!-- STUDENT -->
+
+            <div class="student-cell">
+
+              <div class="student-avatar blue-avatar">
+                P
+              </div>
+
+              <div>
+
+                <strong>
+                  Praneeth
+                </strong>
+
+                <span>
+                  CSE2026001
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <!-- PROJECT -->
+
+            <div class="project-cell">
+
+              <strong>
+                AI-Based Attendance System
+              </strong>
+
+              <span>
+                Frontend Development
+              </span>
+
+            </div>
+
+
+            <!-- TYPE -->
+
+            <div>
+
+              <span class="project-type team">
+                Team Project
+              </span>
+
+            </div>
+
+
+            <!-- PHASE -->
+
+            <div class="phase-cell">
+
+              <strong>
+                Phase 2
+              </strong>
+
+              <span>
+                Development
+              </span>
+
+            </div>
+
+
+            <!-- PROGRESS -->
+
+            <div class="progress-cell">
+
+              <div class="progress-number">
+                75%
+              </div>
+
+              <div class="small-progress">
+
+                <div
+                  style="width: 75%">
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <!-- STATUS -->
+
+            <div>
+
+              <span class="status-badge progress">
+                In Progress
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <!-- ROW 2 -->
+
+          <div class="project-row">
+
+
+            <div class="student-cell">
+
+              <div class="student-avatar purple-avatar">
+                R
+              </div>
+
+              <div>
+
+                <strong>
+                  Rahul
+                </strong>
+
+                <span>
+                  CSE2026002
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <div class="project-cell">
+
+              <strong>
+                AI-Based Attendance System
+              </strong>
+
+              <span>
+                Backend Development
+              </span>
+
+            </div>
+
+
+            <div>
+
+              <span class="project-type team">
+                Team Project
+              </span>
+
+            </div>
+
+
+            <div class="phase-cell">
+
+              <strong>
+                Phase 2
+              </strong>
+
+              <span>
+                Development
+              </span>
+
+            </div>
+
+
+            <div class="progress-cell">
+
+              <div class="progress-number">
+                65%
+              </div>
+
+              <div class="small-progress">
+
+                <div
+                  style="width: 65%">
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div>
+
+              <span class="status-badge progress">
+                In Progress
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <!-- ROW 3 -->
+
+          <div class="project-row">
+
+
+            <div class="student-cell">
+
+              <div class="student-avatar green-avatar">
+                A
+              </div>
+
+              <div>
+
+                <strong>
+                  Arun
+                </strong>
+
+                <span>
+                  CSE2026003
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <div class="project-cell">
+
+              <strong>
+                Library Management System
+              </strong>
+
+              <span>
+                Full Stack Development
+              </span>
+
+            </div>
+
+
+            <div>
+
+              <span class="project-type individual">
+                Individual
+              </span>
+
+            </div>
+
+
+            <div class="phase-cell">
+
+              <strong>
+                Phase 1
+              </strong>
+
+              <span>
+                Research
+              </span>
+
+            </div>
+
+
+            <div class="progress-cell">
+
+              <div class="progress-number">
+                100%
+              </div>
+
+              <div class="small-progress">
+
+                <div
+                  style="width: 100%">
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div>
+
+              <span class="status-badge completed">
+                Completed
+              </span>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================================
+           WORK REVIEW
+      ========================================== -->
+
+      <section class="review-dashboard-section">
+
+
+        <div class="section-header">
+
+          <div>
+
+            <span class="section-label">
+              STUDENT WORK
+            </span>
+
+            <h2>
+              Work Review
+            </h2>
+
+            <p>
+              Review student work submissions and provide feedback.
+            </p>
+
+          </div>
+
+
+          <a
+            routerLink="/teacher/review"
+            class="view-all-button">
+
+            View All Reviews
+
+            <span>
+              →
+            </span>
+
+          </a>
+
+        </div>
+
+
+        <!-- REVIEW SUMMARY -->
+
+        <div class="review-summary-grid">
+
+
+          <!-- UNDER REVIEW -->
+
+          <div class="review-summary-card">
+
+            <div class="summary-icon review-icon">
+              ◷
+            </div>
+
+            <div>
+
+              <span>
+                UNDER REVIEW
+              </span>
+
+              <strong>
+                {{ getReviewCount() }}
+              </strong>
+
+              <small>
+                Awaiting your review
+              </small>
+
+            </div>
+
+          </div>
+
+
+          <!-- APPROVED -->
+
+          <div class="review-summary-card">
+
+            <div class="summary-icon approved-icon">
+              ✓
+            </div>
+
+            <div>
+
+              <span>
+                APPROVED
+              </span>
+
+              <strong>
+                {{ getApprovedCount() }}
+              </strong>
+
+              <small>
+                Completed reviews
+              </small>
+
+            </div>
+
+          </div>
+
+
+          <!-- CHANGES -->
+
+          <div class="review-summary-card">
+
+            <div class="summary-icon changes-icon">
+              !
+            </div>
+
+            <div>
+
+              <span>
+                CHANGES REQUESTED
+              </span>
+
+              <strong>
+                {{ getChangesCount() }}
+              </strong>
+
+              <small>
+                Student action required
+              </small>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- SUBMISSIONS -->
+
+        <div class="review-table-card">
+
+
+          <div class="review-table-header">
+
+            <div>
+
+              <h3>
+                Recent Student Submissions
+              </h3>
+
+              <span>
+                Latest project work submitted by students
+              </span>
+
+            </div>
+
+
+            <span class="submission-count">
+
+              {{ reviewSubmissions.length }}
+
+              Submissions
+
+            </span>
+
+          </div>
+
+
+          <div class="review-list">
+
+
+            @for (
+              submission of reviewSubmissions;
+              track submission.id
+            ) {
+
+
+              <div class="review-row">
+
+
+                <!-- STUDENT -->
+
+                <div class="student-info">
+
+                  <div class="student-avatar blue-avatar">
+
+                    {{ submission.studentName.charAt(0) }}
+
+                  </div>
+
+
+                  <div>
+
+                    <strong>
+                      {{ submission.studentName }}
+                    </strong>
+
+                    <span>
+                      {{ submission.registerNumber }}
+                    </span>
+
+                  </div>
+
+                </div>
+
+
+                <!-- PROJECT -->
+
+                <div class="review-project-info">
+
+                  <span>
+                    PROJECT
+                  </span>
+
+                  <strong>
+                    {{ submission.projectName }}
+                  </strong>
+
+                </div>
+
+
+                <!-- TASK -->
+
+                <div class="review-task-info">
+
+                  <span>
+                    TASK
+                  </span>
+
+                  <strong>
+                    {{ submission.taskTitle }}
+                  </strong>
+
+                </div>
+
+
+                <!-- PHASE -->
+
+                <div class="review-phase-info">
+
+                  <span>
+                    PHASE
+                  </span>
+
+                  <strong>
+                    {{ submission.phase }}
+                  </strong>
+
+                </div>
+
+
+                <!-- PROGRESS -->
+
+                <div class="review-progress-info">
+
+                  <div class="review-progress-header">
+
+                    <span>
+                      PROGRESS
+                    </span>
+
+                    <strong>
+                      {{ submission.progress }}%
+                    </strong>
+
+                  </div>
+
+
+                  <div class="mini-progress">
+
+                    <div
+                      [style.width.%]="submission.progress">
+                    </div>
+
+                  </div>
+
+                </div>
+
+
+                <!-- STATUS -->
+
+                <div>
+
+                  <span
+                    class="status-badge"
+                    [class]="getStatusClass(submission.status)">
+
+                    <span class="status-dot"></span>
+
+                    {{ submission.status }}
+
+                  </span>
+
+                </div>
+
+
+                <!-- REVIEW BUTTON -->
+
+                <a
+                  routerLink="/teacher/review"
+                  class="review-button">
+
+                  Review
+
+                  <span>
+                    →
+                  </span>
+
+                </a>
+
+              </div>
+
+            }
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================================
+           PHASE OVERVIEW
+      ========================================== -->
+
+      <section class="phase-section">
+
+
+        <div class="section-header">
+
+          <div>
+
+            <span class="section-label">
+              PROJECT PHASES
+            </span>
+
+            <h2>
+              Phase Overview
+            </h2>
+
+            <p>
+              Overall progress of student project phases.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="phase-grid">
+
+
+          <!-- PHASE 1 -->
+
+          <div class="phase-card">
+
+            <div class="phase-top">
+
+              <div class="phase-number">
+                01
+              </div>
+
+              <span class="phase-status completed">
+                Completed
+              </span>
+
+            </div>
+
+
+            <h3>
+              Research & Planning
+            </h3>
+
+            <p>
+              Requirement analysis, literature survey and project planning.
+            </p>
+
+
+            <div class="phase-progress">
+
+              <div>
+
+                <span>
+                  Progress
+                </span>
+
+                <strong>
+                  100%
+                </strong>
+
+              </div>
+
+
+              <div class="phase-progress-track">
+
+                <div
+                  style="width: 100%">
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- PHASE 2 -->
+
+          <div class="phase-card active-phase">
+
+            <div class="phase-top">
+
+              <div class="phase-number">
+                02
+              </div>
+
+              <span class="phase-status active">
+                In Progress
+              </span>
+
+            </div>
+
+
+            <h3>
+              Development
+            </h3>
+
+            <p>
+              Frontend, backend, database and core system development.
+            </p>
+
+
+            <div class="phase-progress">
+
+              <div>
+
+                <span>
+                  Progress
+                </span>
+
+                <strong>
+                  68%
+                </strong>
+
+              </div>
+
+
+              <div class="phase-progress-track">
+
+                <div
+                  style="width: 68%">
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- PHASE 3 -->
+
+          <div class="phase-card">
+
+            <div class="phase-top">
+
+              <div class="phase-number">
+                03
+              </div>
+
+              <span class="phase-status pending">
+                Pending
+              </span>
+
+            </div>
+
+
+            <h3>
+              Testing
+            </h3>
+
+            <p>
+              System testing, bug fixing and performance validation.
+            </p>
+
+
+            <div class="phase-progress">
+
+              <div>
+
+                <span>
+                  Progress
+                </span>
+
+                <strong>
+                  0%
+                </strong>
+
+              </div>
+
+
+              <div class="phase-progress-track">
+
+                <div
+                  style="width: 0%">
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- FINAL -->
+
+          <div class="phase-card">
+
+            <div class="phase-top">
+
+              <div class="phase-number">
+                04
+              </div>
+
+              <span class="phase-status pending">
+                Pending
+              </span>
+
+            </div>
+
+
+            <h3>
+              Final Submission
+            </h3>
+
+            <p>
+              Final documentation, presentation and project submission.
+            </p>
+
+
+            <div class="phase-progress">
+
+              <div>
+
+                <span>
+                  Progress
+                </span>
+
+                <strong>
+                  0%
+                </strong>
+
+              </div>
+
+
+              <div class="phase-progress-track">
+
+                <div
+                  style="width: 0%">
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================================
+           RECENT ACTIVITY
+      ========================================== -->
+
+      <section class="activity-section">
+
+
+        <div class="section-header">
+
+          <div>
+
+            <span class="section-label">
+              RECENT ACTIVITY
+            </span>
+
+            <h2>
+              Student Updates
+            </h2>
+
+          </div>
+
+        </div>
+
+
+        <div class="activity-card">
+
+
+          <div class="activity-item">
+
+            <div class="activity-icon blue">
+              P
+            </div>
+
+            <div class="activity-content">
+
+              <strong>
+                Praneeth submitted Authentication module
+              </strong>
+
+              <span>
+                AI-Based Attendance Management System
+              </span>
+
+            </div>
+
+            <time>
+              10 min ago
+            </time>
+
+          </div>
+
+
+          <div class="activity-item">
+
+            <div class="activity-icon purple">
+              R
+            </div>
+
+            <div class="activity-content">
+
+              <strong>
+                Rahul updated Authentication API
+              </strong>
+
+              <span>
+                Backend Development
+              </span>
+
+            </div>
+
+            <time>
+              1 hour ago
+            </time>
+
+          </div>
+
+
+          <div class="activity-item">
+
+            <div class="activity-icon green">
+              A
+            </div>
+
+            <div class="activity-content">
+
+              <strong>
+                Arun completed Phase 1
+              </strong>
+
+              <span>
+                Library Management System
+              </span>
+
+            </div>
+
+            <time>
+              Yesterday
+            </time>
+
+          </div>
+
+
+        </div>
+
+      </section>
+
+
+    </div>
+
+  </main>
+
+</div>

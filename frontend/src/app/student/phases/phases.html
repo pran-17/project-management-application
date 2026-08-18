@@ -1,0 +1,256 @@
+<div class="page-layout">
+
+  <app-sidebar></app-sidebar>
+
+  <main class="main-content">
+
+    <app-header></app-header>
+
+    <div class="page-content">
+
+
+      <!-- PAGE HEADER -->
+
+      <div class="page-header">
+
+        <div>
+
+          <span>
+            PROJECT WORKFLOW
+          </span>
+
+          <h1>
+            Project Phases
+          </h1>
+
+          <p>
+            Track the progress of your final year project.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- PHASE SUMMARY -->
+
+      <div class="summary-card">
+
+        <div class="summary-icon">
+          ✓
+        </div>
+
+        <div>
+
+          <span>
+            CURRENT PHASE
+          </span>
+
+          <strong>
+            Phase 2 - Development
+          </strong>
+
+        </div>
+
+        <div class="summary-progress">
+
+          <span>
+            Overall Progress
+          </span>
+
+          <strong>
+            70%
+          </strong>
+
+          <div class="summary-track">
+
+            <div
+              style="width: 70%">
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- PHASE CARDS -->
+
+      <div class="phase-grid">
+
+
+        @for (
+          phase of phases;
+          track phase.number
+        ) {
+
+
+          <div
+            class="phase-card"
+            [class.current-phase]="
+              phase.status === 'In Progress'
+            ">
+
+
+            <!-- TOP -->
+
+            <div class="phase-top">
+
+              <div
+                class="phase-number"
+                [ngClass]="
+                  getPhaseClass(
+                    phase.status
+                  )
+                ">
+
+                @if (
+                  phase.status === 'Completed'
+                ) {
+
+                  ✓
+
+                } @else {
+
+                  {{ phase.number }}
+
+                }
+
+              </div>
+
+
+              <span
+                class="phase-status"
+                [ngClass]="
+                  getPhaseClass(
+                    phase.status
+                  )
+                ">
+
+                {{ phase.status }}
+
+              </span>
+
+            </div>
+
+
+            <!-- TITLE -->
+
+            <h2>
+              Phase {{ phase.number }} -
+              {{ phase.name }}
+            </h2>
+
+
+            <p class="description">
+
+              {{ phase.description }}
+
+            </p>
+
+
+            <!-- DATES -->
+
+            <div class="dates">
+
+
+              <div>
+
+                <span>
+                  START DATE
+                </span>
+
+                <strong>
+                  {{ phase.startDate }}
+                </strong>
+
+              </div>
+
+
+              <div>
+
+                <span>
+                  DUE DATE
+                </span>
+
+                <strong>
+                  {{ phase.dueDate }}
+                </strong>
+
+              </div>
+
+
+            </div>
+
+
+            <!-- PROGRESS -->
+
+            <div class="progress-area">
+
+
+              <div class="progress-header">
+
+                <span>
+                  Progress
+                </span>
+
+                <strong>
+                  {{ phase.progress }}%
+                </strong>
+
+              </div>
+
+
+              <div class="progress-track">
+
+                <div
+                  [style.width.%]="
+                    phase.progress
+                  ">
+                </div>
+
+              </div>
+
+
+            </div>
+
+
+          </div>
+
+        }
+
+      </div>
+
+
+      <!-- GUIDE MESSAGE -->
+
+      <div class="guide-message">
+
+        <div class="message-icon">
+          ✓
+        </div>
+
+        <div>
+
+          <h3>
+            Phase Completion
+          </h3>
+
+          <p>
+            Complete your assigned work and submit it
+            to your project guide for review. Your guide
+            will update the phase status after reviewing
+            your submission.
+          </p>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </main>
+
+</div>
