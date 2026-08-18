@@ -41,12 +41,7 @@ export const routes: Routes = [
       .then(m => m.Tasks)
 },
 
-  {
-    path: 'teacher/dashboard',
-    loadComponent: () =>
-      import('./teacher/dashboard/dashboard')
-        .then(m => m.Dashboard)
-  },
+
   {
   path: 'student/phases',
   loadComponent: () =>
@@ -60,12 +55,7 @@ export const routes: Routes = [
     import('./student/profile/profile')
       .then(m => m.Profile)
 },
-  {
-  path: 'teacher/review',
-  loadComponent: () =>
-    import('./teacher/review/review')
-      .then(m => m.Review)
-},
+ 
 {
   path: 'student/documents',
 
@@ -136,12 +126,7 @@ export const routes: Routes = [
     import('./teacher/review/review')
       .then(m => m.Review)
 },
-{
-  path: 'teacher/students',
-  loadComponent: () =>
-    import('./teacher/students/students')
-      .then(m => m.Students)
-},
+
 
 {
   path: 'teacher/research',
