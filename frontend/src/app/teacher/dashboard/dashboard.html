@@ -8,8 +8,6 @@
   <main class="main-content">
 
     <!-- HEADER -->
-    <app-header></app-header>
-
 
     <div class="dashboard-content">
 
@@ -22,7 +20,7 @@
         <div>
 
           <span class="page-label">
-            TEACHER WORKSPACE
+            
           </span>
 
           <h1>
@@ -59,14 +57,14 @@
            OVERVIEW CARDS
       ========================================== -->
 
-      <section class="overview-grid">
+      <section  class="overview-grid">
 
 
         <!-- TOTAL STUDENTS -->
 
-        <div class="overview-card">
+        <div routerLink="/teacher/students" class="overview-card">
 
-          <div class="overview-icon blue">
+          <div  class="overview-icon blue">
             👥
           </div>
 
@@ -91,7 +89,7 @@
 
         <!-- ACTIVE PROJECTS -->
 
-        <div class="overview-card">
+        <div routerLink="/teacher/projects" class="overview-card">
 
           <div class="overview-icon purple">
             📁
@@ -118,7 +116,7 @@
 
         <!-- UNDER REVIEW -->
 
-        <div class="overview-card">
+        <div routerLink="/teacher/review" class="overview-card">
 
           <div class="overview-icon orange">
             ◷
@@ -145,7 +143,7 @@
 
         <!-- COMPLETED -->
 
-        <div class="overview-card">
+        <div routerLink="/teacher/review" class="overview-card">
 
           <div class="overview-icon green">
             ✓
@@ -184,7 +182,7 @@
           <div>
 
             <span class="section-label">
-              PROJECT MONITORING
+              
             </span>
 
             <h2>
@@ -199,7 +197,7 @@
 
 
           <button
-            type="button"
+            routerLink="/teacher/projects"
             class="view-projects-button">
 
             View All Projects
@@ -247,6 +245,8 @@
           <!-- PROJECT ROWS -->
 
           <div class="project-row">
+
+            
 
 
             <!-- STUDENT -->
@@ -659,184 +659,236 @@
 
         <!-- SUBMISSIONS -->
 
-        <div class="review-table-card">
+        <!-- =========================================
+     RECENT STUDENT SUBMISSIONS
+========================================= -->
+
+<div class="review-table-card">
+
+  <!-- TABLE TITLE -->
+  <div class="review-table-header">
+
+    <div>
+
+      <h3>
+        Recent Student Submissions
+      </h3>
+
+      <span>
+        Latest project work submitted by students
+      </span>
+
+    </div>
+
+    <span class="submission-count">
+
+      {{ reviewSubmissions.length }}
+
+      Submissions
+
+    </span>
+
+  </div>
 
 
-          <div class="review-table-header">
+  <!-- =========================================
+       REVIEW LIST
+  ========================================== -->
 
-            <div>
-
-              <h3>
-                Recent Student Submissions
-              </h3>
-
-              <span>
-                Latest project work submitted by students
-              </span>
-
-            </div>
+  <div class="review-list">
 
 
-            <span class="submission-count">
+    <!-- =========================================
+         COLUMN HEADER
+    ========================================== -->
 
-              {{ reviewSubmissions.length }}
+    <div class="review-row review-column-header">
 
-              Submissions
+      <!-- STUDENT -->
+      <div>
+        STUDENT
+      </div>
 
+
+      <!-- PROJECT -->
+      <div>
+        PROJECT
+      </div>
+
+
+      <!-- TASK -->
+      <div>
+        TASK
+      </div>
+
+
+      <!-- PHASE -->
+      <div>
+        PHASE
+      </div>
+
+
+      <!-- PROGRESS -->
+      <div>
+        PROGRESS
+      </div>
+
+
+      <!-- STATUS -->
+      <div>
+        STATUS
+      </div>
+
+
+      <!-- ACTION -->
+      <div>
+        ACTION
+      </div>
+
+    </div>
+
+
+    <!-- =========================================
+         STUDENT SUBMISSIONS
+    ========================================== -->
+
+    @for (
+      submission of reviewSubmissions;
+      track submission.id
+    ) {
+
+
+      <!-- =========================================
+           SUBMISSION ROW
+      ========================================== -->
+
+      <div class="review-row">
+
+
+        <!-- STUDENT -->
+
+        <div class="student-info">
+
+          <div class="student-avatar blue-avatar">
+
+            {{ submission.studentName.charAt(0) }}
+
+          </div>
+
+
+          <div>
+
+            <strong>
+              {{ submission.studentName }}
+            </strong>
+
+            <span>
+              {{ submission.registerNumber }}
             </span>
 
           </div>
 
-
-          <div class="review-list">
-
-
-            @for (
-              submission of reviewSubmissions;
-              track submission.id
-            ) {
+        </div>
 
 
-              <div class="review-row">
+        <!-- PROJECT -->
+
+        <div class="review-project-info">
+
+          <strong>
+            {{ submission.projectName }}
+          </strong>
+
+        </div>
 
 
-                <!-- STUDENT -->
+        <!-- TASK -->
 
-                <div class="student-info">
+        <div class="review-task-info">
 
-                  <div class="student-avatar blue-avatar">
+          <strong>
+            {{ submission.taskTitle }}
+          </strong>
 
-                    {{ submission.studentName.charAt(0) }}
-
-                  </div>
-
-
-                  <div>
-
-                    <strong>
-                      {{ submission.studentName }}
-                    </strong>
-
-                    <span>
-                      {{ submission.registerNumber }}
-                    </span>
-
-                  </div>
-
-                </div>
+        </div>
 
 
-                <!-- PROJECT -->
+        <!-- PHASE -->
 
-                <div class="review-project-info">
+        <div class="review-phase-info">
 
-                  <span>
-                    PROJECT
-                  </span>
+          <strong>
+            {{ submission.phase }}
+          </strong>
 
-                  <strong>
-                    {{ submission.projectName }}
-                  </strong>
-
-                </div>
+        </div>
 
 
-                <!-- TASK -->
+        <!-- PROGRESS -->
 
-                <div class="review-task-info">
+        <div class="review-progress-info">
 
-                  <span>
-                    TASK
-                  </span>
+          <div class="review-progress-header">
 
-                  <strong>
-                    {{ submission.taskTitle }}
-                  </strong>
+           
+            <strong>
+              {{ submission.progress }}%
+            </strong>
 
-                </div>
-
-
-                <!-- PHASE -->
-
-                <div class="review-phase-info">
-
-                  <span>
-                    PHASE
-                  </span>
-
-                  <strong>
-                    {{ submission.phase }}
-                  </strong>
-
-                </div>
+          </div>
 
 
-                <!-- PROGRESS -->
+          <div class="mini-progress">
 
-                <div class="review-progress-info">
-
-                  <div class="review-progress-header">
-
-                    <span>
-                      PROGRESS
-                    </span>
-
-                    <strong>
-                      {{ submission.progress }}%
-                    </strong>
-
-                  </div>
-
-
-                  <div class="mini-progress">
-
-                    <div
-                      [style.width.%]="submission.progress">
-                    </div>
-
-                  </div>
-
-                </div>
-
-
-                <!-- STATUS -->
-
-                <div>
-
-                  <span
-                    class="status-badge"
-                    [class]="getStatusClass(submission.status)">
-
-                    <span class="status-dot"></span>
-
-                    {{ submission.status }}
-
-                  </span>
-
-                </div>
-
-
-                <!-- REVIEW BUTTON -->
-
-                <a
-                  routerLink="/teacher/review"
-                  class="review-button">
-
-                  Review
-
-                  <span>
-                    →
-                  </span>
-
-                </a>
-
-              </div>
-
-            }
+            <div
+              [style.width.%]="submission.progress">
+            </div>
 
           </div>
 
         </div>
+
+
+        <!-- STATUS -->
+
+        <div>
+
+          <span
+            class="status-badge"
+            [class]="getStatusClass(submission.status)">
+
+            <span class="status-dot"></span>
+
+            {{ submission.status }}
+
+          </span>
+
+        </div>
+
+
+        <!-- REVIEW BUTTON -->
+
+        <a
+          routerLink="/teacher/review"
+          class="review-button">
+
+          Review
+
+          <span>
+            →
+          </span>
+
+        </a>
+
+
+      </div>
+
+    }
+
+
+  </div>
+
+</div>
 
       </section>
 

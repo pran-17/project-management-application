@@ -1,0 +1,404 @@
+<div class="admin-layout">
+
+  <!-- ADMIN SIDEBAR -->
+
+  <app-admin-sidebar></app-admin-sidebar>
+
+
+  <!-- MAIN CONTENT -->
+
+  <main class="main-content">
+
+    <app-header></app-header>
+
+
+    <div class="page-content">
+
+      <!-- PAGE HEADER -->
+
+      <section class="page-heading">
+
+        <div>
+
+          <span class="page-label">
+            PROJECT MANAGEMENT
+          </span>
+
+          <h1>
+            Assign Project Guide
+          </h1>
+
+          <p>
+            Assign teachers as project guides and manage student-guide relationships.
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- ASSIGNMENT FORM -->
+
+      <section class="assign-card">
+
+        <div class="card-heading">
+
+          <div class="heading-icon">
+            👨‍🏫
+          </div>
+
+          <div>
+
+            <h2>
+              New Guide Assignment
+            </h2>
+
+            <p>
+              Select a student and assign an available project guide.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="form-grid">
+
+
+          <!-- STUDENT -->
+
+          <div class="form-group">
+
+            <label>
+              Select Student
+            </label>
+
+            <select [(ngModel)]="selectedStudent">
+
+              <option value="">
+                Choose a student
+              </option>
+
+              @for (student of students; track student.id) {
+
+                <option [value]="student.id">
+
+                  {{ student.name }}
+                  -
+                  {{ student.id }}
+
+                </option>
+
+              }
+
+            </select>
+
+          </div>
+
+
+          <!-- GUIDE -->
+
+          <div class="form-group">
+
+            <label>
+              Select Project Guide
+            </label>
+
+            <select [(ngModel)]="selectedGuide">
+
+              <option value="">
+                Choose a teacher
+              </option>
+
+              @for (teacher of teachers; track teacher.name) {
+
+                <option [value]="teacher.name">
+
+                  {{ teacher.name }}
+                  -
+                  {{ teacher.specialization }}
+
+                </option>
+
+              }
+
+            </select>
+
+          </div>
+
+        </div>
+
+
+        <button
+          type="button"
+          class="assign-button"
+          (click)="assignGuide()">
+
+          <span>
+            Assign Guide
+          </span>
+
+          <span>
+            →
+          </span>
+
+        </button>
+
+      </section>
+
+
+      <!-- ASSIGNMENT OVERVIEW -->
+
+      <section class="section-heading">
+
+        <div>
+
+          <span>
+            STUDENT MANAGEMENT
+          </span>
+
+          <h2>
+            Student Guide Assignments
+          </h2>
+
+          <p>
+            View and manage the project guide assigned to each student.
+          </p>
+
+        </div>
+
+        <div class="assignment-count">
+
+          {{ students.length }} Students
+
+        </div>
+
+      </section>
+
+
+      <!-- STUDENT CARDS -->
+
+      <section class="assignment-grid">
+
+        @for (student of students; track student.id) {
+
+          <div class="student-card">
+
+
+            <!-- STUDENT HEADER -->
+
+            <div class="student-top">
+
+              <div class="student-profile">
+
+                <div class="student-avatar">
+
+                  {{ student.name.charAt(0) }}
+
+                </div>
+
+
+                <div>
+
+                  <h3>
+                    {{ student.name }}
+                  </h3>
+
+                  <span>
+                    {{ student.id }}
+                  </span>
+
+                </div>
+
+              </div>
+
+
+              @if (student.guide === 'Not Assigned') {
+
+                <span class="status pending">
+
+                  Guide Pending
+
+                </span>
+
+              } @else {
+
+                <span class="status assigned">
+
+                  Guide Assigned
+
+                </span>
+
+              }
+
+            </div>
+
+
+            <!-- PROJECT -->
+
+            <div class="project-box">
+
+              <span>
+                PROJECT
+              </span>
+
+              <strong>
+                {{ student.project }}
+              </strong>
+
+            </div>
+
+
+            <!-- DEPARTMENT -->
+
+            <div class="info-row">
+
+              <span>
+                Department
+              </span>
+
+              <strong>
+                {{ student.department }}
+              </strong>
+
+            </div>
+
+
+            <!-- GUIDE -->
+
+            <div class="guide-box">
+
+              <span class="guide-label">
+
+                PROJECT GUIDE
+
+              </span>
+
+
+              @if (student.guide === 'Not Assigned') {
+
+                <strong class="not-assigned">
+
+                  Not Assigned
+
+                </strong>
+
+              } @else {
+
+                <div class="guide-info">
+
+                  <div class="guide-avatar">
+
+                    {{ student.guide.charAt(3) }}
+
+                  </div>
+
+                  <strong>
+
+                    {{ student.guide }}
+
+                  </strong>
+
+                </div>
+
+              }
+
+            </div>
+
+
+            <!-- ACTION -->
+
+            @if (student.guide !== 'Not Assigned') {
+
+              <button
+                type="button"
+                class="remove-button"
+                (click)="removeGuide(student)">
+
+                Remove Guide
+
+              </button>
+
+            }
+
+          </div>
+
+        }
+
+      </section>
+
+
+      <!-- TEACHER AVAILABILITY -->
+
+      <section class="teacher-section">
+
+        <div class="section-heading teacher-heading">
+
+          <div>
+
+            <span>
+              AVAILABLE FACULTY
+            </span>
+
+            <h2>
+              Project Guides
+            </h2>
+
+            <p>
+              Teachers available for supervising student projects.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="teacher-grid">
+
+          @for (teacher of teachers; track teacher.name) {
+
+            <div class="teacher-card">
+
+              <div class="teacher-avatar">
+
+                {{ teacher.name.charAt(3) }}
+
+              </div>
+
+
+              <div class="teacher-details">
+
+                <h3>
+                  {{ teacher.name }}
+                </h3>
+
+                <span>
+                  {{ teacher.department }}
+                </span>
+
+                <p>
+                  {{ teacher.specialization }}
+                </p>
+
+              </div>
+
+
+              <span class="available-badge">
+
+                Available
+
+              </span>
+
+            </div>
+
+          }
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+</div>

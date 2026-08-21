@@ -1,0 +1,719 @@
+<div class="admin-page">
+    <app-admin-sidebar></app-admin-sidebar>
+
+  <!-- PAGE HEADER -->
+
+  <div class="page-header">
+
+    <div>
+
+      <span class="page-label">
+        ADMIN MANAGEMENT
+      </span>
+
+      <h1>
+        Student & Teacher Management
+      </h1>
+
+      <p>
+        Add students, teachers and assign project guides.
+      </p>
+
+    </div>
+
+
+    <div class="header-stats">
+
+      <div class="header-stat">
+
+        <span>Total Students</span>
+
+        <strong>
+          {{ students.length }}
+        </strong>
+
+      </div>
+
+
+      <div class="header-stat">
+
+        <span>Total Teachers</span>
+
+        <strong>
+          {{ teachers.length }}
+        </strong>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- SUCCESS MESSAGE -->
+
+  @if (showMessage) {
+
+    <div class="notification">
+
+      <span>✓</span>
+
+      {{ message }}
+
+    </div>
+
+  }
+
+
+  <!-- NAVIGATION TABS -->
+
+  <div class="management-tabs">
+
+    <button
+      type="button"
+      [class.active]="activeTab === 'students'"
+      (click)="setActiveTab('students')">
+
+      👨‍🎓 Students
+
+    </button>
+
+
+    <button
+      type="button"
+      [class.active]="activeTab === 'teachers'"
+      (click)="setActiveTab('teachers')">
+
+      👨‍🏫 Teachers
+
+    </button>
+
+
+    <button
+      type="button"
+      [class.active]="activeTab === 'assign'"
+      (click)="setActiveTab('assign')">
+
+      🔗 Assign Guide
+
+    </button>
+
+  </div>
+
+
+  <!-- STUDENT MANAGEMENT -->
+
+  @if (activeTab === 'students') {
+
+    <section class="management-section">
+
+      <div class="section-heading">
+
+        <div>
+
+          <span>STUDENT MANAGEMENT</span>
+
+          <h2>
+            Add New Student
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <!-- ADD STUDENT FORM -->
+
+      <div class="form-card">
+
+        <div class="form-grid">
+
+          <div class="form-group">
+
+            <label>
+              Student Name
+            </label>
+
+            <input
+              type="text"
+              placeholder="Enter student name"
+              [(ngModel)]="studentName">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Register Number
+            </label>
+
+            <input
+              type="text"
+              placeholder="CSE2026001"
+              [(ngModel)]="studentRegisterNumber">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Email Address
+            </label>
+
+            <input
+              type="email"
+              placeholder="student@email.com"
+              [(ngModel)]="studentEmail">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Department
+            </label>
+
+            <select [(ngModel)]="studentDepartment">
+
+              <option value="">
+                Select Department
+              </option>
+
+              <option value="Computer Science">
+                Computer Science
+              </option>
+
+              <option value="Information Technology">
+                Information Technology
+              </option>
+
+              <option value="Artificial Intelligence">
+                Artificial Intelligence
+              </option>
+
+              <option value="Electronics">
+                Electronics
+              </option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+
+        <div class="form-action">
+
+          <button
+            type="button"
+            class="primary-button"
+            (click)="addStudent()">
+
+            + Add Student
+
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- STUDENT LIST -->
+
+      <div class="list-card">
+
+        <div class="list-header">
+
+          <div>
+
+            <span>REGISTERED STUDENTS</span>
+
+            <h2>
+              Student List
+            </h2>
+
+          </div>
+
+          <span class="count-badge">
+            {{ students.length }} Students
+          </span>
+
+        </div>
+
+
+        <div class="student-table">
+
+          <div class="table-row table-title">
+
+            <span>STUDENT</span>
+            <span>REGISTER NUMBER</span>
+            <span>DEPARTMENT</span>
+            <span>PROJECT GUIDE</span>
+            <span>ACTION</span>
+
+          </div>
+
+
+          @for (student of students; track student.id) {
+
+            <div class="table-row">
+
+              <div class="person-info">
+
+                <div class="avatar">
+                  {{ student.name.charAt(0) }}
+                </div>
+
+                <div>
+
+                  <strong>
+                    {{ student.name }}
+                  </strong>
+
+                  <small>
+                    {{ student.email }}
+                  </small>
+
+                </div>
+
+              </div>
+
+
+              <span>
+                {{ student.registerNumber }}
+              </span>
+
+
+              <span>
+                {{ student.department }}
+              </span>
+
+
+              <span
+                class="guide-name"
+                [class.not-assigned]="student.guideId === 0">
+
+                {{ student.guideName }}
+
+              </span>
+
+
+              <button
+                type="button"
+                class="delete-button"
+                (click)="deleteStudent(student.id)">
+
+                Remove
+
+              </button>
+
+            </div>
+
+          }
+
+        </div>
+
+      </div>
+
+    </section>
+
+  }
+
+
+  <!-- TEACHER MANAGEMENT -->
+
+  @if (activeTab === 'teachers') {
+
+    <section class="management-section">
+
+      <div class="section-heading">
+
+        <div>
+
+          <span>TEACHER MANAGEMENT</span>
+
+          <h2>
+            Add New Teacher
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <!-- ADD TEACHER FORM -->
+
+      <div class="form-card">
+
+        <div class="form-grid">
+
+          <div class="form-group">
+
+            <label>
+              Teacher Name
+            </label>
+
+            <input
+              type="text"
+              placeholder="Enter teacher name"
+              [(ngModel)]="teacherName">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Employee ID
+            </label>
+
+            <input
+              type="text"
+              placeholder="EMP001"
+              [(ngModel)]="teacherEmployeeId">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Email Address
+            </label>
+
+            <input
+              type="email"
+              placeholder="teacher@email.com"
+              [(ngModel)]="teacherEmail">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Department
+            </label>
+
+            <select [(ngModel)]="teacherDepartment">
+
+              <option value="">
+                Select Department
+              </option>
+
+              <option value="Computer Science">
+                Computer Science
+              </option>
+
+              <option value="Information Technology">
+                Information Technology
+              </option>
+
+              <option value="Artificial Intelligence">
+                Artificial Intelligence
+              </option>
+
+              <option value="Electronics">
+                Electronics
+              </option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+
+        <div class="form-action">
+
+          <button
+            type="button"
+            class="primary-button"
+            (click)="addTeacher()">
+
+            + Add Teacher
+
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- TEACHER LIST -->
+
+      <div class="teacher-grid">
+
+        @for (teacher of teachers; track teacher.id) {
+
+          <div class="teacher-card">
+
+            <div class="teacher-top">
+
+              <div class="teacher-avatar">
+
+                {{ teacher.name.charAt(0) }}
+
+              </div>
+
+
+              <button
+                type="button"
+                class="delete-button"
+                (click)="deleteTeacher(teacher.id)">
+
+                Remove
+
+              </button>
+
+            </div>
+
+
+            <h3>
+              {{ teacher.name }}
+            </h3>
+
+
+            <p>
+              {{ teacher.email }}
+            </p>
+
+
+            <div class="teacher-details">
+
+              <div>
+
+                <span>
+                  EMPLOYEE ID
+                </span>
+
+                <strong>
+                  {{ teacher.employeeId }}
+                </strong>
+
+              </div>
+
+
+              <div>
+
+                <span>
+                  DEPARTMENT
+                </span>
+
+                <strong>
+                  {{ teacher.department }}
+                </strong>
+
+              </div>
+
+            </div>
+
+        </div>
+
+        }
+
+      </div>
+
+    </section>
+
+  }
+
+
+  <!-- ASSIGN GUIDE -->
+
+  @if (activeTab === 'assign') {
+
+    <section class="management-section">
+
+      <div class="section-heading">
+
+        <div>
+
+          <span>PROJECT GUIDE MANAGEMENT</span>
+
+          <h2>
+            Assign Guide to Student
+          </h2>
+
+          <p>
+            Select a student and assign a teacher as their project guide.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="assign-card">
+
+
+        <div class="assign-icon">
+
+          🔗
+
+        </div>
+
+
+        <div class="assign-content">
+
+          <div class="form-group">
+
+            <label>
+              Select Student
+            </label>
+
+            <select [(ngModel)]="selectedStudentId">
+
+              <option value="">
+                Select a student
+              </option>
+
+              @for (student of students; track student.id) {
+
+                <option [value]="student.id">
+
+                  {{ student.name }}
+                  -
+                  {{ student.registerNumber }}
+
+                </option>
+
+              }
+
+            </select>
+
+          </div>
+
+
+          <div class="assignment-arrow">
+
+            →
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Select Project Guide
+            </label>
+
+            <select [(ngModel)]="selectedTeacherId">
+
+              <option value="">
+                Select a teacher
+              </option>
+
+              @for (teacher of teachers; track teacher.id) {
+
+                <option [value]="teacher.id">
+
+                  {{ teacher.name }}
+                  -
+                  {{ teacher.department }}
+
+                </option>
+
+              }
+
+            </select>
+
+          </div>
+
+        </div>
+
+
+        <button
+          type="button"
+          class="assign-button"
+          (click)="assignGuide()">
+
+          Assign Guide →
+
+        </button>
+
+      </div>
+
+
+      <!-- CURRENT ASSIGNMENTS -->
+
+      <div class="list-card assignment-list">
+
+        <div class="list-header">
+
+          <div>
+
+            <span>CURRENT ASSIGNMENTS</span>
+
+            <h2>
+              Student Guide Assignments
+            </h2>
+
+          </div>
+
+        </div>
+
+
+        @for (student of students; track student.id) {
+
+          <div class="assignment-item">
+
+            <div class="person-info">
+
+              <div class="avatar">
+
+                {{ student.name.charAt(0) }}
+
+              </div>
+
+              <div>
+
+                <strong>
+                  {{ student.name }}
+                </strong>
+
+                <small>
+                  {{ student.registerNumber }}
+                </small>
+
+              </div>
+
+            </div>
+
+
+            <div class="assignment-connector">
+
+              →
+
+            </div>
+
+
+            <div class="guide-info">
+
+              <span>
+                PROJECT GUIDE
+              </span>
+
+              <strong
+                [class.not-assigned]="student.guideId === 0">
+
+                {{ student.guideName }}
+
+              </strong>
+
+            </div>
+
+          </div>
+
+        }
+
+      </div>
+
+    </section>
+
+  }
+
+</div>

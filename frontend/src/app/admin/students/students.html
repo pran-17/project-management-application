@@ -1,0 +1,451 @@
+<div class="admin-layout">
+
+  <!-- SIDEBAR -->
+
+  <app-admin-sidebar></app-admin-sidebar>
+
+
+  <!-- MAIN CONTENT -->
+
+  <main class="admin-main">
+
+    <div class="page-content">
+
+
+      <!-- PAGE HEADER -->
+
+      <div class="page-header">
+
+        <div>
+
+          <span>
+            USER MANAGEMENT
+          </span>
+
+          <h1>
+            Students
+          </h1>
+
+          <p>
+            Add, manage and monitor registered students.
+          </p>
+
+        </div>
+
+
+        <button
+          class="add-button"
+          (click)="openAddStudent()">
+
+          <span>+</span>
+
+          Add Student
+
+        </button>
+
+      </div>
+
+
+      <!-- SUMMARY CARDS -->
+
+      <section class="summary-grid">
+
+        <div class="summary-card">
+
+          <span>
+            TOTAL STUDENTS
+          </span>
+
+          <strong>
+            {{ students.length }}
+          </strong>
+
+          <p>
+            Registered students
+          </p>
+
+        </div>
+
+
+        <div class="summary-card active-card">
+
+          <span>
+            ACTIVE STUDENTS
+          </span>
+
+          <strong>
+            {{ students.length - 1 }}
+          </strong>
+
+          <p>
+            Currently active
+          </p>
+
+        </div>
+
+
+        <div class="summary-card pending-card">
+
+          <span>
+            GUIDE PENDING
+          </span>
+
+          <strong>
+            1
+          </strong>
+
+          <p>
+            Guide not assigned
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- STUDENT TABLE -->
+
+      <section class="students-card">
+
+
+        <!-- TABLE HEADER -->
+
+        <div class="table-header">
+
+          <div>
+
+            <span>
+              STUDENT DIRECTORY
+            </span>
+
+            <h2>
+              All Students
+            </h2>
+
+          </div>
+
+
+          <div class="search-box">
+
+            <span>
+              🔍
+            </span>
+
+            <input
+              type="text"
+              placeholder="Search student..."
+              [(ngModel)]="searchText">
+
+          </div>
+
+        </div>
+
+
+        <!-- TABLE -->
+
+        <div class="table-wrapper">
+
+          <table>
+
+            <thead>
+
+              <tr>
+
+                <th>
+                  STUDENT
+                </th>
+
+                <th>
+                  REGISTER NUMBER
+                </th>
+
+                <th>
+                  DEPARTMENT
+                </th>
+
+                <th>
+                  PROJECT GUIDE
+                </th>
+
+                <th>
+                  PROJECT
+                </th>
+
+                <th>
+                  STATUS
+                </th>
+
+                <th>
+                  ACTION
+                </th>
+
+              </tr>
+
+            </thead>
+
+
+            <tbody>
+
+              @for (
+                student of filteredStudents;
+                track student.id
+              ) {
+
+                <tr>
+
+                  <td>
+
+                    <div class="student-name">
+
+                      <div class="student-avatar">
+
+                        {{ student.name.charAt(0) }}
+
+                      </div>
+
+                      <div>
+
+                        <strong>
+                          {{ student.name }}
+                        </strong>
+
+                        <small>
+                          {{ student.email }}
+                        </small>
+
+                      </div>
+
+                    </div>
+
+                  </td>
+
+
+                  <td>
+                    {{ student.registerNumber }}
+                  </td>
+
+
+                  <td>
+                    {{ student.department }}
+                  </td>
+
+
+                  <td>
+
+                    <span
+                      class="guide-name"
+                      [class.not-assigned]="
+                        student.guide === 'Not Assigned'
+                      ">
+
+                      {{ student.guide }}
+
+                    </span>
+
+                  </td>
+
+
+                  <td>
+                    {{ student.project }}
+                  </td>
+
+
+                  <td>
+
+                    <span
+                      class="status"
+                      [class.pending]="
+                        student.status === 'Pending'
+                      ">
+
+                      {{ student.status }}
+
+                    </span>
+
+                  </td>
+
+
+                  <td>
+
+                    <button
+                      class="delete-button"
+                      (click)="deleteStudent(student.id)">
+
+                      Delete
+
+                    </button>
+
+                  </td>
+
+                </tr>
+
+              }
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+<!-- ADD STUDENT MODAL -->
+
+@if (showAddStudent) {
+
+  <div class="modal-backdrop">
+
+    <div class="modal">
+
+
+      <div class="modal-header">
+
+        <div>
+
+          <span>
+            NEW STUDENT
+          </span>
+
+          <h2>
+            Add Student
+          </h2>
+
+        </div>
+
+
+        <button
+          class="close-button"
+          (click)="closeAddStudent()">
+
+          ×
+
+        </button>
+
+      </div>
+
+
+      <form
+        (ngSubmit)="addStudent()">
+
+
+        <div class="form-grid">
+
+
+          <div class="form-group">
+
+            <label>
+              Student Name
+            </label>
+
+            <input
+              type="text"
+              name="name"
+              [(ngModel)]="newStudent.name"
+              placeholder="Enter student name">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Register Number
+            </label>
+
+            <input
+              type="text"
+              name="registerNumber"
+              [(ngModel)]="newStudent.registerNumber"
+              placeholder="Enter register number">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Email Address
+            </label>
+
+            <input
+              type="email"
+              name="email"
+              [(ngModel)]="newStudent.email"
+              placeholder="Enter email address">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Department
+            </label>
+
+            <select
+              name="department"
+              [(ngModel)]="newStudent.department">
+
+              <option value="">
+                Select department
+              </option>
+
+              <option>
+                Computer Science
+              </option>
+
+              <option>
+                Information Technology
+              </option>
+
+              <option>
+                Artificial Intelligence
+              </option>
+
+              <option>
+                Electronics
+              </option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+          <button
+            type="button"
+            class="cancel-button"
+            (click)="closeAddStudent()">
+
+            Cancel
+
+          </button>
+
+
+          <button
+            type="submit"
+            class="save-button">
+
+            Add Student
+
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+}

@@ -1,0 +1,519 @@
+<div class="admin-layout">
+
+  <app-admin-sidebar></app-admin-sidebar>
+
+
+  <main class="main-content">
+
+    <app-header></app-header>
+
+
+    <div class="page-content">
+
+
+      <!-- PAGE HEADING -->
+
+      <section class="page-heading">
+
+        <div>
+
+          <span class="page-label">
+            PROJECT MANAGEMENT
+          </span>
+
+          <h1>
+            Projects
+          </h1>
+
+          <p>
+            Create, manage and monitor student projects.
+          </p>
+
+        </div>
+
+
+        <button
+          class="add-project-button"
+          type="button"
+          (click)="showAddProject = !showAddProject">
+
+          <span>＋</span>
+
+          Add Project
+
+        </button>
+
+      </section>
+
+
+      <!-- PROJECT SUMMARY -->
+
+      <section class="summary-grid">
+
+        <div class="summary-card">
+
+          <div class="summary-icon blue">
+            📁
+          </div>
+
+          <div>
+
+            <span>
+              TOTAL PROJECTS
+            </span>
+
+            <strong>
+              {{ projects.length }}
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+          <div class="summary-icon orange">
+            ◷
+          </div>
+
+          <div>
+
+            <span>
+              IN PROGRESS
+            </span>
+
+            <strong>
+              2
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+          <div class="summary-icon green">
+            ✓
+          </div>
+
+          <div>
+
+            <span>
+              COMPLETED
+            </span>
+
+            <strong>
+              1
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+          <div class="summary-icon purple">
+            👥
+          </div>
+
+          <div>
+
+            <span>
+              PROJECT GUIDES
+            </span>
+
+            <strong>
+              {{ guides.length }}
+            </strong>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ADD PROJECT FORM -->
+
+      @if (showAddProject) {
+
+        <section class="add-project-card">
+
+          <div class="form-heading">
+
+            <div>
+
+              <span>
+                NEW PROJECT
+              </span>
+
+              <h2>
+                Create Project
+              </h2>
+
+            </div>
+
+            <button
+              type="button"
+              class="close-button"
+              (click)="showAddProject = false">
+
+              ×
+
+            </button>
+
+          </div>
+
+
+          <div class="form-grid">
+
+
+            <!-- PROJECT TITLE -->
+
+            <div class="form-group full-width">
+
+              <label>
+                Project Title
+              </label>
+
+              <input
+                type="text"
+                placeholder="Enter project title"
+                [(ngModel)]="newProject.title">
+
+            </div>
+
+
+            <!-- DEPARTMENT -->
+
+            <div class="form-group">
+
+              <label>
+                Department
+              </label>
+
+              <select [(ngModel)]="newProject.department">
+
+                <option value="">
+                  Select department
+                </option>
+
+                <option value="Computer Science">
+                  Computer Science
+                </option>
+
+                <option value="Information Technology">
+                  Information Technology
+                </option>
+
+              </select>
+
+            </div>
+
+
+            <!-- PROJECT GUIDE -->
+
+            <div class="form-group">
+
+              <label>
+                Project Guide
+              </label>
+
+              <select [(ngModel)]="newProject.guide">
+
+                <option value="">
+                  Select guide
+                </option>
+
+                @for (guide of guides; track guide) {
+
+                  <option [value]="guide">
+
+                    {{ guide }}
+
+                  </option>
+
+                }
+
+              </select>
+
+            </div>
+
+
+            <!-- STATUS -->
+
+            <div class="form-group">
+
+              <label>
+                Project Status
+              </label>
+
+              <select [(ngModel)]="newProject.status">
+
+                <option value="Not Started">
+                  Not Started
+                </option>
+
+                <option value="In Progress">
+                  In Progress
+                </option>
+
+                <option value="Completed">
+                  Completed
+                </option>
+
+              </select>
+
+            </div>
+
+          </div>
+
+
+          <div class="form-actions">
+
+            <button
+              type="button"
+              class="cancel-button"
+              (click)="showAddProject = false">
+
+              Cancel
+
+            </button>
+
+
+            <button
+              type="button"
+              class="save-button"
+              (click)="addProject()">
+
+              Create Project →
+
+            </button>
+
+          </div>
+
+        </section>
+
+      }
+
+
+      <!-- PROJECT LIST -->
+
+      <section class="section-heading">
+
+        <div>
+
+          <span>
+            ALL PROJECTS
+          </span>
+
+          <h2>
+            Project Overview
+          </h2>
+
+          <p>
+            Monitor projects, assigned students and guides.
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <section class="projects-grid">
+
+        @for (project of projects; track project.id) {
+
+          <div class="project-card">
+
+
+            <!-- CARD HEADER -->
+
+            <div class="project-top">
+
+              <span class="project-id">
+
+                {{ project.id }}
+
+              </span>
+
+
+              <span
+                class="status"
+                [ngClass]="getStatusClass(project.status)">
+
+                {{ project.status }}
+
+              </span>
+
+            </div>
+
+
+            <!-- PROJECT TITLE -->
+
+            <h3>
+
+              {{ project.title }}
+
+            </h3>
+
+
+            <!-- DEPARTMENT -->
+
+            <div class="department">
+
+              <span>
+                Department
+              </span>
+
+              <strong>
+                {{ project.department }}
+              </strong>
+
+            </div>
+
+
+            <!-- GUIDE -->
+
+            <div class="guide">
+
+              <div class="guide-avatar">
+
+                {{ project.guide.charAt(3) }}
+
+              </div>
+
+              <div>
+
+                <span>
+                  PROJECT GUIDE
+                </span>
+
+                <strong>
+                  {{ project.guide }}
+                </strong>
+
+              </div>
+
+            </div>
+
+
+            <!-- TEAM MEMBERS -->
+
+            <div class="team-section">
+
+              <div class="team-heading">
+
+                <span>
+                  TEAM MEMBERS
+                </span>
+
+                <strong>
+                  {{ project.students.length }}
+                </strong>
+
+              </div>
+
+
+              <div class="member-list">
+
+                @for (
+                  student of project.students;
+                  track student
+                ) {
+
+                  <div class="member">
+
+                    {{ student.charAt(0) }}
+
+                  </div>
+
+                }
+
+
+                @if (project.students.length === 0) {
+
+                  <span class="no-members">
+
+                    No students assigned
+
+                  </span>
+
+                }
+
+              </div>
+
+            </div>
+
+
+            <!-- PROGRESS -->
+
+            <div class="progress-section">
+
+              <div class="progress-heading">
+
+                <span>
+                  PROJECT PROGRESS
+                </span>
+
+                <strong>
+
+                  {{ project.progress }}%
+
+                </strong>
+
+              </div>
+
+
+              <div class="progress-track">
+
+                <div
+                  class="progress-fill"
+                  [style.width.%]="project.progress">
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <!-- ACTIONS -->
+
+            <div class="project-actions">
+
+              <button
+                type="button"
+                class="view-button">
+
+                View Details →
+
+              </button>
+
+
+              <button
+                type="button"
+                class="delete-button"
+                (click)="deleteProject(project)">
+
+                Delete
+
+              </button>
+
+            </div>
+
+          </div>
+
+        }
+
+      </section>
+
+
+    </div>
+
+  </main>
+
+</div>

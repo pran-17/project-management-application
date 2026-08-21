@@ -127,7 +127,18 @@ export const routes: Routes = [
       .then(m => m.Review)
 },
 
-
+{
+  path: 'teacher/research/:id',
+  loadComponent: () =>
+    import('./teacher/research/research')
+      .then(m => m.Research)
+},
+{
+  path: 'teacher/research-details/:id',
+  loadComponent: () =>
+    import('./teacher/research-details/research-details')
+      .then(m => m.ResearchDetails)
+},
 {
   path: 'teacher/research',
   loadComponent: () =>
@@ -141,6 +152,12 @@ export const routes: Routes = [
     import('./teacher/funding/funding')
       .then(m => m.Funding)
 },
+{
+  path: 'admin/user-management',
+  loadComponent: () =>
+    import('./admin/user-management/user-management')
+      .then(m => m.UserManagement)
+},
 
 {
   path: 'teacher/reports',
@@ -148,9 +165,43 @@ export const routes: Routes = [
     import('./teacher/reports/reports')
       .then(m => m.Reports)
 },
+{
+  path: 'admin/dashboard',
+  loadComponent: () =>
+    import('./admin/dashboard/dashboard')
+      .then(m => m.Dashboard)
+},
 
-  
-
+{
+  path: 'admin/students',
+  loadComponent: () =>
+    import('./admin/students/students')
+      .then(m => m.Students)
+},
+{
+  path: 'admin/assign-guide',
+  loadComponent: () =>
+    import('./admin/assign-guide/assign-guide')
+      .then(m => m.AssignGuide)
+},
+{
+  path: 'admin/projects',
+  loadComponent: () =>
+    import('./admin/projects/projects')
+      .then(m => m.Projects)
+},
+{
+  path: 'admin/teacher',
+  loadComponent: () =>
+    import('./admin/teacher/teacher')
+      .then(m => m.Teachers)
+},
+{
+  path: 'admin/phases',
+  loadComponent: () =>
+    import('./admin/phases/phases')
+      .then(m => m.Phases)
+},
   {
     path: '**',
     redirectTo: 'login'

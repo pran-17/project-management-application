@@ -33,7 +33,7 @@
 
   color: #2563eb;
 
-  font-size: 11px;
+  font-size: 14px;
 
   font-weight: 700;
 
@@ -85,7 +85,7 @@
 
   border-radius: 15px;
 
-  font-size: 9px;
+  font-size: 14px;
 
   font-weight: 800;
 }
@@ -109,9 +109,9 @@
 
   margin: 0;
 
-  color: #64748b;
+  color: #101010;
 
-  font-size: 12px;
+  font-size: 14px;
 
   line-height: 1.6;
 }
@@ -131,9 +131,9 @@
 
 
 .project-progress-card > span {
-  color: #94a3b8;
+  color: #0d0d0e;
 
-  font-size: 9px;
+  font-size: 13px;
 
   font-weight: 800;
 }
@@ -155,9 +155,9 @@
 
   margin-top: 8px;
 
-  color: #64748b;
+  color: #000000;
 
-  font-size: 9px;
+  font-size: 15px;
 }
 
 
@@ -212,9 +212,9 @@
 
 
 .section-title span:first-child {
-  color: #94a3b8;
+  color: #136dec;
 
-  font-size: 9px;
+  font-size: 16px;
 
   font-weight: 800;
 
@@ -227,7 +227,7 @@
 
   color: #172033;
 
-  font-size: 18px;
+  font-size: 16px;
 }
 
 
@@ -240,7 +240,7 @@
 
   border-radius: 15px;
 
-  font-size: 9px !important;
+  font-size: 14px !important;
 
   font-weight: 700 !important;
 
@@ -272,9 +272,9 @@
 .info-item span {
   display: block;
 
-  color: #94a3b8;
+  color: #710ae8;
 
-  font-size: 8px;
+  font-size: 14px;
 
   font-weight: 800;
 }
@@ -285,9 +285,9 @@
 
   margin-top: 6px;
 
-  color: #334155;
+  color: #000000;
 
-  font-size: 11px;
+  font-size: 15px;
 
   line-height: 1.4;
 }
@@ -332,9 +332,9 @@
 
   background: #f8fafc;
 
-  color: #94a3b8;
+  color: #000000;
 
-  font-size: 8px;
+  font-size: 14px;
 
   font-weight: 800;
 }
@@ -345,9 +345,9 @@
 
   border-top: 1px solid #eef1f5;
 
-  color: #64748b;
+  color: #090909;
 
-  font-size: 10px;
+  font-size: 14px;
 }
 
 
@@ -391,24 +391,24 @@
 
 
 .student-cell strong {
-  color: #334155;
+  color: #000000;
 
-  font-size: 10px;
+  font-size: 14px;
 }
 
 
 .student-cell span {
-  color: #94a3b8;
+  color: #0d64dd;
 
-  font-size: 8px;
+  font-size: 12px;
 }
 
 
 .role-cell,
 .module-cell {
-  color: #475569;
+  color: #000000;
 
-  font-size: 10px;
+  font-size: 15px;
 }
 
 
@@ -431,16 +431,16 @@
 
 
 .member-progress-top span {
-  color: #94a3b8;
+  color: #000000;
 
-  font-size: 8px;
+  font-size: 14px;
 }
 
 
 .member-progress-top strong {
   color: #2563eb;
 
-  font-size: 9px;
+  font-size: 14px;
 }
 
 
@@ -475,7 +475,7 @@
 
   border-radius: 15px;
 
-  font-size: 8px;
+  font-size: 15px;
 
   font-weight: 700;
 
@@ -505,7 +505,7 @@
 
   text-decoration: none;
 
-  font-size: 9px;
+  font-size: 15px;
 
   font-weight: 700;
 }
@@ -570,14 +570,14 @@
   align-items: center;
   justify-content: center;
 
-  font-size: 10px;
+  font-size: 15px;
 
   font-weight: 800;
 }
 
 
 .phase-status {
-  font-size: 8px;
+  font-size: 15px;
 
   font-weight: 800;
 }
@@ -603,7 +603,7 @@
 
   color: #334155;
 
-  font-size: 13px;
+  font-size: 15px;
 }
 
 
@@ -612,9 +612,9 @@
 
   margin: 0;
 
-  color: #94a3b8;
+  color: #0f33e6;
 
-  font-size: 9px;
+  font-size: 15px;
 
   line-height: 1.5;
 }
@@ -635,16 +635,16 @@
 
 
 .phase-progress-top span {
-  color: #94a3b8;
+  color: #000000;
 
-  font-size: 8px;
+  font-size: 13px;
 }
 
 
 .phase-progress-top strong {
   color: #2563eb;
 
-  font-size: 8px;
+  font-size: 13px;
 }
 
 
@@ -680,9 +680,9 @@
 .completion-date span {
   display: block;
 
-  color: #94a3b8;
+  color: #000000;
 
-  font-size: 8px;
+  font-size: 13px;
 }
 
 
@@ -691,9 +691,9 @@
 
   margin-top: 4px;
 
-  color: #475569;
+  color: #1261d0;
 
-  font-size: 9px;
+  font-size: 13px;
 }
 
 
@@ -727,9 +727,9 @@
 
   gap: 9px;
 
-  color: #475569;
+  color: #000000;
 
-  font-size: 10px;
+  font-size: 15px;
 
   line-height: 1.4;
 }
@@ -752,7 +752,7 @@
   align-items: center;
   justify-content: center;
 
-  font-size: 10px;
+  font-size: 13px;
 
   font-weight: 800;
 }

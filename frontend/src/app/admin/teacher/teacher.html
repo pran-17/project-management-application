@@ -1,0 +1,562 @@
+<div class="admin-layout">
+
+  <app-admin-sidebar></app-admin-sidebar>
+
+
+  <main class="main-content">
+
+    <app-header></app-header>
+
+
+    <div class="page-content">
+
+
+      <!-- PAGE HEADER -->
+
+      <section class="page-heading">
+
+        <div>
+
+          <span class="page-label">
+            ADMINISTRATION
+          </span>
+
+          <h1>
+            Teacher Management
+          </h1>
+
+          <p>
+            Manage teachers, project guides and student assignments.
+          </p>
+
+        </div>
+
+
+        <button
+          class="add-teacher-btn"
+          type="button"
+          (click)="openAddTeacher()">
+
+          <span>+</span>
+          Add Teacher
+
+        </button>
+
+      </section>
+
+
+      <!-- SUMMARY CARDS -->
+
+      <section class="summary-grid">
+
+
+        <div class="summary-card blue-card">
+
+          <div class="summary-icon">
+            👨‍🏫
+          </div>
+
+          <div>
+
+            <span>
+              TOTAL TEACHERS
+            </span>
+
+            <strong>
+              {{ teachers.length }}
+            </strong>
+
+            <small>
+              Registered faculty members
+            </small>
+
+          </div>
+
+        </div>
+
+
+        <div class="summary-card green-card">
+
+          <div class="summary-icon">
+            ✓
+          </div>
+
+          <div>
+
+            <span>
+              ACTIVE TEACHERS
+            </span>
+
+            <strong>
+              3
+            </strong>
+
+            <small>
+              Currently active
+            </small>
+
+          </div>
+
+        </div>
+
+
+        <div class="summary-card purple-card">
+
+          <div class="summary-icon">
+            👥
+          </div>
+
+          <div>
+
+            <span>
+              ASSIGNED STUDENTS
+            </span>
+
+            <strong>
+              14
+            </strong>
+
+            <small>
+              Students under guides
+            </small>
+
+          </div>
+
+        </div>
+
+
+        <div class="summary-card orange-card">
+
+          <div class="summary-icon">
+            📁
+          </div>
+
+          <div>
+
+            <span>
+              ACTIVE PROJECTS
+            </span>
+
+            <strong>
+              7
+            </strong>
+
+            <small>
+              Projects being guided
+            </small>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- FILTER SECTION -->
+
+      <section class="filter-card">
+
+        <div class="search-box">
+
+          <span>
+            🔍
+          </span>
+
+          <input
+            type="text"
+            [(ngModel)]="searchText"
+            placeholder="Search teacher, employee ID or email...">
+
+        </div>
+
+
+        <select
+          [(ngModel)]="selectedDepartment">
+
+          <option value="All">
+            All Departments
+          </option>
+
+          <option value="Computer Science">
+            Computer Science
+          </option>
+
+          <option value="Information Technology">
+            Information Technology
+          </option>
+
+          <option value="Electronics">
+            Electronics
+          </option>
+
+        </select>
+
+      </section>
+
+
+      <!-- TEACHER LIST -->
+
+      <section class="teacher-section">
+
+
+        <div class="section-heading">
+
+          <div>
+
+            <span>
+              FACULTY DIRECTORY
+            </span>
+
+            <h2>
+              Teachers & Project Guides
+            </h2>
+
+          </div>
+
+
+          <strong>
+            {{ filteredTeachers.length }} Teachers
+          </strong>
+
+        </div>
+
+
+        <div class="teachers-grid">
+
+
+          @for (
+            teacher of filteredTeachers;
+            track teacher.id
+          ) {
+
+            <div class="teacher-card">
+
+
+              <!-- TOP -->
+
+              <div class="teacher-top">
+
+                <div class="teacher-profile">
+
+                  <div class="teacher-avatar">
+
+                    {{ teacher.name.charAt(0) }}
+
+                  </div>
+
+
+                  <div>
+
+                    <h3>
+                      {{ teacher.name }}
+                    </h3>
+
+                    <span>
+                      {{ teacher.employeeId }}
+                    </span>
+
+                  </div>
+
+                </div>
+
+
+                <span
+                  class="status"
+                  [class.inactive]="teacher.status === 'Inactive'">
+
+                  {{ teacher.status }}
+
+                </span>
+
+              </div>
+
+
+              <!-- INFO -->
+
+              <div class="teacher-info">
+
+                <div class="info-row">
+
+                  <span>
+                    DEPARTMENT
+                  </span>
+
+                  <strong>
+                    {{ teacher.department }}
+                  </strong>
+
+                </div>
+
+
+                <div class="info-row">
+
+                  <span>
+                    SPECIALIZATION
+                  </span>
+
+                  <strong>
+                    {{ teacher.specialization }}
+                  </strong>
+
+                </div>
+
+
+                <div class="info-row">
+
+                  <span>
+                    EMAIL
+                  </span>
+
+                  <strong>
+                    {{ teacher.email }}
+                  </strong>
+
+                </div>
+
+              </div>
+
+
+              <!-- STATS -->
+
+              <div class="teacher-stats">
+
+                <div>
+
+                  <strong>
+                    {{ teacher.students }}
+                  </strong>
+
+                  <span>
+                    Students
+                  </span>
+
+                </div>
+
+
+                <div>
+
+                  <strong>
+                    {{ teacher.projects }}
+                  </strong>
+
+                  <span>
+                    Projects
+                  </span>
+
+                </div>
+
+              </div>
+
+
+              <!-- ACTIONS -->
+
+              <div class="teacher-actions">
+
+                <button
+                  class="view-btn"
+                  type="button"
+                  (click)="viewTeacher(teacher)">
+
+                  View Details
+                  →
+
+                </button>
+
+
+                <button
+                  class="status-btn"
+                  type="button"
+                  (click)="toggleStatus(teacher)">
+
+                  {{ teacher.status === 'Active'
+                    ? 'Deactivate'
+                    : 'Activate'
+                  }}
+
+                </button>
+
+
+                <button
+                  class="delete-btn"
+                  type="button"
+                  (click)="deleteTeacher(teacher.id)">
+
+                  ✕
+                </button>
+
+              </div>
+
+
+            </div>
+
+          }
+
+        </div>
+
+      </section>
+
+
+    </div>
+
+  </main>
+
+
+  <!-- ADD TEACHER MODAL -->
+
+  @if (showAddTeacher) {
+
+    <div class="modal-overlay">
+
+
+      <div class="teacher-modal">
+
+
+        <div class="modal-header">
+
+          <div>
+
+            <span>
+              NEW FACULTY
+            </span>
+
+            <h2>
+              Add New Teacher
+            </h2>
+
+          </div>
+
+
+          <button
+            type="button"
+            (click)="closeAddTeacher()">
+
+            ✕
+
+          </button>
+
+        </div>
+
+
+        <div class="form-grid">
+
+
+          <div class="form-group">
+
+            <label>
+              Teacher Name *
+            </label>
+
+            <input
+              type="text"
+              [(ngModel)]="newTeacher.name"
+              placeholder="Enter teacher name">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Employee ID *
+            </label>
+
+            <input
+              type="text"
+              [(ngModel)]="newTeacher.employeeId"
+              placeholder="Example: TCH2026005">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Email *
+            </label>
+
+            <input
+              type="email"
+              [(ngModel)]="newTeacher.email"
+              placeholder="teacher@college.edu">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Department *
+            </label>
+
+            <select
+              [(ngModel)]="newTeacher.department">
+
+              <option value="">
+                Select Department
+              </option>
+
+              <option value="Computer Science">
+                Computer Science
+              </option>
+
+              <option value="Information Technology">
+                Information Technology
+              </option>
+
+              <option value="Electronics">
+                Electronics
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="form-group full-width">
+
+            <label>
+              Specialization
+            </label>
+
+            <input
+              type="text"
+              [(ngModel)]="newTeacher.specialization"
+              placeholder="Example: Artificial Intelligence">
+
+          </div>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+          <button
+            class="cancel-btn"
+            type="button"
+            (click)="closeAddTeacher()">
+
+            Cancel
+
+          </button>
+
+
+          <button
+            class="save-btn"
+            type="button"
+            (click)="addTeacher()">
+
+            Add Teacher
+            →
+
+          </button>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+  }
+
+</div>

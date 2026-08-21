@@ -1,0 +1,398 @@
+<div class="page-layout">
+
+  <!-- ADMIN SIDEBAR -->
+  <app-admin-sidebar></app-admin-sidebar>
+
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+
+    <app-header></app-header>
+
+
+    <div class="page-content">
+
+      <!-- PAGE HEADING -->
+
+      <div class="page-heading">
+
+        <div>
+          <span class="page-label">
+            PROJECT MANAGEMENT
+          </span>
+
+          <h1>
+            Project Phases
+          </h1>
+
+          <p>
+            Monitor and manage project phases for all students.
+          </p>
+        </div>
+
+
+        <button class="add-phase-btn">
+          <span>+</span>
+          Add Phase
+        </button>
+
+      </div>
+
+
+      <!-- SUMMARY CARDS -->
+
+      <div class="summary-grid">
+
+        <div class="summary-card">
+
+          <div class="summary-icon blue">
+            ◫
+          </div>
+
+          <div>
+            <span>Total Phases</span>
+            <strong>4</strong>
+          </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+          <div class="summary-icon green">
+            ✓
+          </div>
+
+          <div>
+            <span>Completed</span>
+            <strong>1</strong>
+          </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+          <div class="summary-icon orange">
+            ◷
+          </div>
+
+          <div>
+            <span>In Progress</span>
+            <strong>1</strong>
+          </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+          <div class="summary-icon purple">
+            →
+          </div>
+
+          <div>
+            <span>Upcoming</span>
+            <strong>2</strong>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- PHASE CARDS -->
+
+      <div class="phases-grid">
+
+        @for (phase of phases; track phase.id) {
+
+          <div class="phase-card">
+
+            <!-- TOP -->
+
+            <div class="phase-top">
+
+              <div class="phase-number">
+                {{ phase.name }}
+              </div>
+
+
+              <span
+                class="status"
+                [class.completed]="phase.status === 'Completed'"
+                [class.in-progress]="phase.status === 'In Progress'"
+                [class.upcoming]="phase.status === 'Upcoming'">
+
+                {{ phase.status }}
+
+              </span>
+
+            </div>
+
+
+            <!-- TITLE -->
+
+            <h2>
+              {{ phase.title }}
+            </h2>
+
+
+            <p class="phase-description">
+              {{ phase.description }}
+            </p>
+
+
+            <!-- PROJECT AND STUDENTS -->
+
+            <div class="phase-info">
+
+              <div class="info-box">
+
+                <span class="info-label">
+                  PROJECTS
+                </span>
+
+                <strong>
+                  {{ phase.projects }}
+                </strong>
+
+              </div>
+
+
+              <div class="info-box">
+
+                <span class="info-label">
+                  STUDENTS
+                </span>
+
+                <strong>
+                  {{ phase.students }}
+                </strong>
+
+              </div>
+
+            </div>
+
+
+            <!-- DATES -->
+
+            <div class="phase-dates">
+
+              <div>
+
+                <span>
+                  START DATE
+                </span>
+
+                <strong>
+                  {{ phase.startDate }}
+                </strong>
+
+              </div>
+
+
+              <div>
+
+                <span>
+                  END DATE
+                </span>
+
+                <strong>
+                  {{ phase.endDate }}
+                </strong>
+
+              </div>
+
+            </div>
+
+
+            <!-- PROGRESS -->
+
+            <div class="progress-header">
+
+              <span>
+                Overall Progress
+              </span>
+
+              <strong>
+                {{ phase.progress }}%
+              </strong>
+
+            </div>
+
+
+            <div class="progress-track">
+
+              <div
+                class="progress-fill"
+                [style.width.%]="phase.progress">
+
+              </div>
+
+            </div>
+
+
+            <!-- BUTTON -->
+
+            <button
+              class="view-phase-btn"
+              (click)="selectPhase(phase)">
+
+              View Phase
+
+              <span>
+                →
+              </span>
+
+            </button>
+
+          </div>
+
+        }
+
+      </div>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+<!-- PHASE DETAILS MODAL -->
+
+@if (selectedPhase) {
+
+  <div class="modal-overlay">
+
+    <div class="phase-modal">
+
+      <div class="modal-header">
+
+        <div>
+
+          <span>
+            {{ selectedPhase.name }}
+          </span>
+
+          <h2>
+            {{ selectedPhase.title }}
+          </h2>
+
+        </div>
+
+
+        <button
+          class="close-btn"
+          (click)="closeDetails()">
+
+          ×
+
+        </button>
+
+      </div>
+
+
+      <div class="modal-content">
+
+        <div class="modal-section">
+
+          <h3>
+            Phase Details
+          </h3>
+
+          <p>
+            {{ selectedPhase.description }}
+          </p>
+
+        </div>
+
+
+        <div class="modal-stats">
+
+          <div>
+
+            <span>
+              Projects
+            </span>
+
+            <strong>
+              {{ selectedPhase.projects }}
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              Students
+            </span>
+
+            <strong>
+              {{ selectedPhase.students }}
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              Progress
+            </span>
+
+            <strong>
+              {{ selectedPhase.progress }}%
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <div class="modal-section">
+
+          <h3>
+            Schedule
+          </h3>
+
+          <div class="schedule-row">
+
+            <div>
+
+              <span>
+                Start Date
+              </span>
+
+              <strong>
+                {{ selectedPhase.startDate }}
+              </strong>
+
+            </div>
+
+
+            <div>
+
+              <span>
+                End Date
+              </span>
+
+              <strong>
+                {{ selectedPhase.endDate }}
+              </strong>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+}

@@ -1,9 +1,488 @@
-<div style="padding: 40px;">
+<div class="admin-layout">
 
-  <h1>Admin Dashboard</h1>
+  <!-- ADMIN SIDEBAR -->
 
-  <p>
-    Admin dashboard will be developed later.
-  </p>
+  <app-admin-sidebar></app-admin-sidebar>
+
+
+  <!-- MAIN CONTENT -->
+
+  <main class="admin-main">
+
+
+    <!-- HEADER -->
+
+    <header class="admin-header">
+
+      <div>
+
+        <span>
+          ADMIN DASHBOARD
+        </span>
+
+        <h1>
+          Welcome back, {{ adminName }} 👋
+        </h1>
+
+      </div>
+
+
+      <div class="admin-profile">
+
+        <div class="profile-avatar">
+          A
+        </div>
+
+        <div>
+
+          <strong>
+            Administrator
+          </strong>
+
+          <small>
+            System Administrator
+          </small>
+
+        </div>
+
+      </div>
+
+    </header>
+
+
+    <div class="admin-content">
+
+
+      <!-- OVERVIEW -->
+
+      <section class="overview">
+
+        <div>
+
+          <span class="section-label">
+            SYSTEM OVERVIEW
+          </span>
+
+          <h2>
+            Project Management Overview
+          </h2>
+
+          <p>
+            Manage students, teachers, projects and guide assignments.
+          </p>
+
+        </div>
+
+
+        <a
+          class="add-user-button"
+          routerLink="/admin/students">
+
+          + Add Student
+
+        </a>
+
+      </section>
+
+
+      <!-- STAT CARDS -->
+
+      <section class="stats-grid">
+
+        @for (stat of stats; track stat.title) {
+
+          <a
+            class="stat-card"
+            [routerLink]="stat.link">
+
+            <div class="stat-top">
+
+              <div class="stat-icon">
+
+                {{ stat.icon }}
+
+              </div>
+
+              <span class="stat-arrow">
+
+                →
+
+              </span>
+
+            </div>
+
+
+            <strong>
+
+              {{ stat.value }}
+
+            </strong>
+
+
+            <h3>
+
+              {{ stat.title }}
+
+            </h3>
+
+
+            <p>
+
+              {{ stat.description }}
+
+            </p>
+
+          </a>
+
+        }
+
+      </section>
+
+
+      <!-- QUICK ACTIONS -->
+
+      <section class="quick-actions-section">
+
+        <div class="section-header">
+
+          <div>
+
+            <span class="section-label">
+              QUICK ACTIONS
+            </span>
+
+            <h2>
+              Manage Users
+            </h2>
+
+          </div>
+
+        </div>
+
+
+        <div class="quick-actions">
+
+
+          <a
+            routerLink="/admin/students"
+            class="action-card">
+
+            <div class="action-icon">
+              👨‍🎓
+            </div>
+
+            <div>
+
+              <h3>
+                Add Student
+              </h3>
+
+              <p>
+                Register a new student
+              </p>
+
+            </div>
+
+            <span>
+              →
+            </span>
+
+          </a>
+
+
+          <a
+            routerLink="/admin/teachers"
+            class="action-card">
+
+            <div class="action-icon">
+              👨‍🏫
+            </div>
+
+            <div>
+
+              <h3>
+                Add Teacher
+              </h3>
+
+              <p>
+                Register a new teacher
+              </p>
+
+            </div>
+
+            <span>
+              →
+            </span>
+
+          </a>
+
+
+          <a
+            routerLink="/admin/assign-guide"
+            class="action-card">
+
+            <div class="action-icon">
+              🔗
+            </div>
+
+            <div>
+
+              <h3>
+                Assign Guide
+              </h3>
+
+              <p>
+                Assign teacher to student
+              </p>
+
+            </div>
+
+            <span>
+              →
+            </span>
+
+          </a>
+
+        </div>
+
+      </section>
+
+
+      <!-- MAIN GRID -->
+
+      <section class="dashboard-grid">
+
+
+        <!-- RECENT STUDENTS -->
+
+        <div class="dashboard-card">
+
+          <div class="card-header">
+
+            <div>
+
+              <span class="section-label">
+                STUDENTS
+              </span>
+
+              <h2>
+                Recent Students
+              </h2>
+
+            </div>
+
+
+            <a routerLink="/admin/students">
+
+              View All →
+
+            </a>
+
+          </div>
+
+
+          <div class="student-list">
+
+            @for (student of recentStudents; track student.registerNumber) {
+
+              <div class="student-item">
+
+                <div class="student-avatar">
+
+                  {{ student.name.charAt(0) }}
+
+                </div>
+
+
+                <div class="student-info">
+
+                  <strong>
+
+                    {{ student.name }}
+
+                  </strong>
+
+                  <span>
+
+                    {{ student.registerNumber }}
+
+                  </span>
+
+                </div>
+
+
+                <div class="student-department">
+
+                  {{ student.department }}
+
+                </div>
+
+
+                <span
+                  class="student-status"
+                  [class.pending]="
+                    student.status === 'Pending Assignment'
+                  ">
+
+                  {{ student.status }}
+
+                </span>
+
+              </div>
+
+            }
+
+          </div>
+
+        </div>
+
+
+        <!-- RECENT PROJECTS -->
+
+        <div class="dashboard-card">
+
+          <div class="card-header">
+
+            <div>
+
+              <span class="section-label">
+                PROJECTS
+              </span>
+
+              <h2>
+                Project Progress
+              </h2>
+
+            </div>
+
+
+            <a routerLink="/admin/projects">
+
+              View All →
+
+            </a>
+
+          </div>
+
+
+          <div class="project-list">
+
+            @for (project of recentProjects; track project.title) {
+
+              <div class="project-item">
+
+                <div class="project-name">
+
+                  <strong>
+
+                    {{ project.title }}
+
+                  </strong>
+
+                  <span>
+
+                    {{ project.students }} Students •
+                    {{ project.guide }}
+
+                  </span>
+
+                </div>
+
+
+                <div class="project-progress">
+
+                  <div class="progress-text">
+
+                    <span>
+                      Progress
+                    </span>
+
+                    <strong>
+                      {{ project.progress }}%
+                    </strong>
+
+                  </div>
+
+
+                  <div class="progress-track">
+
+                    <div
+                      class="progress-fill"
+                      [style.width.%]="project.progress">
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            }
+
+          </div>
+
+        </div>
+
+
+        <!-- GUIDE ASSIGNMENT -->
+
+        <div class="dashboard-card guide-card">
+
+          <div class="card-header">
+
+            <div>
+
+              <span class="section-label">
+                GUIDE MANAGEMENT
+              </span>
+
+              <h2>
+                Pending Guide Assignments
+              </h2>
+
+            </div>
+
+          </div>
+
+
+          <div class="assignment-summary">
+
+            <div class="assignment-number">
+
+              12
+
+            </div>
+
+            <div>
+
+              <strong>
+                Students need a project guide
+              </strong>
+
+              <p>
+                Assign teachers to students before the next project phase.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <a
+            class="assign-now"
+            routerLink="/admin/assign-guide">
+
+            Assign Guides →
+
+          </a>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
 
 </div>

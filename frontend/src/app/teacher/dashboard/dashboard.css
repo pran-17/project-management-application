@@ -92,14 +92,14 @@
 .page-header p {
   margin: 8px 0 0;
 
-  color: #64748b;
+  color: #2778eb;
 
   font-family:
     Arial,
     Helvetica,
     sans-serif;
 
-  font-size: 13px;
+  font-size: 14px;
 
   line-height: 1.5;
 }
@@ -131,7 +131,7 @@
 
 
 .guide-card span {
-  color: #94a3b8;
+  color: #2f7be7;
 
   font-size: 9px;
 
@@ -142,16 +142,16 @@
 
 
 .guide-card strong {
-  color: #334155;
+  color: #07090a;
 
   font-size: 13px;
 }
 
 
 .guide-card small {
-  color: #94a3b8;
+  color: #080909;
 
-  font-size: 10px;
+  font-size: 12px;
 }
 
 
@@ -247,9 +247,9 @@
 
 
 .overview-card span {
-  color: #94a3b8;
+  color: #090909;
 
-  font-size: 9px;
+  font-size: 12px;
 
   font-weight: 800;
 }
@@ -265,9 +265,9 @@
 
 
 .overview-card small {
-  color: #94a3b8;
+  color: #3282f2;
 
-  font-size: 10px;
+  font-size: 13px;
 }
 
 
@@ -295,9 +295,9 @@
 
   margin-bottom: 5px;
 
-  color: #94a3b8;
+  color: #000000;
 
-  font-size: 9px;
+  font-size: 12px;
 
   font-weight: 800;
 
@@ -308,7 +308,7 @@
 .section-header h2 {
   margin: 0;
 
-  color: #172033;
+  color: #05060a;
 
   font-family:
     Arial,
@@ -324,14 +324,14 @@
 .section-header p {
   margin: 6px 0 0;
 
-  color: #64748b;
+  color: #2374e6;
 
   font-family:
     Arial,
     Helvetica,
     sans-serif;
 
-  font-size: 12px;
+  font-size: 14px;
 }
 
 
@@ -355,7 +355,7 @@
     Helvetica,
     sans-serif;
 
-  font-size: 11px;
+  font-size: 13px;
 
   font-weight: 700;
 
@@ -448,9 +448,9 @@
 
   background: #f8fafc;
 
-  color: #94a3b8;
+  color: #0b0b0b;
 
-  font-size: 9px;
+  font-size: 14px;
 
   font-weight: 800;
 }
@@ -461,9 +461,9 @@
 
   border-top: 1px solid #eef1f5;
 
-  color: #64748b;
+  color: #000000;
 
-  font-size: 11px;
+  font-size: 16px;
 }
 
 
@@ -521,16 +521,16 @@
 
 
 .student-cell strong {
-  color: #334155;
+  color: #000000;
 
-  font-size: 11px;
+  font-size: 15px;
 }
 
 
 .student-cell span {
-  color: #94a3b8;
+  color: #000000;
 
-  font-size: 9px;
+  font-size: 12px;
 }
 
 
@@ -546,9 +546,9 @@
 
 
 .project-cell strong {
-  color: #334155;
+  color: #000000;
 
-  font-size: 11px;
+  font-size: 15px;
 
   white-space: nowrap;
 
@@ -559,9 +559,9 @@
 
 
 .project-cell span {
-  color: #94a3b8;
+  color: #2171e1;
 
-  font-size: 9px;
+  font-size: 15px;
 }
 
 
@@ -570,7 +570,7 @@
 
   border-radius: 15px;
 
-  font-size: 9px;
+  font-size: 13px;
 
   font-weight: 700;
 }
@@ -600,16 +600,16 @@
 
 
 .phase-cell strong {
-  color: #475569;
+  color: #040404;
 
-  font-size: 10px;
+  font-size: 15px;
 }
 
 
 .phase-cell span {
-  color: #94a3b8;
+  color: #2170dd;
 
-  font-size: 9px;
+  font-size: 13px;
 }
 
 
@@ -623,9 +623,9 @@
 
 
 .progress-number {
-  color: #2563eb;
+  color: #000000;
 
-  font-size: 10px;
+  font-size: 15px;
 
   font-weight: 700;
 }
@@ -664,7 +664,7 @@
 
   border-radius: 15px;
 
-  font-size: 9px;
+  font-size: 15px;
 
   font-weight: 700;
 
@@ -754,7 +754,7 @@
   align-items: center;
   justify-content: center;
 
-  font-size: 17px;
+  font-size: 19px;
 
   font-weight: 700;
 }
@@ -790,10 +790,11 @@
 }
 
 
-.review-summary-card span {
-  color: #94a3b8;
 
-  font-size: 9px;
+.review-summary-card span {
+  color: #020202;
+
+  font-size: 18px;
 
   font-weight: 800;
 }
@@ -807,9 +808,9 @@
 
 
 .review-summary-card small {
-  color: #94a3b8;
+  color: #3683ee;
 
-  font-size: 10px;
+  font-size: 13px;
 }
 
 
@@ -848,14 +849,14 @@
 
   color: #172033;
 
-  font-size: 16px;
+  font-size: 18px;
 }
 
 
 .review-table-header > div > span {
-  color: #94a3b8;
+  color: #257bf3;
 
-  font-size: 10px;
+  font-size: 16px;
 }
 
 
@@ -868,7 +869,7 @@
 
   color: #2563eb;
 
-  font-size: 9px;
+  font-size: 15px;
 
   font-weight: 700;
 }
@@ -900,7 +901,112 @@
   align-items: center;
 }
 
+/* =========================================
+   REVIEW COLUMN HEADER
+========================================= */
 
+.review-column-header {
+  padding: 14px 20px;
+
+  background: #f8fafc;
+
+  border-top: none;
+  border-bottom: 1px solid #e5eaf0;
+
+  color: #196bde;
+
+  font-size: 13px;
+  font-weight: 800;
+
+  letter-spacing: .4px;
+  text-transform: uppercase;
+}
+
+
+/* HEADER CELLS */
+
+.review-column-header > div {
+  min-width: 0;
+
+  color: #196bde;
+
+  font-size: 13px;
+  font-weight: 800;
+}
+
+
+/* ACTION HEADER */
+
+.review-column-header > div:last-child {
+  text-align: center;
+}
+
+
+/* =========================================
+   HIDE OLD LABELS
+========================================= */
+
+.review-project-info > span,
+.review-task-info > span,
+.review-phase-info > span {
+  display: none;
+}
+
+
+/* =========================================
+   PROJECT
+========================================= */
+
+.review-project-info strong {
+  color: #000000;
+
+  font-size: 13px;
+
+  line-height: 1.4;
+}
+
+
+/* =========================================
+   TASK
+========================================= */
+
+.review-task-info strong {
+  color: #000000;
+
+  font-size: 13px;
+
+  line-height: 1.4;
+}
+
+
+/* =========================================
+   PHASE
+========================================= */
+
+.review-phase-info strong {
+  color: #000000;
+
+  font-size: 13px;
+
+  line-height: 1.4;
+}
+
+
+/* =========================================
+   PROGRESS
+========================================= */
+
+.review-progress-header span {
+  color: #000000;
+
+  font-size: 12px;
+}
+
+.review-progress-header strong {
+  color: #196bde;
+
+  font-size: 13px;
+}
 .student-info {
   display: flex;
 
@@ -920,16 +1026,16 @@
 
 
 .student-info strong {
-  color: #334155;
+  color: #000000;
 
-  font-size: 11px;
+  font-size: 15px;
 }
 
 
 .student-info span {
-  color: #94a3b8;
+  color: #1d71e7;
 
-  font-size: 9px;
+  font-size: 13px;
 }
 
 
@@ -944,27 +1050,10 @@
 }
 
 
-.review-project-info span,
-.review-task-info span,
-.review-phase-info span,
-.review-progress-info span {
-  color: #94a3b8;
-
-  font-size: 8px;
-
-  font-weight: 800;
-}
 
 
-.review-project-info strong,
-.review-task-info strong,
-.review-phase-info strong {
-  color: #475569;
 
-  font-size: 10px;
 
-  line-height: 1.4;
-}
 
 
 .review-progress-info {
@@ -984,9 +1073,9 @@
 
 
 .review-progress-header strong {
-  color: #2563eb;
+  color: #020304;
 
-  font-size: 9px;
+  font-size: 13px;
 }
 
 
@@ -1074,14 +1163,14 @@
   align-items: center;
   justify-content: center;
 
-  font-size: 11px;
+  font-size: 14px;
 
   font-weight: 800;
 }
 
 
 .phase-status {
-  font-size: 8px;
+  font-size: 12px;
 
   font-weight: 800;
 }
@@ -1098,16 +1187,16 @@
 
 
 .phase-status.pending {
-  color: #94a3b8;
+  color: #24272b;
 }
 
 
 .phase-card h3 {
   margin: 14px 0 7px;
 
-  color: #334155;
+  color: #0f1011;
 
-  font-size: 14px;
+  font-size: 16px;
 }
 
 
@@ -1116,9 +1205,9 @@
 
   margin: 0;
 
-  color: #94a3b8;
+  color: #0a63df;
 
-  font-size: 10px;
+  font-size: 13px;
 
   line-height: 1.5;
 }
@@ -1137,16 +1226,16 @@
 
 
 .phase-progress span {
-  color: #94a3b8;
+  color: #101010;
 
-  font-size: 9px;
+  font-size: 14px;
 }
 
 
 .phase-progress strong {
   color: #2563eb;
 
-  font-size: 9px;
+  font-size: 13px;
 }
 
 
@@ -1221,7 +1310,7 @@
   align-items: center;
   justify-content: center;
 
-  font-size: 11px;
+  font-size: 13px;
 
   font-weight: 700;
 }
@@ -1259,21 +1348,21 @@
 .activity-content strong {
   color: #334155;
 
-  font-size: 11px;
+  font-size: 15px;
 }
 
 
 .activity-content span {
-  color: #94a3b8;
+  color: #2073e9;
 
-  font-size: 9px;
+  font-size: 13px;
 }
 
 
 .activity-item time {
-  color: #94a3b8;
+  color: #010101;
 
-  font-size: 9px;
+  font-size: 14px;
 }
 
 

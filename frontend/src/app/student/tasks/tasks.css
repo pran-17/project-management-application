@@ -187,7 +187,7 @@
 
 .review-icon {
   background: #ffffff;
-  color: #111111;
+  color: #0f2ef5;
 }
 
 
@@ -223,9 +223,9 @@
 
 
 .stat-card small {
-  color: #111111;
+  color: #081ae1;
 
-  font-size: 12px;
+  font-size: 14px;
 }
 
 
@@ -479,11 +479,13 @@
 
   border-radius: 20px;
 
-  font-size: 11px;
+  font-size: 13px;
 
   font-weight: 700;
 
   white-space: nowrap;
+  background: #ffffff;
+  color: #066bdf;
 }
 
 
@@ -527,14 +529,14 @@
 .status-badge.review {
   background: #ffffff;
 
-  color: #111111;
+  color: #0918f3;
 }
 
 
 .status-badge.progress {
   background: #ffffff;
 
-  color: #111111;
+  color: #0a3bec;
 }
 
 
@@ -598,7 +600,7 @@
 
 
 .progress-heading strong {
-  color: #111111;
+  color: #0643eb;
 
   font-size: 14px;
 }
@@ -630,89 +632,76 @@
    BOTTOM
 ========================= */
 
+/* =========================
+   TASK CARD BOTTOM
+========================= */
+
 .task-bottom {
   padding-top: 17px;
-
   border-top: 1px solid #e3edf8;
 
   display: flex;
-
   align-items: center;
-
   justify-content: space-between;
 
   gap: 20px;
+  width: 100%;
 }
-
 
 .dates {
   display: flex;
-
   gap: 35px;
 }
 
-
 .dates > div {
   display: flex;
-
   flex-direction: column;
-
   gap: 5px;
 }
 
-
 .dates span {
   color: #111111;
-
-  font-size: 11px;
-
+  font-size: 14px;
   font-weight: 700;
 }
 
-
 .dates strong {
   color: #111111;
-
   font-size: 13px;
 }
 
-
 .view-task-button {
-  height: 42px;
+  margin-left: auto;
 
-  padding: 0 18px;
+  height: 52px;
+  min-width: 185px;
+
+  padding: 0 22px;
 
   border: 1px solid #bfdbfe;
-
-  border-radius: 8px;
+  border-radius: 10px;
 
   background: #ffffff;
+  color: #2563eb;
 
-  color: #111111;
-
-  font-size: 13px;
-
+  font-size: 15px;
   font-weight: 700;
 
   cursor: pointer;
 
   display: flex;
-
   align-items: center;
+  justify-content: center;
+  gap: 10px;
 
-  gap: 8px;
-
-  transition: .2s ease;
+  transition: 0.2s ease;
 }
-
 
 .view-task-button:hover {
-  background: #ffffff;
-
-  border-color: #111111;
+  background: #eff6ff;
+  color: #1d4ed8;
+  border-color: #2563eb;
 }
-
-
 /* =========================
    TEACHER REMARK
 ========================= */
@@ -760,7 +749,7 @@
 .teacher-remark span {
   color: #111111;
 
-  font-size: 11px;
+  font-size: 12px;
 
   font-weight: 700;
 }
@@ -1000,9 +989,9 @@
 
 
 .description-box > span {
-  color: #2069d5;
+  color: #077cf2;
 
-  font-size: 11px;
+  font-size: 12px;
 
   font-weight: 700;
 }
@@ -1011,9 +1000,9 @@
 .description-box p {
   margin: 7px 0 0;
 
-  color: #196bde;
+  color: #000000;
 
-  font-size: 13px;
+  font-size: 15px;
 
   line-height: 1.8;
 }
@@ -1108,7 +1097,7 @@
 .modal-remark p {
   margin: 5px 0 0;
 
-  color: #2888ee;
+  color: #000000;
 
   font-size: 13px;
 
@@ -1556,10 +1545,132 @@
    Titles, metadata, dates and other card content remain black.
    ========================================================= */
 
-.task-description {
-  color: #196bde !important;
+
+/* =========================================================
+   FINAL BLUE ACCENT CORRECTIONS
+   Descriptions use blue selectively; headings stay dark.
+   ========================================================= */
+
+.page-header p,
+.stat-card small,
+.task-description,
+.form-title p {
+  color: #2563eb;
 }
 
-.description-box p {
-  color: #196bde !important;
+.description-box > span,
+.modal-remark span,
+.form-group label {
+  color: #2563eb;
 }
+
+/* Keep main content text readable */
+.task-title-area h3,
+.task-meta,
+.dates span{
+  color: #0d5be3;
+}
+.dates strong,
+.teacher-remark p,
+.description-box p,
+.modal-remark p,
+.submission-info p,
+.empty-state h3,
+.empty-state p {
+  color: #172033;
+}
+
+/* Blue emphasis for values and progress */
+.stat-card strong,
+.progress-heading strong,
+.detail-grid strong,
+.current-progress-box strong {
+  color: #2563eb;
+}
+
+/* Blue secondary labels */
+.page-label,
+.section-label,
+.filter-label,
+.phase-badge span,
+.phase-badge strong,
+.stat-card span,
+.progress-heading span,
+.detail-grid span,
+.current-progress-box span {
+  color: #000000;
+}
+
+/* Keep status colors meaningful */
+.status-badge.completed {
+  color: #16a34a !important;
+  border-color: #bbf7d0;
+}
+
+.status-badge.review,
+.status-badge.progress {
+  color: #2563eb !important;
+  border-color: #bfdbfe;
+}
+
+.status-badge.pending {
+  color: #64748b !important;
+  border-color: #e2e8f0;
+}
+
+/* Better blue buttons */
+.view-task-button {
+  color: #2563eb;
+  border-color: #bfdbfe;
+}
+
+.view-task-button:hover {
+  background: #eff6ff;
+  color: #1d4ed8;
+  border-color: #2563eb;
+}
+
+/* Task number and icon accents */
+.task-number {
+  color: #2563eb;
+  background: #eff6ff;
+  border-color: #bfdbfe;
+}
+
+.stat-icon {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+/* Stronger visual separation */
+.task-card,
+.stat-card,
+.filter-section,
+.phase-badge {
+  border-color: #dbeafe;
+}
+
+.task-card:hover {
+  border-color: #93c5fd;
+}
+
+/* Prevent the earlier universal black rule from overriding accents */
+.task-card .task-description,
+.stat-card small,
+.task-modal .description-box > span,
+.task-modal .modal-remark span,
+.task-modal .form-group label,
+.task-modal .detail-grid strong,
+.task-modal .current-progress-box strong,
+.task-modal .progress-heading strong {
+  color: #2563eb !important;
+}
+
+/* =========================================================
+   BLUE DESCRIPTION ACCENTS
+   Only specific description areas use blue.
+   Titles, metadata, dates and other card content remain black.
+   ========================================================= */
+
+
+

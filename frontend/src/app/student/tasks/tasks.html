@@ -219,239 +219,248 @@
 
       <!-- TASK LIST -->
 
-      <section class="tasks-section">
+     <!-- TASK LIST -->
 
-        <div class="section-header">
+<section class="tasks-section">
 
-          <div>
+  <div class="section-header">
 
-            <span class="section-label">
-              ASSIGNED WORK
-            </span>
+    <div>
+      <span class="section-label">
+        ASSIGNED WORK
+      </span>
 
-            <h2>
-              My Tasks
-            </h2>
+      <h2>
+        My Project Tasks
+      </h2>
+    </div>
+
+    <span class="task-count">
+      {{ filteredTasks.length }} Tasks
+    </span>
+
+  </div>
+
+
+  <div class="task-list">
+
+    @for (task of filteredTasks; track task.id) {
+
+      <div class="task-card">
+
+        <!-- TOP HEADER -->
+
+        <div class="task-top">
+
+          <div class="task-title-area">
+
+            <div class="task-number">
+              {{ task.id }}
+            </div>
+
+
+            <div class="task-title-content">
+
+              <h3>
+                {{ task.title }}
+              </h3>
+
+              <div class="task-meta">
+
+                <span>
+                  {{ task.module }}
+                </span>
+
+                <span class="meta-dot">
+                  •
+                </span>
+
+                <span>
+                  {{ task.phase }}
+                </span>
+
+              </div>
+
+            </div>
 
           </div>
 
-          <span class="task-count">
-            {{ filteredTasks.length }} Tasks
-          </span>
+
+          <!-- BADGES -->
+
+          <div class="task-badges">
+
+            <span
+              class="priority-badge"
+              [class]="getPriorityClass(task.priority)">
+
+              {{ task.priority }} Priority
+
+            </span>
+
+
+            <span
+              class="status-badge"
+              [class]="getStatusClass(task.status)">
+
+              <span class="status-dot"></span>
+
+              {{ task.status }}
+
+            </span>
+
+          </div>
 
         </div>
 
 
-        <div class="task-list">
+        <!-- DESCRIPTION -->
 
-          @for (
-            task of filteredTasks;
-            track task.id
-          ) {
+        <div class="task-description-section">
 
-            <div class="task-card">
+          <p class="task-description">
+            {{ task.description }}
+          </p>
 
-              <!-- TASK TOP -->
+        </div>
 
-              <div class="task-top">
 
-                <div class="task-title-area">
+        <!-- PROGRESS -->
 
-                  <div class="task-number">
-                    {{ task.id }}
-                  </div>
+        <div class="task-progress">
 
-                  <div>
+          <div class="progress-heading">
 
-                    <h3>
-                      {{ task.title }}
-                    </h3>
+            <span>
+              Task Progress
+            </span>
 
-                    <div class="task-meta">
+            <strong>
+              {{ task.progress }}%
+            </strong>
 
-                      <span>
-                        {{ task.module }}
-                      </span>
+          </div>
 
-                      <span>•</span>
 
-                      <span>
-                        {{ task.phase }}
-                      </span>
+          <div class="progress-track">
 
-                    </div>
-
-                  </div>
-
-                </div>
-
-
-                <div class="task-badges">
-
-                  <span
-                    class="priority-badge"
-                    [class]="getPriorityClass(task.priority)">
-
-                    {{ task.priority }} Priority
-
-                  </span>
-
-
-                  <span
-                    class="status-badge"
-                    [class]="getStatusClass(task.status)">
-
-                    <span class="status-dot"></span>
-
-                    {{ task.status }}
-
-                  </span>
-
-                </div>
-
-              </div>
-
-
-              <!-- DESCRIPTION -->
-
-              <p class="task-description">
-                {{ task.description }}
-              </p>
-
-
-              <!-- PROGRESS -->
-
-              <div class="task-progress">
-
-                <div class="progress-heading">
-
-                  <span>
-                    Task Progress
-                  </span>
-
-                  <strong>
-                    {{ task.progress }}%
-                  </strong>
-
-                </div>
-
-
-                <div class="progress-track">
-
-                  <div
-                    class="progress-fill"
-                    [style.width.%]="task.progress">
-                  </div>
-
-                </div>
-
-              </div>
-
-
-              <!-- BOTTOM -->
-
-              <div class="task-bottom">
-
-                <div class="dates">
-
-                  <div>
-
-                    <span>
-                      ASSIGNED
-                    </span>
-
-                    <strong>
-                      {{ task.assignedDate }}
-                    </strong>
-
-                  </div>
-
-
-                  <div>
-
-                    <span>
-                      DUE DATE
-                    </span>
-
-                    <strong>
-                      {{ task.dueDate }}
-                    </strong>
-
-                  </div>
-
-                </div>
-
-
-                <button
-                  type="button"
-                  class="view-task-button"
-                  (click)="selectTask(task)">
-
-                  View & Update
-
-                  <span>
-                    →
-                  </span>
-
-                </button>
-
-              </div>
-
-
-              <!-- TEACHER REMARK -->
-
-              @if (task.teacherRemark) {
-
-                <div class="teacher-remark">
-
-                  <div class="remark-icon">
-                    T
-                  </div>
-
-                  <div>
-
-                    <span>
-                      TEACHER REMARK
-                    </span>
-
-                    <p>
-                      {{ task.teacherRemark }}
-                    </p>
-
-                  </div>
-
-                </div>
-
-              }
-
+            <div
+              class="progress-fill"
+              [style.width.%]="task.progress">
             </div>
 
-          }
+          </div>
+
+        </div>
 
 
-          @if (filteredTasks.length === 0) {
+        <!-- BOTTOM INFORMATION -->
 
-            <div class="empty-state">
+        <div class="task-bottom">
 
-              <div>
-                ✓
-              </div>
+  <div class="dates">
 
-              <h3>
-                No tasks found
-              </h3>
+    <div class="date-item">
+
+      <span>
+        ASSIGNED
+      </span>
+
+      <strong>
+        {{ task.assignedDate }}
+      </strong>
+
+    </div>
+
+    <div class="date-item">
+
+      <span>
+        DUE DATE
+      </span>
+
+      <strong>
+        {{ task.dueDate }}
+      </strong>
+
+    </div>
+
+  </div>
+
+  <button
+    type="button"
+    class="view-task-button"
+    (click)="selectTask(task)">
+
+    <span>
+      View & Update
+    </span>
+
+    <span class="button-arrow">
+      →
+    </span>
+
+  </button>
+
+</div>
+
+
+        <!-- TEACHER REMARK -->
+
+        @if (task.teacherRemark) {
+
+          <div class="teacher-remark">
+
+            <div class="remark-icon">
+              T
+            </div>
+
+
+            <div class="remark-content">
+
+              <span>
+                TEACHER REMARK
+              </span>
 
               <p>
-                There are no tasks matching the selected filter.
+                {{ task.teacherRemark }}
               </p>
 
             </div>
 
-          }
+          </div>
 
+        }
+
+      </div>
+
+    }
+
+
+    <!-- EMPTY STATE -->
+
+    @if (filteredTasks.length === 0) {
+
+      <div class="empty-state">
+
+        <div class="empty-icon">
+          ✓
         </div>
 
-      </section>
+        <h3>
+          No tasks found
+        </h3>
+
+        <p>
+          There are no tasks matching the selected filter.
+        </p>
+
+      </div>
+
+    }
+
+  </div>
+
+</section>
 
     </div>
 

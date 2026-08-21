@@ -1,12 +1,10 @@
 <div class="dashboard-layout">
 
   <!-- SIDEBAR -->
-
   <app-sidebar></app-sidebar>
 
 
   <!-- MAIN -->
-
   <main class="main-content">
 
     <app-header></app-header>
@@ -15,14 +13,9 @@
     <div class="dashboard-content">
 
       <!-- WELCOME -->
-
       <section class="welcome-section">
 
         <div>
-
-          <span class="welcome-label">
-            
-          </span>
 
           <h1>
             Welcome back, {{ studentName }} 👋
@@ -50,7 +43,6 @@
 
 
       <!-- PROJECT SUMMARY -->
-
       <section class="project-summary">
 
         <div class="project-info">
@@ -92,9 +84,7 @@
 
           <div class="progress-header">
 
-            <span>
-              Overall Progress
-            </span>
+            <span>Overall Progress</span>
 
             <strong>
               {{ project.progress }}%
@@ -117,69 +107,68 @@
 
 
       <!-- STAT CARDS -->
-
       <section class="stats-grid">
 
         @for (stat of stats; track stat.title) {
 
-          <div class="stat-card">
+  <div class="stat-card">
 
-            <div class="stat-top">
+    <div class="stat-top">
 
-              <div class="stat-icon">
-                {{ stat.icon }}
-              </div>
+      <div class="stat-icon">
+        {{ stat.icon }}
+      </div>
 
-              <span class="stat-arrow">
-                →
-              </span>
+      <!-- CLICKABLE VIEW ARROW -->
+      <a
+        class="stat-arrow"
+        [routerLink]="stat.link"
+        title="View {{ stat.title }}">
 
-            </div>
+        →
+      </a>
 
-            <div class="stat-value">
-              {{ stat.value }}
-            </div>
+    </div>
 
-            <div class="stat-title">
-              {{ stat.title }}
-            </div>
+    <div class="stat-value">
+      {{ stat.value }}
+    </div>
 
-            <div class="stat-description">
-              {{ stat.description }}
-            </div>
+    <div class="stat-title">
+      {{ stat.title }}
+    </div>
 
-          </div>
+    <div class="stat-description">
+      {{ stat.description }}
+    </div>
 
-        }
+  </div>
+
+}
 
       </section>
 
 
       <!-- MAIN GRID -->
-
       <section class="dashboard-grid">
 
 
-        <!-- TIMELINE -->
-
+        <!-- PROJECT TIMELINE -->
         <div class="dashboard-card timeline-card">
 
           <div class="card-header">
 
             <div>
-
-              <span class="section-label">
-                
-              </span>
-
-              <h3>
-                Project Timeline
-              </h3>
-
+              <h3>Project Timeline</h3>
             </div>
 
-            <button>
+
+            <button
+              type="button"
+              routerLink="/student/phases">
+
               View Details →
+
             </button>
 
           </div>
@@ -202,13 +191,9 @@
 
                   @if (item.status === 'completed') {
                     ✓
-                  }
-
-                  @if (item.status === 'current') {
+                  } @else if (item.status === 'current') {
                     ●
-                  }
-
-                  @if (item.status === 'upcoming') {
+                  } @else {
                     {{ i + 1 }}
                   }
 
@@ -236,26 +221,22 @@
         </div>
 
 
-        <!-- TEAM -->
-
+        <!-- TEAM MEMBERS -->
         <div class="dashboard-card">
 
           <div class="card-header">
 
             <div>
-
-              <span class="section-label">
-                
-              </span>
-
-              <h3>
-                Team Members
-              </h3>
-
+              <h3>Team Members</h3>
             </div>
 
-            <button>
+
+            <button
+              type="button"
+              routerLink="/student/team">
+
               View Team →
+
             </button>
 
           </div>
@@ -271,9 +252,7 @@
 
               <div class="member-info">
 
-                <strong>
-                  Praneeth
-                </strong>
+                <strong>Praneeth</strong>
 
                 <span>
                   Frontend Developer
@@ -296,9 +275,7 @@
 
               <div class="member-info">
 
-                <strong>
-                  Rahul
-                </strong>
+                <strong>Rahul</strong>
 
                 <span>
                   Backend Developer
@@ -321,9 +298,7 @@
 
               <div class="member-info">
 
-                <strong>
-                  Arun
-                </strong>
+                <strong>Arun</strong>
 
                 <span>
                   Database Developer
@@ -346,9 +321,7 @@
 
               <div class="member-info">
 
-                <strong>
-                  Karthik
-                </strong>
+                <strong>Karthik</strong>
 
                 <span>
                   Testing
@@ -367,26 +340,22 @@
         </div>
 
 
-        <!-- RECENT WORK -->
-
+        <!-- RECENT ACTIVITY -->
         <div class="dashboard-card work-card">
 
           <div class="card-header">
 
             <div>
-
-              <span class="section-label">
-                
-              </span>
-
-              <h3>
-                RECENT ACTIVITY
-              </h3>
-
+              <h3>Recent Activity</h3>
             </div>
 
-            <button>
+
+            <button
+              type="button"
+              routerLink="/student/tasks">
+
               View All →
+
             </button>
 
           </div>
@@ -411,6 +380,7 @@
 
                 </div>
 
+
                 <div class="work-details">
 
                   <strong>
@@ -423,15 +393,12 @@
 
                 </div>
 
+
                 <div class="work-meta">
 
                   <span
-                    [class.pending]="
-                      update.status === 'Pending Review'
-                    "
-                    [class.approved]="
-                      update.status === 'Approved'
-                    ">
+                    [class.pending]="update.status === 'Pending Review'"
+                    [class.approved]="update.status === 'Approved'">
 
                     {{ update.status }}
 
@@ -453,21 +420,12 @@
 
 
         <!-- TEACHER REMARKS -->
-
         <div class="dashboard-card">
 
           <div class="card-header">
 
             <div>
-
-              <span class="section-label">
-                
-              </span>
-
-              <h3>
-                Teacher Remarks
-              </h3>
-
+              <h3>Teacher Remarks</h3>
             </div>
 
             <span class="remarks-count">
@@ -490,6 +448,7 @@
                   D
                 </div>
 
+
                 <div class="remark-content">
 
                   <div class="remark-top">
@@ -503,6 +462,7 @@
                     </small>
 
                   </div>
+
 
                   <p>
                     {{ remark.remark }}

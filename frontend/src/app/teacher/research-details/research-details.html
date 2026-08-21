@@ -1,0 +1,336 @@
+<div class="page-layout">
+
+  <app-teacher-sidebar></app-teacher-sidebar>
+
+  <main class="main-content">
+
+    <app-header></app-header>
+
+    <div class="page-content" *ngIf="project">
+
+      <!-- BACK BUTTON -->
+
+      <button
+        class="back-btn"
+        routerLink="/teacher/research">
+
+        ← Back to Research Projects
+
+      </button>
+
+
+      <!-- PAGE HEADER -->
+
+      <div class="page-header">
+
+        <div>
+
+          <span>RESEARCH PROJECT DETAILS</span>
+
+          <h1>{{ project.title }}</h1>
+
+          <p>{{ project.description }}</p>
+
+        </div>
+
+        <div class="status">
+          {{ project.status }}
+        </div>
+
+      </div>
+
+
+      <!-- PROJECT OVERVIEW -->
+
+      <section class="section">
+
+        <div class="section-heading">
+
+          <div>
+            <span>PROJECT OVERVIEW</span>
+            <h2>Research Information</h2>
+          </div>
+
+        </div>
+
+
+        <div class="overview-grid">
+
+          <div class="overview-card">
+
+            <span>RESEARCH AREA</span>
+
+            <strong>
+              {{ project.area }}
+            </strong>
+
+          </div>
+
+
+          <div class="overview-card">
+
+            <span>PROJECT MEMBERS</span>
+
+            <strong>
+              {{ project.members.length }}
+            </strong>
+
+          </div>
+
+
+          <div class="overview-card">
+
+            <span>RESEARCH PROGRESS</span>
+
+            <strong>
+              {{ project.progress }}%
+            </strong>
+
+          </div>
+
+
+          <div class="overview-card">
+
+            <span>RESEARCH SUPERVISOR</span>
+
+            <strong>
+              {{ project.supervisor.name }}
+            </strong>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- TEAM MEMBERS -->
+
+      <section class="section">
+
+        <div class="section-heading">
+
+          <div>
+
+            <span>RESEARCH TEAM</span>
+
+            <h2>
+              Students & Members
+            </h2>
+
+          </div>
+
+          <div class="count">
+            {{ project.members.length }} Members
+          </div>
+
+        </div>
+
+
+        <div class="members-grid">
+
+          @for (member of project.members; track member.id) {
+
+            <div class="member-card">
+
+              <div class="avatar">
+                {{ member.name.charAt(0) }}
+              </div>
+
+
+              <div class="member-info">
+
+                <h3>
+                  {{ member.name }}
+                </h3>
+
+                <span>
+                  {{ member.id }}
+                </span>
+
+                <p>
+                  {{ member.role }}
+                </p>
+
+                <small>
+                  {{ member.contribution }}
+                </small>
+
+              </div>
+
+            </div>
+
+          }
+
+        </div>
+
+      </section>
+
+
+      <!-- FUNDING -->
+
+      <section class="section">
+
+        <div class="section-heading">
+
+          <div>
+
+            <span>RESEARCH FUNDING</span>
+
+            <h2>
+              Funding Overview
+            </h2>
+
+          </div>
+
+        </div>
+
+
+        <div class="funding-summary">
+
+          <div>
+
+            <span>TOTAL FUNDING</span>
+
+            <strong>
+              ₹{{ project.funding | number }}
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>AMOUNT SPENT</span>
+
+            <strong>
+              ₹{{ project.spent | number }}
+            </strong>
+
+          </div>
+
+
+          <div class="remaining">
+
+            <span>REMAINING AMOUNT</span>
+
+            <strong>
+              ₹{{ project.funding - project.spent | number }}
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <!-- FUNDING PROVIDERS -->
+
+        <h3 class="sub-heading">
+          Fund Providers
+        </h3>
+
+
+        <div class="providers-grid">
+
+          @for (provider of project.fundProviders; track provider.name) {
+
+            <div class="provider-card">
+
+              <div class="provider-icon">
+                ₹
+              </div>
+
+
+              <div>
+
+                <h3>
+                  {{ provider.name }}
+                </h3>
+
+                <span>
+                  {{ provider.type }}
+                </span>
+
+              </div>
+
+
+              <strong>
+                ₹{{ provider.amount | number }}
+              </strong>
+
+            </div>
+
+          }
+
+        </div>
+
+      </section>
+
+
+      <!-- RESEARCH MILESTONES -->
+
+      <section class="section">
+
+        <div class="section-heading">
+
+          <div>
+
+            <span>RESEARCH PROGRESS</span>
+
+            <h2>
+              Project Milestones
+            </h2>
+
+          </div>
+
+        </div>
+
+
+        <div class="milestone-list">
+
+          @for (milestone of project.milestones; track milestone.title) {
+
+            <div class="milestone-card">
+
+              <div class="milestone-main">
+
+                <h3>
+                  {{ milestone.title }}
+                </h3>
+
+                <span>
+                  {{ milestone.status }}
+                </span>
+
+              </div>
+
+
+              <div class="milestone-progress">
+
+                <strong>
+                  {{ milestone.progress }}%
+                </strong>
+
+                <div class="progress-track">
+
+                  <div
+                    [style.width.%]="milestone.progress">
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          }
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+</div>

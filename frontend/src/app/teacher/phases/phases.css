@@ -39,9 +39,9 @@
 
 
 .page-label {
-  color: #94a3b8;
+  color: #040404;
 
-  font-size: 10px;
+  font-size: 30px;
 
   font-weight: 800;
 
@@ -63,9 +63,9 @@
 .page-header p {
   margin: 0;
 
-  color: #64748b;
+  color: #5f09f3;
 
-  font-size: 12px;
+  font-size: 15px;
 }
 
 
@@ -96,7 +96,7 @@
 .phase-summary strong {
   display: block;
 
-  color: #172033;
+  color: #000000;
 
   font-size: 20px;
 }
@@ -107,9 +107,9 @@
 
   margin-top: 3px;
 
-  color: #94a3b8;
+  color: #3b0ef1;
 
-  font-size: 8px;
+  font-size: 14px;
 
   font-weight: 700;
 }
@@ -166,7 +166,7 @@
   align-items: center;
   justify-content: center;
 
-  font-size: 11px;
+  font-size: 15px;
 
   font-weight: 800;
 }
@@ -177,7 +177,7 @@
 
   border-radius: 12px;
 
-  font-size: 8px;
+  font-size: 13px;
 
   font-weight: 800;
 }
@@ -207,9 +207,9 @@
 .phase-card h2 {
   margin: 16px 0 7px;
 
-  color: #334155;
+  color: #040404;
 
-  font-size: 15px;
+  font-size: 16px;
 }
 
 
@@ -218,9 +218,9 @@
 
   margin: 0;
 
-  color: #94a3b8;
+  color: #0b34e8;
 
-  font-size: 9px;
+  font-size: 13px;
 
   line-height: 1.5;
 }
@@ -251,9 +251,9 @@
 .phase-dates span {
   display: block;
 
-  color: #94a3b8;
+  color: #450ddd;
 
-  font-size: 7px;
+  font-size: 10px;
 
   font-weight: 800;
 }
@@ -264,9 +264,9 @@
 
   margin-top: 4px;
 
-  color: #475569;
+  color: #000000;
 
-  font-size: 8px;
+  font-size: 12px;
 }
 
 
@@ -287,16 +287,16 @@
 
 
 .progress-header span {
-  color: #94a3b8;
+  color: #000000;
 
-  font-size: 8px;
+  font-size: 13px;
 }
 
 
 .progress-header strong {
   color: #2563eb;
 
-  font-size: 9px;
+  font-size: 14px;
 }
 
 
@@ -336,16 +336,16 @@
 
 
 .student-completion span {
-  color: #94a3b8;
+  color: #000000;
 
-  font-size: 8px;
+  font-size: 14px;
 }
 
 
 .student-completion strong {
-  color: #475569;
+  color: #5b09e9;
 
-  font-size: 9px;
+  font-size: 14px;
 }
 
 
@@ -368,7 +368,7 @@
 
   cursor: pointer;
 
-  font-size: 9px;
+  font-size: 13px;
 
   font-weight: 700;
 }
@@ -400,9 +400,9 @@
 
 
 .section-header span:first-child {
-  color: #94a3b8;
+  color: #000000;
 
-  font-size: 9px;
+  font-size: 14px;
 
   font-weight: 800;
 
@@ -415,16 +415,16 @@
 
   color: #172033;
 
-  font-size: 20px;
+  font-size: 22px;
 }
 
 
 .section-header p {
   margin: 0;
 
-  color: #64748b;
+  color: #1d0df6;
 
-  font-size: 10px;
+  font-size: 14px;
 }
 
 
@@ -441,7 +441,7 @@
 
   text-decoration: none;
 
-  font-size: 9px;
+  font-size: 13px;
 
   font-weight: 700;
 }
@@ -485,9 +485,9 @@
 
   background: #f8fafc;
 
-  color: #94a3b8;
+  color: #000000;
 
-  font-size: 8px;
+  font-size: 15px;
 
   font-weight: 800;
 }
@@ -498,9 +498,9 @@
 
   border-top: 1px solid #eef1f5;
 
-  color: #64748b;
+  color: #0d63dd;
 
-  font-size: 9px;
+  font-size: 14px;
 }
 
 
@@ -530,7 +530,7 @@
   align-items: center;
   justify-content: center;
 
-  font-size: 10px;
+  font-size: 14px;
 
   font-weight: 800;
 }
@@ -546,23 +546,23 @@
 
 
 .student-info strong {
-  color: #334155;
+  color: #030405;
 
-  font-size: 10px;
+  font-size: 14px;
 }
 
 
 .student-info span {
-  color: #94a3b8;
+  color: #3d0af6;
 
-  font-size: 8px;
+  font-size: 14px;
 }
 
 
 .project-info strong {
-  color: #475569;
+  color: #000000;
 
-  font-size: 9px;
+  font-size: 14px;
 
   line-height: 1.4;
 }
@@ -570,9 +570,9 @@
 
 .phase-info,
 .task-info {
-  color: #64748b;
+  color: #000000;
 
-  font-size: 9px;
+  font-size: 15px;
 }
 
 
@@ -588,7 +588,7 @@
 .submission-progress strong {
   color: #2563eb;
 
-  font-size: 9px;
+  font-size: 16px;
 }
 
 
@@ -619,7 +619,7 @@
 
   border-radius: 12px;
 
-  font-size: 8px;
+  font-size: 15px;
 
   font-weight: 700;
 
@@ -707,9 +707,9 @@
 
 
 .modal-header span {
-  color: #94a3b8;
+  color: #000000;
 
-  font-size: 9px;
+  font-size: 15px;
 
   font-weight: 800;
 }
@@ -734,7 +734,7 @@
 
   background: #f1f5f9;
 
-  color: #64748b;
+  color: #000000;
 
   cursor: pointer;
 
@@ -768,14 +768,14 @@
 .modal-progress-header span {
   color: #64748b;
 
-  font-size: 10px;
+  font-size: 14px;
 }
 
 
 .modal-progress-header strong {
   color: #2563eb;
 
-  font-size: 11px;
+  font-size: 13px;
 }
 
 
@@ -825,9 +825,9 @@
 .modal-info-grid span {
   display: block;
 
-  color: #94a3b8;
+  color: #000000;
 
-  font-size: 8px;
+  font-size: 12px;
 
   font-weight: 800;
 }
@@ -838,9 +838,9 @@
 
   margin-top: 5px;
 
-  color: #475569;
+  color: #105cc8;
 
-  font-size: 10px;
+  font-size: 13px;
 }
 
 
@@ -866,9 +866,9 @@
 
   margin-bottom: 7px;
 
-  color: #475569;
+  color: #000000;
 
-  font-size: 10px;
+  font-size: 14px;
 
   font-weight: 700;
 }
@@ -920,7 +920,7 @@
 
   color: #2563eb;
 
-  font-size: 9px;
+  font-size: 13px;
 }
 
 
@@ -945,7 +945,7 @@
 
   cursor: pointer;
 
-  font-size: 10px;
+  font-size: 13px;
 
   font-weight: 700;
 }
