@@ -1,0 +1,312 @@
+<div class="admin-layout">
+
+  <!-- SIDEBAR -->
+  <app-admin-sidebar></app-admin-sidebar>
+
+
+  <!-- MAIN CONTENT -->
+  <main class="admin-main">
+
+    <div class="page-content">
+
+
+      <!-- PAGE HEADER -->
+      <div class="page-header">
+
+        <div>
+
+          <span>
+            USER MANAGEMENT
+          </span>
+
+          <h1>
+            Students
+          </h1>
+
+          <p>
+            Add, manage and monitor registered students.
+          </p>
+
+        </div>
+
+
+        <!-- ADD STUDENT -->
+        <a
+          class="add-button"
+          routerLink="/admin/add-student">
+
+          <span>+</span>
+
+          Add Student
+
+        </a>
+
+      </div>
+
+
+      <!-- SUMMARY CARDS -->
+      <section class="summary-grid">
+
+
+        <!-- TOTAL STUDENTS -->
+        <div class="summary-card">
+
+          <span>
+            TOTAL STUDENTS
+          </span>
+
+          <strong>
+            {{ students.length }}
+          </strong>
+
+          <p>
+            Registered students
+          </p>
+
+        </div>
+
+
+        <!-- ACTIVE STUDENTS -->
+        <div class="summary-card active-card">
+
+          <span>
+            ACTIVE STUDENTS
+          </span>
+
+          <strong>
+            {{ activeStudentsCount }}
+          </strong>
+
+          <p>
+            Currently active
+          </p>
+
+        </div>
+
+
+        <!-- GUIDE PENDING -->
+        <div class="summary-card pending-card">
+
+          <span>
+            GUIDE PENDING
+          </span>
+
+          <strong>
+            {{ pendingGuideCount }}
+          </strong>
+
+          <p>
+            Guide not assigned
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- STUDENT TABLE -->
+      <section class="students-card">
+
+
+        <!-- TABLE HEADER -->
+        <div class="table-header">
+
+          <div>
+
+            <span>
+              STUDENT DIRECTORY
+            </span>
+
+            <h2>
+              All Students
+            </h2>
+
+          </div>
+
+
+          <!-- SEARCH -->
+          <div class="search-box">
+
+            <span>
+              🔍
+            </span>
+
+            <input
+              type="text"
+              placeholder="Search student..."
+              [(ngModel)]="searchText">
+
+          </div>
+
+        </div>
+
+
+        <!-- TABLE -->
+        <div class="table-wrapper">
+
+          <table>
+
+            <thead>
+
+              <tr>
+
+                <th>STUDENT</th>
+
+                <th>REGISTER NUMBER</th>
+
+                <th>DEPARTMENT</th>
+
+                <th>PROJECT GUIDE</th>
+
+                <th>PROJECT</th>
+
+                <th>STATUS</th>
+
+                <th>ACTION</th>
+
+              </tr>
+
+            </thead>
+
+
+            <tbody>
+
+              @for (
+                student of filteredStudents;
+                track student.id
+              ) {
+
+                <tr>
+
+
+                  <!-- STUDENT -->
+                  <td>
+
+                    <div class="student-name">
+
+                      <div class="student-avatar">
+
+                        {{ student.name.charAt(0) }}
+
+                      </div>
+
+
+                      <div>
+
+                        <strong>
+                          {{ student.name }}
+                        </strong>
+
+                        <small>
+                          {{ student.email }}
+                        </small>
+
+                      </div>
+
+                    </div>
+
+                  </td>
+
+
+                  <!-- REGISTER NUMBER -->
+                  <td>
+
+                    {{ student.registerNumber }}
+
+                  </td>
+
+
+                  <!-- DEPARTMENT -->
+                  <td>
+
+                    {{ student.department }}
+
+                  </td>
+
+
+                  <!-- GUIDE -->
+                  <td>
+
+                    <span
+                      class="guide-name"
+                      [class.not-assigned]="
+                        student.guide === 'Not Assigned'
+                      ">
+
+                      {{ student.guide }}
+
+                    </span>
+
+                  </td>
+
+
+                  <!-- PROJECT -->
+                  <td>
+
+                    {{ student.project }}
+
+                  </td>
+
+
+                  <!-- STATUS -->
+                  <td>
+
+                    <span
+                      class="status"
+                      [class.pending]="
+                        student.status === 'Pending'"
+                         [class.active]="student.status === 'Active'">
+
+                      {{ student.status }}
+
+                    </span>
+
+                  </td>
+
+
+                  <!-- DELETE -->
+                  <td>
+
+                    <button
+                      type="button"
+                      class="delete-button"
+                      (click)="deleteStudent(student.id)">
+
+                      Delete
+
+                    </button>
+
+                  </td>
+
+
+                </tr>
+
+              } @empty {
+
+                <tr>
+
+                  <td
+                    colspan="7"
+                    class="empty-state">
+
+                    No students found.
+
+                  </td>
+
+                </tr>
+
+              }
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+</div>

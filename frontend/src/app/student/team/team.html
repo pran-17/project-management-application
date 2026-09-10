@@ -1,0 +1,521 @@
+<div class="team-layout">
+
+  <!-- SIDEBAR -->
+
+  <app-sidebar></app-sidebar>
+
+
+  <!-- MAIN CONTENT -->
+
+  <main class="main-content">
+
+    <app-header></app-header>
+
+
+    <div class="team-content">
+
+      <!-- PAGE HEADER -->
+
+      <section class="page-header">
+
+        <div>
+
+          <span class="page-label">
+            
+          </span>
+
+          <h1>
+            My Team
+          </h1>
+
+          <p>
+            View your team members, responsibilities and individual progress.
+          </p>
+
+        </div>
+
+
+        <div class="project-type-card">
+
+          <span>
+            PROJECT TYPE
+          </span>
+
+          <strong>
+            {{ projectType }}
+          </strong>
+
+        </div>
+
+      </section>
+
+
+      <!-- PROJECT INFORMATION -->
+
+      <section class="project-banner">
+
+        <div class="project-banner-left">
+
+          <div class="project-icon">
+            AI
+          </div>
+
+          <div>
+
+            <span class="small-label">
+              CURRENT PROJECT
+            </span>
+
+            <h2>
+              {{ projectName }}
+            </h2>
+
+            <div class="project-meta">
+
+              <span>
+                Team ID: {{ teamId }}
+              </span>
+
+              <span>•</span>
+
+              <span>
+                Guide: {{ guide }}
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="guide-section">
+
+          <span>
+            PROJECT GUIDE
+          </span>
+
+          <strong>
+            {{ guide }}
+          </strong>
+
+        </div>
+
+      </section>
+
+
+      <!-- TEAM STATISTICS -->
+
+      <section class="stats-grid">
+
+        <div class="stat-card">
+
+          <div class="stat-icon blue">
+            👥
+          </div>
+
+          <div>
+
+            <span>
+              TEAM MEMBERS
+            </span>
+
+            <strong>
+              {{ teamStats.totalMembers }}
+            </strong>
+
+            <small>
+              Active members
+            </small>
+
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-icon green">
+            %
+          </div>
+
+          <div>
+
+            <span>
+              AVERAGE PROGRESS
+            </span>
+
+            <strong>
+              {{ teamStats.averageProgress }}%
+            </strong>
+
+            <small>
+              Overall team progress
+            </small>
+
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-icon purple">
+            ✓
+          </div>
+
+          <div>
+
+            <span>
+              COMPLETED TASKS
+            </span>
+
+            <strong>
+              {{ teamStats.completedTasks }}
+            </strong>
+
+            <small>
+              Team completed
+            </small>
+
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-icon orange">
+            ◷
+          </div>
+
+          <div>
+
+            <span>
+              PENDING TASKS
+            </span>
+
+            <strong>
+              {{ teamStats.pendingTasks }}
+            </strong>
+
+            <small>
+              Remaining tasks
+            </small>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- TEAM MEMBERS -->
+
+      <section class="members-section">
+
+        <div class="section-header">
+
+          <div>
+
+            <span class="section-label">
+         
+            </span>
+
+            <h2>
+              Team Members & Responsibilities
+            </h2>
+
+          </div>
+
+          <span class="member-count">
+            {{ teamMembers.length }} Members
+          </span>
+
+        </div>
+
+
+        <div class="member-grid">
+
+          @for (
+            member of teamMembers;
+            track member.registerNumber
+          ) {
+
+            <div class="member-card">
+
+              <!-- CARD HEADER -->
+
+              <div class="member-card-header">
+
+                <div class="member-profile">
+
+                  <div class="member-avatar">
+                    {{ member.initials }}
+                  </div>
+
+                  <div>
+
+                    <h3>
+                      {{ member.name }}
+                    </h3>
+
+                    <span>
+                      {{ member.registerNumber }}
+                    </span>
+
+                  </div>
+
+                </div>
+
+
+                <span
+                  class="status-badge"
+                  [class]="getStatusClass(member.status)">
+
+                  <span class="status-dot"></span>
+
+                  {{ member.status }}
+
+                </span>
+
+              </div>
+
+
+              <!-- ROLE -->
+
+              <div class="member-role">
+
+                <span>
+                  ROLE
+                </span>
+
+                <strong>
+                  {{ member.role }}
+                </strong>
+
+              </div>
+
+
+              <!-- MODULE -->
+
+              <div class="module-box">
+
+                <span>
+                  ASSIGNED MODULE
+                </span>
+
+                <strong>
+                  {{ member.module }}
+                </strong>
+
+              </div>
+
+
+              <!-- PROGRESS -->
+
+              <div class="member-progress-section">
+
+                <div class="progress-header">
+
+                  <span>
+                    Individual Progress
+                  </span>
+
+                  <strong>
+                    {{ member.progress }}%
+                  </strong>
+
+                </div>
+
+
+                <div class="progress-track">
+
+                  <div
+                    class="progress-fill"
+                    [style.width.%]="member.progress">
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <!-- CURRENT TASK -->
+
+              <div class="current-task">
+
+                <span>
+                  CURRENT TASK
+                </span>
+
+                <strong>
+                  {{ member.currentTask }}
+                </strong>
+
+              </div>
+
+
+              <!-- TASK COUNTS -->
+
+              <div class="task-summary">
+
+                <div>
+
+                  <strong>
+                    {{ member.completedTasks }}
+                  </strong>
+
+                  <span>
+                    Completed
+                  </span>
+
+                </div>
+
+
+                <div>
+
+                  <strong>
+                    {{ member.pendingTasks }}
+                  </strong>
+
+                  <span>
+                    Pending
+                  </span>
+
+                </div>
+
+              </div>
+
+
+              <!-- VIEW BUTTON -->
+
+              <button
+                type="button"
+                class="view-button">
+
+                View Work Details
+                <span>→</span>
+
+              </button>
+
+            </div>
+
+          }
+
+        </div>
+
+      </section>
+
+
+      <!-- TEAM PROGRESS -->
+
+      <section class="team-progress-card">
+
+        <div class="section-header">
+
+          <div>
+
+            <span class="section-label">
+           
+            </span>
+
+            <h2>
+              Team Progress Overview
+            </h2>
+
+          </div>
+
+          <span class="average-badge">
+            Average: {{ teamStats.averageProgress }}%
+          </span>
+
+        </div>
+
+
+        <div class="progress-list">
+
+          @for (
+            member of teamMembers;
+            track member.registerNumber
+          ) {
+
+            <div class="progress-member">
+
+              <div class="progress-member-info">
+
+                <div class="small-avatar">
+                  {{ member.initials }}
+                </div>
+
+                <div>
+
+                  <strong>
+                    {{ member.name }}
+                  </strong>
+
+                  <span>
+                    {{ member.module }}
+                  </span>
+
+                </div>
+
+              </div>
+
+
+              <div class="large-progress">
+
+                <div class="large-progress-track">
+
+                  <div
+                    class="large-progress-fill"
+                    [style.width.%]="member.progress">
+                  </div>
+
+                </div>
+
+                <strong>
+                  {{ member.progress }}%
+                </strong>
+
+              </div>
+
+            </div>
+
+          }
+
+        </div>
+
+      </section>
+
+
+      <!-- TEAM GUIDELINE -->
+
+      <section class="information-box">
+
+        <div class="information-icon">
+          i
+        </div>
+
+        <div>
+
+          <h3>
+            Team Project Guidelines
+          </h3>
+
+          <p>
+            Each team member is responsible for completing their assigned
+            module and submitting work updates regularly. Your teacher can
+            review individual contributions, provide remarks and approve
+            completed project phases.
+          </p>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+</div>

@@ -1,0 +1,269 @@
+<div class="page-layout">
+
+  <app-admin-sidebar></app-admin-sidebar>
+
+  <main class="admin-main">
+
+    <app-header></app-header>
+
+    <div class="page-content">
+
+      <div class="page-heading">
+
+        <div>
+          <span class="page-label">
+            PROJECT MANAGEMENT
+          </span>
+
+          <h1>
+            Project Phases
+          </h1>
+
+          <p>
+            Create and manage department-specific project phases and schedules.
+          </p>
+        </div>
+
+        <button class="add-phase-btn" type="button" (click)="openAddForm()">
+          <span>+</span>
+          Add Phase
+        </button>
+
+      </div>
+
+      @if (errorMessage && !showForm) {
+        <p class="form-error">{{ errorMessage }}</p>
+      }
+
+      <div class="summary-grid">
+
+        <div class="summary-card">
+          <div class="summary-icon blue">◫</div>
+          <div>
+            <span>Total Phases</span>
+            <strong>{{ totalPhases }}</strong>
+          </div>
+        </div>
+
+        <div class="summary-card">
+          <div class="summary-icon green">✓</div>
+          <div>
+            <span>Completed</span>
+            <strong>{{ completedCount }}</strong>
+          </div>
+        </div>
+
+        <div class="summary-card">
+          <div class="summary-icon orange">◷</div>
+          <div>
+            <span>Active</span>
+            <strong>{{ activeCount }}</strong>
+          </div>
+        </div>
+
+        <div class="summary-card">
+          <div class="summary-icon purple">→</div>
+          <div>
+            <span>Upcoming</span>
+            <strong>{{ upcomingCount }}</strong>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="phase-table-card">
+
+        <div class="phase-table-header">
+          <span>PHASE NO</span>
+          <span>PHASE NAME</span>
+          <span>DEPARTMENT</span>
+          <span>START DATE</span>
+          <span>END DATE</span>
+          <span>STATUS</span>
+          <span>ACTIONS</span>
+        </div>
+
+        @for (phase of phases; track phase.id) {
+          <div class="phase-table-row">
+            <strong>Phase {{ phase.phaseNumber }}</strong>
+            <span>{{ phase.phaseName }}</span>
+            <span>{{ phase.department }}</span>
+            <span>{{ formatDate(phase.startDate) }}</span>
+            <span>{{ formatDate(phase.endDate) }}</span>
+            <span class="status" [ngClass]="statusClass(phase.status)">{{ phase.status }}</span>
+            <div class="row-actions">
+              <button type="button" (click)="selectPhase(phase)">View</button>
+              <button type="button" (click)="openEditForm(phase)">Edit</button>
+              <button type="button" (click)="toggleActive(phase)">
+                {{ phase.status === 'Active' ? 'Deactivate' : 'Activate' }}
+              </button>
+              <button type="button" class="danger" (click)="deletePhase(phase)">Delete</button>
+            </div>
+          </div>
+        }
+
+        @if (!isLoading && phases.length === 0) {
+          <p class="empty-copy">No project phases yet. Use Add Phase to create a department schedule.</p>
+        }
+
+      </div>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+@if (showForm) {
+
+  <div class="modal-overlay" (click)="closeForm()">
+
+    <div class="phase-modal" (click)="$event.stopPropagation()">
+
+      <div class="modal-header">
+        <div>
+          <span>{{ editingId ? 'EDIT PHASE' : 'ADD PHASE' }}</span>
+          <h2>{{ editingId ? 'Update Project Phase' : 'Create Project Phase' }}</h2>
+        </div>
+        <button class="close-btn" type="button" (click)="closeForm()">×</button>
+      </div>
+
+      <div class="modal-content">
+
+        @if (errorMessage) {
+          <p class="form-error">{{ errorMessage }}</p>
+        }
+
+        <div class="form-grid">
+
+          <div class="form-group">
+            <label>Phase Number</label>
+            <input type="number" min="1" [(ngModel)]="form.phaseNumber">
+          </div>
+
+          <div class="form-group">
+            <label>Phase Name</label>
+            <input type="text" [(ngModel)]="form.phaseName" placeholder="Research & Planning">
+          </div>
+
+          <div class="form-group full">
+            <label>Description</label>
+            <textarea rows="3" [(ngModel)]="form.description" placeholder="Phase description"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Department *</label>
+            <select [(ngModel)]="form.department">
+              <option value="">Select Department</option>
+              @for (department of departments; track department) {
+                <option [value]="department">{{ department }}</option>
+              }
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Status</label>
+            <select [(ngModel)]="form.status">
+              <option value="Upcoming">Upcoming</option>
+              <option value="Active">Active</option>
+              <option value="Inactive">Inactive</option>
+              <option value="Completed">Completed</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Start Date</label>
+            <input type="date" [(ngModel)]="form.startDate">
+          </div>
+
+          <div class="form-group">
+            <label>End Date</label>
+            <input type="date" [(ngModel)]="form.endDate">
+          </div>
+
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="view-phase-btn" (click)="closeForm()">Cancel</button>
+          <button type="button" class="add-phase-btn" [disabled]="isSaving" (click)="savePhase()">
+            {{ isSaving ? 'Saving...' : (editingId ? 'Update Phase' : 'Create Phase') }}
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+}
+
+
+@if (selectedPhase) {
+
+  <div class="modal-overlay" (click)="closeDetails()">
+
+    <div class="phase-modal" (click)="$event.stopPropagation()">
+
+      <div class="modal-header">
+
+        <div>
+          <span>PHASE {{ selectedPhase.phaseNumber }}</span>
+          <h2>{{ selectedPhase.phaseName }}</h2>
+        </div>
+
+        <button class="close-btn" type="button" (click)="closeDetails()">×</button>
+
+      </div>
+
+      <div class="modal-content">
+
+        <div class="modal-section">
+          <h3>Phase Details</h3>
+          <p>{{ selectedPhase.description || 'No description provided.' }}</p>
+          <p><strong>{{ selectedPhase.department }}</strong></p>
+        </div>
+
+        <div class="modal-stats">
+          <div>
+            <span>Tasks</span>
+            <strong>{{ selectedPhase.taskCount }}</strong>
+          </div>
+          <div>
+            <span>Completed</span>
+            <strong>{{ selectedPhase.completedTasks }}</strong>
+          </div>
+          <div>
+            <span>Progress</span>
+            <strong>{{ selectedPhase.progress }}%</strong>
+          </div>
+        </div>
+
+        <div class="modal-section">
+          <h3>Schedule</h3>
+          <div class="schedule-row">
+            <div>
+              <span>Start Date</span>
+              <strong>{{ formatDate(selectedPhase.startDate) }}</strong>
+            </div>
+            <div>
+              <span>End Date</span>
+              <strong>{{ formatDate(selectedPhase.endDate) }}</strong>
+            </div>
+          </div>
+        </div>
+
+        <p>Status: {{ selectedPhase.status }}</p>
+        <p>
+          In Progress: {{ selectedPhase.inProgressTasks }} |
+          Pending: {{ selectedPhase.pendingTasks }}
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+}

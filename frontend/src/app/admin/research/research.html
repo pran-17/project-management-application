@@ -1,0 +1,841 @@
+<div class="admin-layout">
+
+  <app-admin-sidebar></app-admin-sidebar>
+
+
+  <main class="admin-main">
+
+    <div class="page-content">
+
+
+      <!-- PAGE HEADER -->
+
+      <section class="page-header">
+
+        <div>
+
+          <span class="page-label">
+            RESEARCH MANAGEMENT
+          </span>
+
+          <h1>
+            Research Projects
+          </h1>
+
+          <p>
+            Manage research projects, investigators and project funding.
+          </p>
+
+        </div>
+
+
+        <button class="add-project-btn" (click)="openAddForm()">
+
+          <span>+</span>
+
+          Add Research Project
+
+        </button>
+
+      </section>
+
+
+      <!-- SUMMARY CARDS -->
+
+      <section class="summary-grid">
+
+
+        <div class="summary-card">
+
+          <span>
+            TOTAL PROJECTS
+          </span>
+
+          <strong>
+            {{ projects.length }}
+          </strong>
+
+          <p>
+            Research projects registered
+          </p>
+
+        </div>
+
+
+        <div class="summary-card ongoing-card">
+
+          <span>
+            ONGOING PROJECTS
+          </span>
+
+          <strong>
+            {{ ongoingProjectsCount }}
+          </strong>
+
+          <p>
+            Currently in progress
+          </p>
+
+        </div>
+
+
+        <div class="summary-card completed-card">
+
+          <span>
+            COMPLETED PROJECTS
+          </span>
+
+          <strong>
+            {{ completedProjectsCount }}
+          </strong>
+
+          <p>
+            Successfully completed
+          </p>
+
+        </div>
+
+
+        <div class="summary-card funding-card">
+
+          <span>
+            TOTAL FUNDING
+          </span>
+
+          <strong>
+            ₹{{ totalFunding }}
+          </strong>
+
+          <p>
+            Total research budget
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- FILTERS -->
+
+      <section class="filter-card">
+
+
+        <div class="search-box">
+
+          <span>
+            🔍
+          </span>
+
+          <input
+            type="text"
+            [(ngModel)]="searchText"
+            placeholder="Search project or investigator...">
+
+        </div>
+
+
+        <select [(ngModel)]="selectedDepartment">
+
+          <option value="All">
+            All Departments
+          </option>
+
+          <option value="Computer Science">
+            Computer Science
+          </option>
+
+          <option value="Information Technology">
+            Information Technology
+          </option>
+
+          <option value="Electronics">
+            Electronics
+          </option>
+
+        </select>
+
+      </section>
+
+
+      <!-- PROJECT LIST -->
+
+      <section class="projects-section">
+
+
+        <div class="section-heading">
+
+          <div>
+
+            <span>
+              RESEARCH DIRECTORY
+            </span>
+
+            <h2>
+              All Research Projects
+            </h2>
+
+          </div>
+
+
+          <strong>
+            {{ filteredProjects.length }} Projects
+          </strong>
+
+        </div>
+
+
+        <div class="projects-grid">
+
+
+          @for (
+            project of filteredProjects;
+            track project.id
+          ) {
+
+            <div class="project-card">
+
+
+              <!-- PROJECT HEADER -->
+
+              <div class="project-top">
+
+                <div>
+
+                  <span class="research-id">
+
+                    {{ project.researchId }}
+
+                  </span>
+
+
+                  <h3>
+
+                    {{ project.title }}
+
+                  </h3>
+
+                </div>
+
+
+                <span
+                  class="project-status"
+                  [class.completed]="
+                    project.status === 'Completed'
+                  "
+                  [class.pending]="
+                    project.status === 'Pending'
+                  ">
+
+                  {{ project.status }}
+
+                </span>
+
+              </div>
+
+
+              <!-- PROJECT INFORMATION -->
+
+              <div class="project-info">
+
+
+                <div class="info-row">
+
+                  <span>
+                    PRINCIPAL INVESTIGATOR
+                  </span>
+
+                  <strong>
+
+                    {{ project.principalInvestigator?.name || 'Not Assigned' }}
+
+                  </strong>
+
+                </div>
+
+
+                <div class="info-row">
+
+                  <span>
+                    DEPARTMENT
+                  </span>
+
+                  <strong>
+
+                    {{ project.department }}
+
+                  </strong>
+
+                </div>
+
+
+                <div class="info-row">
+
+                  <span>
+                    FUNDING AGENCY
+                  </span>
+
+                  <strong>
+
+                    {{ project.fundingAgency }}
+
+                  </strong>
+
+                </div>
+
+
+                <div class="info-row">
+
+                  <span>
+                    PROJECT BUDGET
+                  </span>
+
+                  <strong>
+
+                    ₹{{ project.budget }}
+
+                  </strong>
+
+                </div>
+
+
+                <div class="info-row">
+
+                  <span>
+                    DURATION
+                  </span>
+
+                  <strong>
+
+                    {{ project.duration }}
+
+                  </strong>
+
+                </div>
+
+              </div>
+
+
+              <!-- PROGRESS -->
+
+              <div class="progress-section">
+
+                <div class="progress-header">
+
+                  <span>
+                    Project Progress
+                  </span>
+
+                  <strong>
+
+                    {{ project.progress }}%
+
+                  </strong>
+
+                </div>
+
+
+                <div class="progress-track">
+
+                  <div
+                    class="progress-fill"
+                    [style.width.%]="project.progress">
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <!-- ACTIONS -->
+
+              <div class="project-actions">
+
+                <button
+  type="button"
+  class="view-btn"
+  (click)="viewProject(project)">
+
+                  View Details →
+
+                </button>
+
+  
+
+
+                <button
+                  type="button"
+                  class="delete-btn"
+                  (click)="deleteProject(project.id)">
+
+                  Delete
+
+                </button>
+
+              </div>
+
+
+            </div>
+
+          }
+
+        </div>
+
+      </section>
+
+    </div>
+<!-- RESEARCH PROJECT DETAILS MODAL -->
+
+@if (showDetails && selectedProject) {
+
+  <div
+    class="details-overlay"
+    (click)="closeDetails()">
+
+    <div
+      class="details-modal"
+      (click)="$event.stopPropagation()">
+
+
+      <!-- HEADER -->
+
+      <div class="details-header">
+
+        <div>
+
+          <span class="details-label">
+            {{ selectedProject.researchId }}
+          </span>
+
+          <h2>
+            {{ selectedProject.title }}
+          </h2>
+
+          <p>
+            Research Project Details & Team Members
+          </p>
+
+        </div>
+
+
+        <button
+          type="button"
+          class="close-details-btn"
+          (click)="closeDetails()">
+
+          ✕
+
+        </button>
+
+      </div>
+
+
+      <!-- PROJECT INFORMATION -->
+
+      <section class="details-section">
+
+        <h3>
+          Project Information
+        </h3>
+
+
+        <div class="details-grid">
+
+
+          <div class="detail-item">
+
+            <span>
+              Principal Investigator
+            </span>
+
+            <strong>
+              {{ selectedProject.principalInvestigator?.name || 'Not Assigned' }}
+            </strong>
+
+          </div>
+
+
+          <div class="detail-item">
+
+            <span>
+              Department
+            </span>
+
+            <strong>
+              {{ selectedProject.department }}
+            </strong>
+
+          </div>
+
+
+          <div class="detail-item">
+
+            <span>
+              Funding Agency
+            </span>
+
+            <strong>
+              {{ selectedProject.fundingAgency }}
+            </strong>
+
+          </div>
+
+
+          <div class="detail-item">
+
+            <span>
+              Project Budget
+            </span>
+
+            <strong>
+              ₹{{ selectedProject.budget }}
+            </strong>
+
+          </div>
+
+
+          <div class="detail-item">
+
+            <span>
+              Duration
+            </span>
+
+            <strong>
+              {{ selectedProject.duration }}
+            </strong>
+
+          </div>
+
+
+          <div class="detail-item">
+
+            <span>
+              Status
+            </span>
+
+            <strong>
+              {{ selectedProject.status }}
+            </strong>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- PROJECT PROGRESS -->
+
+      <section class="details-section">
+
+        <div class="progress-title">
+
+          <h3>
+            Project Progress
+          </h3>
+
+          <strong>
+            {{ selectedProject.progress }}%
+          </strong>
+
+        </div>
+
+
+        <div class="details-progress-bar">
+
+          <div
+            class="details-progress-fill"
+            [style.width.%]="selectedProject.progress">
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- TEAM DETAILS -->
+
+      <section class="details-section">
+
+        <div class="team-heading">
+
+          <div>
+
+            <h3>
+              Students Involved
+            </h3>
+
+            <p>
+              {{ selectedProject.team.length }} students are involved in this research project
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="team-list">
+
+
+          @for (
+            member of selectedProject.team;
+            track member.id
+          ) {
+
+            <div class="team-member">
+
+
+              <div class="member-avatar">
+
+                {{ member.name.charAt(0) }}
+
+              </div>
+
+
+              <div class="member-info">
+
+                <strong>
+                  {{ member.name }}
+                </strong>
+
+                <span>
+                  {{ member.registerNumber }}
+                </span>
+
+                <small>
+                  {{ member.email }}
+                </small>
+
+              </div>
+
+
+              <span class="member-role">
+
+                {{ member.role }}
+
+              </span>
+
+
+            </div>
+
+          } @empty {
+
+            <div class="no-team">
+
+              No students assigned to this research project.
+
+            </div>
+
+          }
+
+
+        </div>
+
+      </section>
+
+
+      <!-- FOOTER -->
+
+      <div class="details-footer">
+
+        <button
+          type="button"
+          class="close-modal-btn"
+          (click)="closeDetails()">
+
+          Close
+
+        </button>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+}
+
+@if (showAddForm) {
+
+  <div class="details-overlay" (click)="closeAddForm()">
+
+    <div class="details-modal research-form-modal" (click)="$event.stopPropagation()">
+
+      <div class="details-header">
+        <div>
+          <span class="details-label">NEW RESEARCH PROJECT</span>
+          <h2>Add Research Project</h2>
+        </div>
+
+        <button class="close-btn" (click)="closeAddForm()">✕</button>
+      </div>
+
+      <form (ngSubmit)="submitResearchProject()" class="research-form">
+
+        <div class="research-form-row">
+          <div class="research-form-field">
+            <label>Research ID <span class="required">*</span></label>
+            <input type="text" name="researchId" [(ngModel)]="newResearch.researchId" placeholder="e.g. RES2026001" />
+          </div>
+
+          <div class="research-form-field">
+            <label>Status</label>
+            <select name="status" [(ngModel)]="newResearch.status">
+              <option value="Pending">Pending</option>
+              <option value="Ongoing">Ongoing</option>
+              <option value="Completed">Completed</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="research-form-field">
+          <label>Research Title <span class="required">*</span></label>
+          <input type="text" name="title" [(ngModel)]="newResearch.title" placeholder="e.g. AI-Based Smart Healthcare System" />
+        </div>
+
+        <div class="research-form-field">
+          <label>Description</label>
+          <textarea name="description" [(ngModel)]="newResearch.description" rows="3" placeholder="Briefly describe the research project"></textarea>
+        </div>
+
+        <div class="research-form-row">
+          <div class="research-form-field">
+            <label>Research Area</label>
+            <input type="text" name="researchArea" [(ngModel)]="newResearch.researchArea" placeholder="e.g. Artificial Intelligence" />
+          </div>
+
+          <div class="research-form-field">
+            <label>Department <span class="required">*</span></label>
+            <input type="text" name="department" [(ngModel)]="newResearch.department" placeholder="e.g. Computer Science" />
+          </div>
+        </div>
+
+        <div class="research-form-field">
+          <label>Principal Investigator <span class="required">*</span></label>
+          <select name="pi" [(ngModel)]="newResearch.principalInvestigatorId">
+            <option value="" disabled selected>Select a teacher</option>
+            @for (t of allTeachers; track t.id) {
+              <option [value]="t.id">{{ t.name }} ({{ t.employeeId }})</option>
+            }
+          </select>
+        </div>
+
+        <div class="research-form-row">
+          <div class="research-form-field">
+            <label>Funding Agency</label>
+            <input type="text" name="fundingAgency" [(ngModel)]="newResearch.fundingAgency" placeholder="e.g. DST" />
+          </div>
+
+          <div class="research-form-field">
+            <label>Budget (₹)</label>
+            <input type="number" name="budget" [(ngModel)]="newResearch.budget" placeholder="500000" />
+          </div>
+        </div>
+
+        <div class="research-form-row">
+          <div class="research-form-field">
+            <label>Start Date</label>
+            <input type="date" name="startDate" [(ngModel)]="newResearch.startDate" />
+          </div>
+
+          <div class="research-form-field">
+            <label>End Date</label>
+            <input type="date" name="endDate" [(ngModel)]="newResearch.endDate" />
+          </div>
+        </div>
+
+        <!-- RESEARCH TEACHERS -->
+        <div class="research-team-section">
+          <label>Research Teachers</label>
+
+          <input
+            type="text"
+            name="teacherSearch"
+            [(ngModel)]="teacherSearchText"
+            placeholder="Search teacher by name or employee ID" />
+
+          @if (filteredTeacherResults.length > 0) {
+            <div class="search-results">
+              @for (t of filteredTeacherResults; track t.id) {
+                <div class="search-result-row" (click)="addTeacherToTeam(t)">
+                  <strong>{{ t.name }}</strong>
+                  <span>{{ t.employeeId }} · {{ t.department }}</span>
+                </div>
+              }
+            </div>
+          }
+
+          @if (selectedTeachers.length > 0) {
+            <div class="chip-list">
+              @for (t of selectedTeachers; track t.id) {
+                <div class="chip">
+                  {{ t.name }}
+                  <button type="button" (click)="removeTeacherFromTeam(t.id)">✕</button>
+                </div>
+              }
+            </div>
+          }
+        </div>
+
+        <!-- RESEARCH STUDENTS -->
+        <div class="research-team-section">
+          <label>Research Students</label>
+
+          <input
+            type="text"
+            name="studentSearch"
+            [(ngModel)]="studentSearchText"
+            placeholder="Search student by name or register number" />
+
+          @if (filteredStudentResults.length > 0) {
+            <div class="search-results">
+              @for (s of filteredStudentResults; track s.id) {
+                <div class="search-result-row" (click)="addStudentToTeam(s)">
+                  <strong>{{ s.name }}</strong>
+                  <span>{{ s.registerNumber }} · {{ s.department }}</span>
+                </div>
+              }
+            </div>
+          }
+
+          @if (selectedStudents.length > 0) {
+            <div class="chip-list">
+              @for (s of selectedStudents; track s.id) {
+                <div class="chip">
+                  {{ s.name }} ({{ s.registerNumber }})
+                  <button type="button" (click)="removeStudentFromTeam(s.id)">✕</button>
+                </div>
+              }
+            </div>
+          }
+        </div>
+
+        @if (formError) {
+          <p class="research-form-error">{{ formError }}</p>
+        }
+
+        <div class="research-form-actions">
+          <button type="submit" class="btn-primary" [disabled]="isSaving">
+            {{ isSaving ? 'Creating...' : 'Create Research Project' }}
+          </button>
+
+          <button type="button" class="btn-secondary" (click)="closeAddForm()">
+            Cancel
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+}
+  </main>
+
+
+  
+
+</div>

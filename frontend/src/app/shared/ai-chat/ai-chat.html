@@ -1,0 +1,168 @@
+<!-- Floating AI Button -->
+
+<button
+  class="ai-floating-button"
+  type="button"
+  (click)="toggleChat()"
+  [attr.aria-label]="isOpen ? 'Close AI Assistant' : 'Open AI Assistant'">
+
+  <span *ngIf="!isOpen">🤖</span>
+  <span *ngIf="isOpen">✕</span>
+
+</button>
+
+
+<!-- Chat Window -->
+
+<div
+  class="chat-window"
+  *ngIf="isOpen">
+
+
+  <!-- Header -->
+
+  <div class="chat-header">
+
+    <div class="ai-info">
+
+      <div class="ai-avatar">
+        🤖
+      </div>
+
+      <div>
+
+        <h3>AI Assistant</h3>
+
+        <span class="online-status">
+
+          <span class="status-dot"></span>
+
+          
+
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div class="header-actions">
+
+      <button
+        class="clear-button"
+        type="button"
+        title="Clear chat"
+        (click)="clearChat()">
+
+        🗑
+
+      </button>
+
+      <button
+        class="close-button"
+        type="button"
+        (click)="toggleChat()">
+
+        ✕
+
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- Messages -->
+
+  <div
+    class="chat-messages"
+    #chatMessages>
+
+
+    <!-- Welcome suggestions -->
+
+    <div
+      class="suggestions"
+      *ngIf="messages.length === 1 && messages[0].sender === 'bot'">
+
+      <p>Try asking:</p>
+
+      <button
+        *ngFor="let question of getSuggestedQuestions()"
+        type="button"
+        class="suggestion-button"
+        (click)="askQuestion(question)">
+
+        {{ question }}
+
+      </button>
+
+    </div>
+
+
+    <!-- Chat messages -->
+
+    <div
+      *ngFor="let chat of messages"
+      class="message-row"
+      [class.user-row]="chat.sender === 'user'"
+      [class.bot-row]="chat.sender === 'bot'">
+
+
+      <div
+        class="message"
+        [class.user-message]="chat.sender === 'user'"
+        [class.bot-message]="chat.sender === 'bot'">
+
+        {{ chat.text }}
+
+      </div>
+
+    </div>
+
+
+    <!-- Loading -->
+
+    <div
+      class="message-row bot-row"
+      *ngIf="isLoading">
+
+      <div class="message bot-message typing">
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- Input -->
+
+  <div class="chat-input-area">
+
+    <textarea
+      [(ngModel)]="message"
+      (keydown)="handleEnter($event)"
+      placeholder="Ask about your project..."
+      rows="1"
+      [disabled]="isLoading">
+    </textarea>
+
+
+    <button
+      type="button"
+      class="send-button"
+      (click)="sendMessage()"
+      [disabled]="!message.trim() || isLoading">
+
+      ➤
+
+    </button>
+
+  </div>
+
+</div>

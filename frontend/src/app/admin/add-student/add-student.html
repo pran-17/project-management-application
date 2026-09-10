@@ -1,0 +1,331 @@
+<div class="admin-layout">
+
+  <app-admin-sidebar></app-admin-sidebar>
+
+  <main class="admin-main">
+
+    <!-- PAGE HEADER -->
+
+    <section class="page-header">
+
+      <div class="header-left">
+
+        <a
+          routerLink="/admin/students"
+          class="back-button">
+
+          ← Back to Students
+
+        </a>
+
+        <span class="page-label">
+          STUDENT MANAGEMENT
+        </span>
+
+        <h1>
+          Add New Student
+        </h1>
+
+        <p>
+          Register a new student in the project management system.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- FORM CARD -->
+
+    <section class="form-card">
+
+      <div class="form-card-header">
+
+        <div class="form-icon">
+          👨‍🎓
+        </div>
+
+        <div>
+
+          <h2>
+            Student Information
+          </h2>
+
+          <p>
+            Enter the student's personal and academic information.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <form
+        #studentForm="ngForm"
+        (ngSubmit)="saveStudent()">
+
+
+        <!-- PERSONAL INFORMATION -->
+
+        <div class="form-section">
+
+          <h3>
+            Personal Information
+          </h3>
+
+          <div class="form-grid">
+
+
+            <!-- NAME -->
+
+            <div class="form-group">
+
+              <label>
+                Full Name <span>*</span>
+              </label>
+
+              <input
+                type="text"
+                name="name"
+                [(ngModel)]="newStudent.name"
+                placeholder="Enter student name"
+                required>
+
+            </div>
+
+
+            <!-- REGISTER NUMBER -->
+
+            <div class="form-group">
+
+              <label>
+                Register Number <span>*</span>
+              </label>
+
+              <input
+                type="text"
+                name="registerNumber"
+                [(ngModel)]="newStudent.registerNumber"
+                placeholder="Enter register number"
+                required>
+
+            </div>
+
+
+            <!-- EMAIL -->
+
+            <div class="form-group">
+
+              <label>
+                Email Address <span>*</span>
+              </label>
+
+              <input
+                type="email"
+                name="email"
+                [(ngModel)]="newStudent.email"
+                placeholder="student@email.com"
+                required>
+
+            </div>
+
+            <div class="form-group">
+
+  <label>
+    Password <span>*</span>
+  </label>
+
+  <input
+    type="password"
+    name="password"
+    [(ngModel)]="newStudent.password"
+    placeholder="Enter password"
+    required>
+
+</div>
+
+
+            <!-- PHONE -->
+
+            <div class="form-group">
+
+              <label>
+                Phone Number
+              </label>
+
+              <input
+                type="text"
+                name="phone"
+                [(ngModel)]="newStudent.phone"
+                placeholder="Enter phone number">
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- ACADEMIC INFORMATION -->
+
+        <div class="form-section">
+
+          <h3>
+            Academic Information
+          </h3>
+
+          <div class="form-grid">
+
+
+            <!-- DEPARTMENT -->
+
+            <div class="form-group">
+
+              <label>
+                Department <span>*</span>
+              </label>
+
+              <select
+                name="department"
+                [(ngModel)]="newStudent.department"
+                required>
+
+                <option value="">
+                  Select Department
+                </option>
+
+                <option value="Computer Science">
+                  Computer Science
+                </option>
+
+                <option value="Information Technology">
+                  Information Technology
+                </option>
+
+                <option value="Artificial Intelligence">
+                  Artificial Intelligence
+                </option>
+
+                <option value="Electronics">
+                  Electronics
+                </option>
+
+                <option value="Mechanical">
+                  Mechanical
+                </option>
+
+              </select>
+
+            </div>
+
+
+            <!-- YEAR -->
+
+            <div class="form-group">
+
+              <label>
+                Year <span>*</span>
+              </label>
+
+              <select
+                name="year"
+                [(ngModel)]="newStudent.year"
+                required>
+
+                <option value="">
+                  Select Year
+                </option>
+
+                <option value="1st Year">
+                  1st Year
+                </option>
+
+                <option value="2nd Year">
+                  2nd Year
+                </option>
+
+                <option value="3rd Year">
+                  3rd Year
+                </option>
+
+                <option value="Final Year">
+                  Final Year
+                </option>
+
+              </select>
+
+            </div>
+
+
+            <!-- SECTION -->
+
+            <div class="form-group">
+
+              <label>
+                Status
+              </label>
+
+              <select
+                name="status"
+                [(ngModel)]="newStudent.status">
+
+
+                <option value="">
+                  Select Status
+                </option>
+
+                <option value="A">
+                  Section A
+                </option>
+
+                <option value="B">
+                  Section B
+                </option>
+
+                <option value="C">
+                  Section C
+                </option>
+
+              </select>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- ACTIONS -->
+
+        <div class="form-actions">
+
+          <button
+            type="button"
+            class="cancel-button"
+            (click)="cancel()">
+
+            Cancel
+
+          </button> 
+
+
+          <button
+            type="submit"
+            class="save-button"
+            [disabled]="studentForm.invalid">
+
+            <span>
+              + Add Student
+            </span>
+
+          </button>
+
+        </div>
+
+      </form>
+
+    </section>
+
+  </main>
+
+</div>

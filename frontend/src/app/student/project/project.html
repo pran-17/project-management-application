@@ -1,0 +1,774 @@
+<div class="project-layout">
+
+  <!-- SIDEBAR -->
+
+  <app-sidebar></app-sidebar>
+
+
+  <!-- MAIN CONTENT -->
+
+  <main class="main-content">
+
+    <app-header></app-header>
+
+
+    <div class="project-content">
+
+      @if (hasProject) {
+
+      <!-- PAGE HEADER -->
+
+      <section class="page-header">
+
+        <div>
+
+          <span class="page-label">
+            PROJECT MANAGEMENT
+          </span>
+
+          <h1>
+            My Project
+          </h1>
+
+          <p>
+            View your project information, team, phases and guide feedback.
+          </p>
+
+        </div>
+
+
+        <div class="project-id">
+
+          <span>
+            PROJECT ID
+          </span>
+
+          <strong>
+            {{ project.projectId }}
+          </strong>
+
+        </div>
+
+      </section>
+
+
+      <!-- PROJECT OVERVIEW -->
+
+      <section class="overview-card">
+
+        <div class="overview-top">
+
+          <div class="project-title-area">
+
+            <div class="project-logo">
+              AI
+            </div>
+
+            <div>
+
+              <span class="category">
+                {{ project.category }}
+              </span>
+
+              <h2>
+                {{ project.name }}
+              </h2>
+
+              <div class="project-type">
+
+                <span class="type-badge">
+                  {{ project.type }}
+                </span>
+
+                <span class="separator">
+                  •
+                </span>
+
+                <span>
+                  {{ project.department }}
+                </span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="status-badge">
+
+            <span class="status-dot"></span>
+
+            {{ project.status }}
+
+          </div>
+
+        </div>
+
+
+        <div class="overview-divider"></div>
+
+
+        <div class="overview-details">
+
+          <div class="detail-item">
+
+            <span class="detail-label">
+              PROJECT GUIDE
+            </span>
+
+            <strong>
+              {{ project.guide }}
+            </strong>
+
+          </div>
+
+
+          <div class="detail-item">
+
+            <span class="detail-label">
+              CO-GUIDE
+            </span>
+
+            <strong>
+              {{ project.coGuide }}
+            </strong>
+
+          </div>
+
+
+          <div class="detail-item">
+
+            <span class="detail-label">
+              START DATE
+            </span>
+
+            <strong>
+              {{ project.startDate }}
+            </strong>
+
+          </div>
+
+
+          <div class="detail-item">
+
+            <span class="detail-label">
+              EXPECTED COMPLETION
+            </span>
+
+            <strong>
+              {{ project.expectedCompletion }}
+            </strong>
+
+          </div>
+
+
+          <div class="detail-item">
+
+            <span class="detail-label">
+              TEAM SIZE
+            </span>
+
+            <strong>
+              {{ project.teamSize }} Members
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <div class="overall-progress">
+
+          <div class="progress-heading">
+
+            <span>
+              Overall Project Progress
+            </span>
+
+            <strong>
+              {{ project.progress }}%
+            </strong>
+
+          </div>
+
+          <div class="progress-track">
+
+            <div
+              class="progress-fill"
+              [style.width.%]="project.progress">
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- DESCRIPTION -->
+
+      <section class="content-grid">
+
+        <div class="content-card description-card">
+
+          <div class="card-heading">
+
+            <div class="heading-icon">
+              i
+            </div>
+
+            <div>
+
+              <h3>
+                Project Description
+              </h3>
+
+              <span>
+                About the project
+              </span>
+
+            </div>
+
+          </div>
+
+          <p class="description">
+            {{ project.description }}
+          </p>
+
+        </div>
+
+
+        <!-- GUIDE -->
+
+        <div class="content-card guide-card">
+
+          <div class="card-heading">
+
+            <div class="heading-icon guide-icon">
+              G
+            </div>
+
+            <div>
+
+              <h3>
+                Project Guide
+              </h3>
+
+              <span>
+                Assigned supervisor
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="guide-profile">
+
+            <div class="guide-avatar">
+              D
+            </div>
+
+            <div class="guide-details">
+
+              <strong>
+                {{ project.guide }}
+              </strong>
+
+              <span>
+                Project Guide
+              </span>
+
+              <small>
+                Computer Science & Engineering
+              </small>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- OBJECTIVES + TECHNOLOGIES -->
+
+      <section class="content-grid">
+
+        <div class="content-card">
+
+          <div class="card-heading">
+
+            <div class="heading-icon">
+              ✓
+            </div>
+
+            <div>
+
+              <h3>
+                Project Objectives
+              </h3>
+
+              <span>
+                Main goals of the project
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="objective-list">
+
+            @for (
+              objective of objectives;
+              track objective
+            ) {
+
+              <div class="objective-item">
+
+                <span class="check">
+                  ✓
+                </span>
+
+                <span>
+                  {{ objective }}
+                </span>
+
+              </div>
+
+            }
+
+          </div>
+
+        </div>
+
+
+        <div class="content-card">
+
+          <div class="card-heading">
+
+            <div class="heading-icon tech-icon">
+              &lt;/&gt;
+            </div>
+
+            <div>
+
+              <h3>
+                Technologies
+              </h3>
+
+              <span>
+                Technology stack
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="technology-list">
+
+            @for (
+              technology of technologies;
+              track technology
+            ) {
+
+              <span class="technology">
+                {{ technology }}
+              </span>
+
+            }
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- TEAM -->
+
+
+
+      <!-- PHASES -->
+
+      <section class="content-card phases-card">
+
+        <div class="section-header">
+
+          <div>
+
+            <span class="section-label">
+              PROJECT WORKFLOW
+            </span>
+
+            <h3>
+              Project Phases
+            </h3>
+
+          </div>
+
+          <span class="phase-progress">
+            {{ project.progress }}% Complete
+          </span>
+
+        </div>
+
+
+        <div class="phases">
+
+          @for (
+            phase of phases;
+            track phase.name;
+            let i = $index
+          ) {
+
+            <div
+              class="phase-item"
+              [class.completed]="phase.status === 'completed'"
+              [class.current]="phase.status === 'current'">
+
+
+              <div class="phase-number">
+
+                @if (phase.status === 'completed') {
+
+                  ✓
+
+                } @else {
+
+                  {{ getPhaseNumber(i) }}
+
+                }
+
+              </div>
+
+
+              <div class="phase-content">
+
+                <div class="phase-title-row">
+
+                  <h4>
+                    {{ phase.name }}
+                  </h4>
+
+                  @if (phase.status === 'completed') {
+
+                    <span class="phase-status completed-status">
+                      Completed
+                    </span>
+
+                  }
+
+                  @if (phase.status === 'current') {
+
+                    <span class="phase-status current-status">
+                      In Progress
+                    </span>
+
+                  }
+
+                  @if (phase.status === 'upcoming') {
+
+                    <span class="phase-status upcoming-status">
+                      Upcoming
+                    </span>
+
+                  }
+
+                </div>
+
+
+                <p>
+                  {{ phase.description }}
+                </p>
+
+
+                <div class="phase-dates">
+
+                  <span>
+                    {{ phase.startDate }}
+                  </span>
+
+                  <span>
+                    →
+                  </span>
+
+                  <span>
+                    {{ phase.endDate }}
+                  </span>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          }
+
+        </div>
+
+      </section>
+
+
+      <!-- REMARKS -->
+
+      <section class="content-card remarks-card">
+
+        <div class="section-header">
+
+          <div>
+
+            <span class="section-label">
+              GUIDE FEEDBACK
+            </span>
+
+            <h3>
+              Teacher Remarks
+            </h3>
+
+          </div>
+
+          <span class="remarks-label">
+            Latest Feedback
+          </span>
+
+        </div>
+
+
+        <div class="remarks-list">
+
+          @for (
+            remark of teacherRemarks;
+            track remark.date
+          ) {
+
+            <div class="remark">
+
+              <div class="remark-avatar">
+                D
+              </div>
+
+              <div class="remark-body">
+
+                <div class="remark-header">
+
+                  <strong>
+                    {{ remark.teacher }}
+                  </strong>
+
+                  <span>
+                    {{ remark.date }}
+                  </span>
+
+                </div>
+
+                <p>
+                  {{ remark.remark }}
+                </p>
+
+              </div>
+
+            </div>
+
+          }
+
+        </div>
+
+      </section>
+
+      }
+
+      @else {
+
+      <!-- NO PROJECT YET: ADD PROJECT FORM -->
+
+      <section class="page-header">
+
+        <div>
+          <span class="page-label">
+            PROJECT MANAGEMENT
+          </span>
+
+          <h1>
+            My Project
+          </h1>
+
+          <p>
+            You don't have a project yet. Create one to get started.
+          </p>
+        </div>
+
+      </section>
+
+      <section class="add-project-card">
+
+        @if (!showAddProjectForm) {
+
+          <div class="add-project-empty">
+            <button
+              type="button"
+              class="btn-primary"
+              (click)="showAddProjectForm = true">
+              + Add Project
+            </button>
+          </div>
+
+        }
+
+        @if (showAddProjectForm) {
+
+          <h2 class="add-project-heading">Add Your Project</h2>
+          <p class="add-project-subheading">Fill in the details below to create your final year project.</p>
+
+          <form (ngSubmit)="submitProject()" class="add-project-form">
+
+            <div class="form-field">
+              <label>Project Title <span class="required">*</span></label>
+              <input
+                type="text"
+                name="projectTitle"
+                [(ngModel)]="newProject.projectTitle"
+                placeholder="e.g. AI-Based Attendance Management System" />
+            </div>
+
+            <div class="form-field">
+              <label>Description</label>
+              <textarea
+                name="description"
+                [(ngModel)]="newProject.description"
+                placeholder="Briefly describe your project"
+                rows="3"></textarea>
+            </div>
+
+            <div class="form-row">
+              <div class="form-field">
+                <label>Department <span class="required">*</span></label>
+                <input
+                  type="text"
+                  name="department"
+                  [(ngModel)]="newProject.department"
+                  placeholder="e.g. Computer Science" />
+              </div>
+
+              <div class="form-field">
+                <label>Project Type <span class="required">*</span></label>
+                <select name="type" [(ngModel)]="newProject.type">
+                  <option value="Individual">Individual</option>
+                  <option value="Team">Team</option>
+                </select>
+              </div>
+            </div>
+
+            @if (newProject.type === 'Team') {
+
+              <div class="team-members-section">
+
+                <h3>Team Members</h3>
+                <p class="team-members-hint">Add teammates by their register number. Their details are fetched automatically.</p>
+
+                <div class="add-member-row">
+                  <input
+                    type="text"
+                    name="registerNumberInput"
+                    [(ngModel)]="registerNumberInput"
+                    placeholder="Enter student register number"
+                    (keydown.enter)="$event.preventDefault(); addTeamMemberByRegisterNumber()" />
+
+                  <button
+                    type="button"
+                    class="btn-secondary"
+                    [disabled]="isLookingUpMember"
+                    (click)="addTeamMemberByRegisterNumber()">
+                    {{ isLookingUpMember ? 'Looking up...' : '+ Add Member' }}
+                  </button>
+                </div>
+
+                @if (memberLookupError) {
+                  <p class="field-error">{{ memberLookupError }}</p>
+                }
+
+                @if (pendingTeamMembers.length > 0) {
+
+                  <div class="member-card-list">
+
+                    @for (member of pendingTeamMembers; track member.registerNumber) {
+
+                      <div class="member-card">
+
+                        <div class="member-card-header">
+                          <div class="member-avatar">{{ member.name.charAt(0) }}</div>
+
+                          <div class="member-info">
+                            <strong>{{ member.name }}</strong>
+                            <span>Register No: {{ member.registerNumber }}</span>
+                            <span>Department: {{ member.department }}</span>
+                          </div>
+
+                          <button type="button" class="remove-member-btn" (click)="removePendingMember($index)">
+                            Remove
+                          </button>
+                        </div>
+
+                        <div class="member-role-row">
+                          <div class="form-field">
+                            <label>Role</label>
+                            <select name="role-{{ $index }}" [(ngModel)]="member.role">
+                              @for (role of roleOptions; track role) {
+                                <option [value]="role">{{ role }}</option>
+                              }
+                            </select>
+                          </div>
+
+                          <div class="form-field">
+                            <label>Work / Responsibility</label>
+                            <input
+                              type="text"
+                              name="work-{{ $index }}"
+                              [(ngModel)]="member.work"
+                              placeholder="e.g. API Development" />
+                          </div>
+                        </div>
+
+                      </div>
+
+                    }
+
+                  </div>
+
+                }
+
+              </div>
+
+            }
+
+            @if (projectErrorMessage) {
+              <p class="field-error">{{ projectErrorMessage }}</p>
+            }
+
+            <div class="form-actions">
+              <button type="submit" class="btn-primary" [disabled]="isSavingProject">
+                {{ isSavingProject ? 'Creating...' : 'Create Project' }}
+              </button>
+
+              <button type="button" class="btn-secondary" (click)="showAddProjectForm = false">
+                Cancel
+              </button>
+            </div>
+
+          </form>
+
+        }
+
+      </section>
+
+      }
+
+    </div>
+
+  </main>
+
+</div>

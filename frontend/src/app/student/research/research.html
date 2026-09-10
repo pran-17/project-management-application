@@ -1,0 +1,454 @@
+<div class="page-layout">
+
+  <app-sidebar></app-sidebar>
+
+
+  <main class="main-content">
+
+    <app-header></app-header>
+
+
+    <div class="page-content">
+
+
+      <!-- HEADER -->
+
+      <div class="page-header">
+
+        <div>
+
+          <span>
+            RESEARCH MANAGEMENT
+          </span>
+
+          <h1>
+            Research Project
+          </h1>
+
+          <p>
+            View your research involvement, milestones and funding information.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- RESEARCH OVERVIEW -->
+
+      <section class="research-overview">
+
+
+        <div class="research-title">
+
+          <span>
+            RESEARCH PROJECT
+          </span>
+
+          <h2>
+            {{ researchProject.title }}
+          </h2>
+
+          <p>
+            {{ researchProject.researchArea }}
+          </p>
+
+          <span class="active-status">
+            {{ researchProject.status }}
+          </span>
+
+        </div>
+
+
+        <div class="research-details">
+
+
+          <div>
+
+            <span>
+              PROJECT GUIDE
+            </span>
+
+            <strong>
+              {{ researchProject.guide }}
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              START DATE
+            </span>
+
+            <strong>
+              {{ researchProject.startDate }}
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              EXPECTED COMPLETION
+            </span>
+
+            <strong>
+              {{ researchProject.expectedCompletion }}
+            </strong>
+
+          </div>
+
+
+        </div>
+
+
+      </section>
+
+
+      <!-- FUNDING -->
+
+      <section class="section">
+
+
+        <div class="section-header">
+
+          <div>
+
+            <span>
+              RESEARCH FUNDING
+            </span>
+
+            <h2>
+              Funding Overview
+            </h2>
+
+          </div>
+
+        </div>
+
+
+        <div class="funding-grid">
+
+
+          <div class="funding-card">
+
+            <span>
+              FUNDING AGENCY
+            </span>
+
+            <strong>
+              {{ researchProject.fundingAgency }}
+            </strong>
+
+          </div>
+
+
+          <div class="funding-card">
+
+            <span>
+              APPROVED FUNDING
+            </span>
+
+            <strong>
+              ₹{{ researchProject.approvedFunding | number }}
+            </strong>
+
+          </div>
+
+
+          <div class="funding-card">
+
+            <span>
+              AMOUNT RECEIVED
+            </span>
+
+            <strong>
+              ₹{{ researchProject.receivedFunding | number }}
+            </strong>
+
+          </div>
+
+
+          <div class="funding-card">
+
+            <span>
+              AMOUNT SPENT
+            </span>
+
+            <strong>
+              ₹{{ researchProject.spentFunding | number }}
+            </strong>
+
+          </div>
+
+
+          <div class="funding-card remaining">
+
+            <span>
+              REMAINING
+            </span>
+
+            <strong>
+              ₹{{ getRemainingFunding() | number }}
+            </strong>
+
+          </div>
+
+
+        </div>
+
+
+        <!-- FUNDING PROGRESS -->
+
+        <div class="funding-progress">
+
+
+          <div class="funding-progress-header">
+
+            <span>
+              FUND UTILIZATION
+            </span>
+
+            <strong>
+              {{ getFundingPercentage() }}%
+            </strong>
+
+          </div>
+
+
+          <div class="funding-track">
+
+            <div
+              [style.width.%]="getFundingPercentage()">
+            </div>
+
+          </div>
+
+
+          <p>
+            ₹{{ researchProject.spentFunding | number }}
+            used from
+            ₹{{ researchProject.receivedFunding | number }}
+            received.
+          </p>
+
+
+        </div>
+
+
+      </section>
+
+
+      <!-- RESEARCH TEAM -->
+
+      <section class="section">
+
+
+        <div class="section-header">
+
+          <div>
+
+            <span>
+              STUDENTS INVOLVED
+            </span>
+
+            <h2>
+              Research Team
+            </h2>
+
+          </div>
+
+          <span class="team-count">
+
+            {{ researchMembers.length }}
+            Students
+
+          </span>
+
+        </div>
+
+
+        <div class="research-team">
+
+
+          @for (
+            member of researchMembers;
+            track member.registerNumber
+          ) {
+
+
+            <div class="member-card">
+
+
+              <div class="member-avatar">
+
+                {{ member.name.charAt(0) }}
+
+              </div>
+
+
+              <div>
+
+                <strong>
+                  {{ member.name }}
+                </strong>
+
+                <span>
+                  {{ member.registerNumber }}
+                </span>
+
+                <small>
+                  {{ member.role }}
+                </small>
+
+              </div>
+
+
+            </div>
+
+          }
+
+
+        </div>
+
+
+      </section>
+
+
+      <!-- MILESTONES -->
+
+      <section class="section">
+
+
+        <div class="section-header">
+
+          <div>
+
+            <span>
+              RESEARCH WORKFLOW
+            </span>
+
+            <h2>
+              Research Milestones
+            </h2>
+
+          </div>
+
+        </div>
+
+
+        <div class="milestone-list">
+
+
+          @for (
+            milestone of milestones;
+            track milestone.title
+          ) {
+
+
+            <div class="milestone-card">
+
+
+              <div class="milestone-status"
+                [ngClass]="
+                  getMilestoneClass(
+                    milestone.status
+                  )
+                ">
+
+                @if (
+                  milestone.status === 'Completed'
+                ) {
+
+                  ✓
+
+                } @else {
+
+                  →
+
+                }
+
+              </div>
+
+
+              <div class="milestone-main">
+
+                <div class="milestone-header">
+
+                  <div>
+
+                    <h3>
+                      {{ milestone.title }}
+                    </h3>
+
+                    <p>
+                      {{ milestone.description }}
+                    </p>
+
+                  </div>
+
+
+                  <span
+                    class="milestone-badge"
+                    [ngClass]="
+                      getMilestoneClass(
+                        milestone.status
+                      )
+                    ">
+
+                    {{ milestone.status }}
+
+                  </span>
+
+                </div>
+
+
+                <div class="milestone-progress">
+
+                  <div class="milestone-track">
+
+                    <div
+                      [style.width.%]="
+                        milestone.progress
+                      ">
+                    </div>
+
+                  </div>
+
+                  <strong>
+                    {{ milestone.progress }}%
+                  </strong>
+
+                </div>
+
+
+                <span class="due-date">
+
+                  Due:
+                  {{ milestone.dueDate }}
+
+                </span>
+
+
+              </div>
+
+
+            </div>
+
+          }
+
+
+        </div>
+
+
+      </section>
+
+
+    </div>
+
+  </main>
+
+</div>

@@ -1,0 +1,559 @@
+<div class="page-layout">
+
+  <app-teacher-sidebar></app-teacher-sidebar>
+
+
+  <main class="main-content">
+
+    <app-header></app-header>
+
+
+    <div class="page-content">
+
+
+      <section class="page-header">
+
+        <div>
+
+          <span class="page-label">
+            PROJECT WORKFLOW
+          </span>
+
+          <h1>
+            Project Phases
+          </h1>
+
+          <p>
+            Monitor {{ department || 'your department' }} project phases and student completion.
+          </p>
+
+        </div>
+
+
+        <div class="phase-summary">
+
+          <div>
+
+            <strong>
+              {{ completedPhases }}
+            </strong>
+
+            <span>
+              Completed
+            </span>
+
+          </div>
+
+
+          <div>
+
+            <strong>
+              {{ activePhases }}
+            </strong>
+
+            <span>
+              Active
+            </span>
+
+          </div>
+
+
+          <div>
+
+            <strong>
+              {{ pendingPhases }}
+            </strong>
+
+            <span>
+              Upcoming
+            </span>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      @if (errorMessage) {
+        <p>{{ errorMessage }}</p>
+      }
+
+
+      <section class="phase-grid">
+
+
+        @for (
+          phase of phases;
+          track phase.id
+        ) {
+
+
+          <div class="phase-card">
+
+
+            <div class="phase-card-top">
+
+              <div class="phase-number">
+
+                {{ phase.phaseNumber }}
+
+              </div>
+
+
+              <span
+                class="phase-status"
+                [ngClass]="
+                  getPhaseClass(phase.status)
+                ">
+
+                {{ phase.status }}
+
+              </span>
+
+            </div>
+
+
+            <h2>
+              {{ phase.phaseName }}
+            </h2>
+
+
+            <p>
+              {{ phase.description }}
+            </p>
+
+            <p>
+              {{ phase.department }}
+            </p>
+
+
+            <div class="phase-dates">
+
+              <div>
+
+                <span>
+                  START DATE
+                </span>
+
+                <strong>
+                  {{ formatDate(phase.startDate) }}
+                </strong>
+
+              </div>
+
+
+              <div>
+
+                <span>
+                  DUE DATE
+                </span>
+
+                <strong>
+                  {{ formatDate(phase.endDate) }}
+                </strong>
+
+              </div>
+
+            </div>
+
+
+            <div class="progress-section">
+
+              <div class="progress-header">
+
+                <span>
+                  Overall Progress
+                </span>
+
+                <strong>
+                  {{ phase.progress }}%
+                </strong>
+
+              </div>
+
+
+              <div class="progress-track">
+
+                <div
+                  [style.width.%]="phase.progress">
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="student-completion">
+
+              <span>
+                Tasks / Completed
+              </span>
+
+              <strong>
+
+                {{ phase.completedTasks }}
+
+                /
+
+                {{ phase.taskCount }}
+
+              </strong>
+
+            </div>
+
+
+            <button
+              type="button"
+              class="view-phase-button"
+              (click)="openPhase(phase)">
+
+              View Phase Details
+
+              <span>
+                →
+              </span>
+
+            </button>
+
+
+          </div>
+
+        }
+
+
+      </section>
+
+
+      <section class="submissions-section">
+
+
+        <div class="section-header">
+
+          <div>
+
+            <span>
+              STUDENT WORK
+            </span>
+
+            <h2>
+              Recent Phase Work
+            </h2>
+
+            <p>
+              Review work submitted by students assigned to you.
+            </p>
+
+          </div>
+
+
+          <a
+            routerLink="/teacher/review"
+            class="review-link">
+
+            Open Work Review →
+
+          </a>
+
+        </div>
+
+
+
+        <div class="submission-table">
+
+
+          <div class="submission-header">
+
+            <span>
+              STUDENT
+            </span>
+
+            <span>
+              PROJECT
+            </span>
+
+            <span>
+              PHASE
+            </span>
+
+            <span>
+              TASK
+            </span>
+
+            <span>
+              PROGRESS
+            </span>
+
+            <span>
+              STATUS
+            </span>
+
+          </div>
+
+
+          @for (
+            submission of submissions;
+            track submission.id
+          ) {
+
+
+            <div class="submission-row">
+
+
+              <div class="student-info">
+
+                <div class="student-avatar">
+
+                  {{ (submission.studentName || '?').charAt(0) }}
+
+                </div>
+
+
+                <div>
+
+                  <strong>
+                    {{ submission.studentName }}
+                  </strong>
+
+                  <span>
+                    {{ submission.registerNumber }}
+                  </span>
+
+                </div>
+
+              </div>
+
+
+              <div class="project-info">
+
+                <strong>
+                  {{ submission.projectTitle }}
+                </strong>
+
+              </div>
+
+
+              <div class="phase-info">
+
+                {{ submission.phaseLabel }}
+
+              </div>
+
+
+              <div class="task-info">
+
+                {{ submission.title }}
+
+              </div>
+
+
+              <div class="submission-progress">
+
+                <strong>
+                  {{ submission.progress }}%
+                </strong>
+
+                <div class="mini-track">
+
+                  <div
+                    [style.width.%]="submission.progress">
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <div>
+
+                <span
+                  class="submission-status"
+                  [ngClass]="
+                    getSubmissionClass(
+                      submission.status
+                    )
+                  ">
+
+                  {{ submission.status }}
+
+                </span>
+
+              </div>
+
+
+            </div>
+
+          }
+
+
+        </div>
+
+      </section>
+
+
+
+    </div>
+
+  </main>
+
+</div>
+
+
+@if (selectedPhase) {
+
+
+  <div
+    class="modal-backdrop"
+    (click)="closePhase()">
+
+
+    <div
+      class="phase-modal"
+      (click)="$event.stopPropagation()">
+
+
+      <div class="modal-header">
+
+        <div>
+
+          <span>
+            PHASE {{ selectedPhase.phaseNumber }}
+          </span>
+
+          <h2>
+            {{ selectedPhase.phaseName }}
+          </h2>
+
+        </div>
+
+
+        <button
+          type="button"
+          class="close-button"
+          (click)="closePhase()">
+
+          ×
+
+        </button>
+
+      </div>
+
+
+      <div class="modal-progress">
+
+        <div class="modal-progress-header">
+
+          <span>
+            Phase Progress
+          </span>
+
+          <strong>
+            {{ selectedPhase.progress }}%
+          </strong>
+
+        </div>
+
+
+        <div class="modal-track">
+
+          <div
+            [style.width.%]="selectedPhase.progress">
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="modal-info-grid">
+
+
+        <div>
+
+          <span>
+            START DATE
+          </span>
+
+          <strong>
+            {{ formatDate(selectedPhase.startDate) }}
+          </strong>
+
+        </div>
+
+
+        <div>
+
+          <span>
+            DUE DATE
+          </span>
+
+          <strong>
+            {{ formatDate(selectedPhase.endDate) }}
+          </strong>
+
+        </div>
+
+
+        <div>
+
+          <span>
+            TASKS COMPLETED
+          </span>
+
+          <strong>
+
+            {{ selectedPhase.completedTasks }}
+
+            /
+
+            {{ selectedPhase.taskCount }}
+
+          </strong>
+
+        </div>
+
+
+        <div>
+
+          <span>
+            STATUS
+          </span>
+
+          <strong
+            [class.active-text]="
+              selectedPhase.status === 'Active'
+            "
+            [class.completed-text]="
+              selectedPhase.status === 'Completed'
+            ">
+
+            {{ selectedPhase.status }}
+          </strong>
+
+        </div>
+
+
+      </div>
+
+      <p>{{ selectedPhase.description }}</p>
+      <p>{{ selectedPhase.department }}</p>
+      <p>
+        In Progress: {{ selectedPhase.inProgressTasks }} |
+        Pending: {{ selectedPhase.pendingTasks }}
+      </p>
+
+      @for (task of phaseTasks; track task.id) {
+        <div class="submission-row">
+          <div>
+            <strong>{{ task.studentName }}</strong>
+            <div>{{ task.title }}</div>
+          </div>
+          <div>{{ task.status }} · {{ task.progress }}%</div>
+        </div>
+      }
+
+
+    </div>
+
+  </div>
+
+}

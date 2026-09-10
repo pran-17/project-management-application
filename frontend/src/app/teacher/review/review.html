@@ -1,0 +1,668 @@
+<div class="review-layout">
+
+  <app-teacher-sidebar></app-teacher-sidebar>
+
+
+  <main class="main-content">
+
+    <app-header></app-header>
+
+
+    <div class="review-content">
+
+      <section class="page-header">
+
+        <div>
+
+          <span class="page-label">
+            TEACHER WORKSPACE
+          </span>
+
+          <h1>
+            Work Review
+          </h1>
+
+          <p>
+            Review student work submissions and provide feedback.
+          </p>
+
+        </div>
+
+
+        <div class="guide-badge">
+
+          <span>
+            PROJECT GUIDE
+          </span>
+
+          <strong>
+            {{ guideName || 'My Students' }}
+          </strong>
+
+        </div>
+
+      </section>
+
+      @if (errorMessage && !selectedSubmission) {
+        <p>{{ errorMessage }}</p>
+      }
+
+
+      <section class="stats-grid">
+
+        <div class="stat-card">
+
+          <div class="stat-icon review-icon">
+            ◷
+          </div>
+
+          <div>
+
+            <span>
+              UNDER REVIEW
+            </span>
+
+            <strong>
+              {{ getReviewCount() }}
+            </strong>
+
+            <small>
+              Awaiting review
+            </small>
+
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-icon approved-icon">
+            ✓
+          </div>
+
+          <div>
+
+            <span>
+              COMPLETED
+            </span>
+
+            <strong>
+              {{ getApprovedCount() }}
+            </strong>
+
+            <small>
+              Approved submissions
+            </small>
+
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-icon changes-icon">
+            !
+          </div>
+
+          <div>
+
+            <span>
+              IN PROGRESS
+            </span>
+
+            <strong>
+              {{ getChangesCount() }}
+            </strong>
+
+            <small>
+              Need student changes
+            </small>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <section class="filter-section">
+
+        <span class="filter-title">
+          FILTER
+        </span>
+
+
+        <button
+          type="button"
+          [class.active]="filter === 'All'"
+          (click)="filter = 'All'">
+          All
+        </button>
+
+
+        <button
+          type="button"
+          [class.active]="filter === 'Under Review'"
+          (click)="filter = 'Under Review'">
+          Under Review
+        </button>
+
+
+        <button
+          type="button"
+          [class.active]="filter === 'Completed'"
+          (click)="filter = 'Completed'">
+          Completed
+        </button>
+
+
+        <button
+          type="button"
+          [class.active]="filter === 'In Progress'"
+          (click)="filter = 'In Progress'">
+          In Progress
+        </button>
+
+
+        <button
+          type="button"
+          [class.active]="filter === 'Pending'"
+          (click)="filter = 'Pending'">
+          Pending
+        </button>
+
+      </section>
+
+
+      <section class="submission-section">
+
+        <div class="section-header">
+
+          <div>
+
+            <span class="section-label">
+              STUDENT SUBMISSIONS
+            </span>
+
+            <h2>
+              Assigned Student Work
+            </h2>
+
+          </div>
+
+          <span class="submission-count">
+            {{ filteredSubmissions.length }} Tasks
+          </span>
+
+        </div>
+
+
+        <div class="submission-list">
+
+          @for (
+            submission of filteredSubmissions;
+            track submission.id
+          ) {
+
+            <div class="submission-card">
+
+              <div class="submission-top">
+
+                <div class="student-profile">
+
+                  <div class="student-avatar">
+                    {{ (submission.studentName || '?').charAt(0) }}
+                  </div>
+
+                  <div>
+
+                    <h3>
+                      {{ submission.studentName }}
+                    </h3>
+
+                    <span>
+                      {{ submission.registerNumber }}
+                    </span>
+
+                  </div>
+
+                </div>
+
+
+                <span
+                  class="status-badge"
+                  [class]="getStatusClass(submission.status)">
+
+                  <span class="status-dot"></span>
+
+                  {{ submission.status }}
+
+                </span>
+
+              </div>
+
+
+              <div class="project-info">
+
+                <div>
+
+                  <span>
+                    PROJECT
+                  </span>
+
+                  <strong>
+                    {{ submission.projectTitle }}
+                  </strong>
+
+                </div>
+
+
+                <div>
+
+                  <span>
+                    PRIORITY
+                  </span>
+
+                  <strong>
+                    {{ submission.priority }}
+                  </strong>
+
+                </div>
+
+
+                <div>
+
+                  <span>
+                    PHASE
+                  </span>
+
+                  <strong>
+                    {{ submission.phaseLabel }}
+                  </strong>
+
+                </div>
+
+              </div>
+
+
+              <div class="task-info">
+
+                <span>
+                  TASK
+                </span>
+
+                <h4>
+                  {{ submission.title }}
+                </h4>
+
+              </div>
+
+
+              <div class="submission-progress">
+
+                <div class="progress-header">
+
+                  <span>
+                    Student reported progress
+                  </span>
+
+                  <strong>
+                    {{ submission.progress }}%
+                  </strong>
+
+                </div>
+
+
+                <div class="progress-track">
+
+                  <div
+                    class="progress-fill"
+                    [style.width.%]="submission.progress">
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <div class="submission-bottom">
+
+                <div class="submitted-date">
+
+                  <span>
+                    DUE DATE
+                  </span>
+
+                  <strong>
+                    {{ formatDate(submission.dueDate) }}
+                  </strong>
+
+                </div>
+
+
+                <button
+                  type="button"
+                  class="review-button"
+                  (click)="openSubmission(submission)">
+
+                  Review Submission
+
+                  <span>
+                    →
+                  </span>
+
+                </button>
+
+              </div>
+
+            </div>
+
+          }
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+@if (selectedSubmission) {
+
+  <div
+    class="modal-overlay"
+    (click)="closeSubmission()">
+
+
+    <div
+      class="review-modal"
+      (click)="$event.stopPropagation()">
+
+
+      <div class="modal-header">
+
+        <div>
+
+          <span>
+            STUDENT WORK REVIEW
+          </span>
+
+          <h2>
+            {{ selectedSubmission.title }}
+          </h2>
+
+        </div>
+
+
+        <button
+          type="button"
+          class="close-button"
+          (click)="closeSubmission()">
+
+          ×
+
+        </button>
+
+      </div>
+
+
+      <div class="modal-body">
+
+        <div class="student-review-profile">
+
+          <div class="large-avatar">
+            {{ (selectedSubmission.studentName || '?').charAt(0) }}
+          </div>
+
+          <div>
+
+            <h3>
+              {{ selectedSubmission.studentName }}
+            </h3>
+
+            <span>
+              {{ selectedSubmission.registerNumber }}
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <div class="review-details">
+
+          <div>
+
+            <span>
+              PROJECT
+            </span>
+
+            <strong>
+              {{ selectedSubmission.projectTitle }}
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              PHASE
+            </span>
+
+            <strong>
+              {{ selectedSubmission.phaseLabel }}
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              PRIORITY
+            </span>
+
+            <strong>
+              {{ selectedSubmission.priority }}
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              DUE DATE
+            </span>
+
+            <strong>
+              {{ formatDate(selectedSubmission.dueDate) }}
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              SUBMITTED
+            </span>
+
+            <strong>
+              {{ formatDate(selectedSubmission.submittedAt) }}
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              REVIEWED
+            </span>
+
+            <strong>
+              {{ formatDate(selectedSubmission.reviewedAt) }}
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <div class="work-box">
+
+          <span>
+            TASK DESCRIPTION
+          </span>
+
+          <p>
+            {{ selectedSubmission.description || '-' }}
+          </p>
+
+        </div>
+
+
+        <div class="work-box">
+
+          <span>
+            STUDENT WORK DESCRIPTION
+          </span>
+
+          <p>
+            {{ selectedSubmission.studentWork || 'No work submitted yet.' }}
+          </p>
+
+        </div>
+
+
+        <div class="student-remark">
+
+          <span>
+            STUDENT REMARK
+          </span>
+
+          <p>
+            {{ selectedSubmission.studentRemark || '-' }}
+          </p>
+
+        </div>
+
+
+        <div class="review-progress">
+
+          <div class="progress-header">
+
+            <span>
+              Progress
+            </span>
+
+            <strong>
+              {{ reviewProgress }}%
+            </strong>
+
+          </div>
+
+
+          <div class="progress-track">
+
+            <div
+              class="progress-fill"
+              [style.width.%]="reviewProgress">
+            </div>
+
+          </div>
+
+          <input type="range" min="0" max="100" step="5" [(ngModel)]="reviewProgress">
+
+        </div>
+
+        <div class="remark-form">
+          <label>Review Status</label>
+          <select [(ngModel)]="reviewStatus">
+            <option value="Pending">Pending</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Under Review">Under Review</option>
+            <option value="Completed">Completed</option>
+          </select>
+        </div>
+
+
+        <div class="remark-form">
+
+          <label>
+            Teacher Remark
+          </label>
+
+          <textarea
+            [(ngModel)]="teacherRemark"
+            rows="5"
+            placeholder="Enter your feedback, approval comments or changes required from the student...">
+          </textarea>
+
+        </div>
+
+
+        @if (reviewMessage) {
+
+          <div class="review-message">
+
+            {{ reviewMessage }}
+
+          </div>
+
+        }
+
+        @if (errorMessage) {
+          <div class="review-message">{{ errorMessage }}</div>
+        }
+
+
+        <div class="review-actions">
+
+          <button
+            type="button"
+            class="changes-button"
+            [disabled]="isSaving"
+            (click)="requestChanges()">
+
+            Request Changes
+
+          </button>
+
+          <button
+            type="button"
+            class="changes-button"
+            [disabled]="isSaving"
+            (click)="saveReview()">
+
+            Save Review
+
+          </button>
+
+
+          <button
+            type="button"
+            class="approve-button"
+            [disabled]="isSaving"
+            (click)="approveSubmission()">
+
+            ✓ Approve Work
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+}

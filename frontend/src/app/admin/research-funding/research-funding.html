@@ -1,0 +1,467 @@
+<div class="admin-layout">
+
+  <app-admin-sidebar></app-admin-sidebar>
+
+
+  <main class="admin-main">
+
+    <div class="page-content">
+
+
+      <!-- PAGE HEADER -->
+
+      <section class="page-header">
+
+        <div>
+
+          <span class="page-label">
+            RESEARCH & FINANCE
+          </span>
+
+          <h1>
+            Research Funding
+          </h1>
+
+          <p>
+            Monitor research grants, budget utilization and available funds.
+          </p>
+
+        </div>
+
+
+        <button
+          type="button"
+          class="add-funding-btn">
+
+          <span>+</span>
+
+          Add Funding
+
+        </button>
+
+      </section>
+
+
+      <!-- FINANCIAL OVERVIEW -->
+
+      <section class="finance-overview">
+
+
+        <div class="finance-main-card">
+
+          <div class="finance-card-header">
+
+            <div>
+
+              <span>
+                TOTAL RESEARCH BUDGET
+              </span>
+
+              <h2>
+                ₹{{ totalFunding }}
+              </h2>
+
+              <p>
+                Combined funding across all research projects
+              </p>
+
+            </div>
+
+
+            <div class="money-icon">
+              ₹
+            </div>
+
+          </div>
+
+
+          <div class="budget-bar">
+
+            <div
+              class="budget-utilized"
+              [style.width.%]="
+                totalFunding
+                  ? (utilizedFunding / totalFunding) * 100
+                  : 0
+              ">
+
+            </div>
+
+          </div>
+
+
+          <div class="budget-details">
+
+            <div>
+
+              <span>
+                UTILIZED
+              </span>
+
+              <strong>
+                ₹{{ utilizedFunding }}
+              </strong>
+
+            </div>
+
+
+            <div>
+
+              <span>
+                AVAILABLE
+              </span>
+
+              <strong>
+                ₹{{ remainingFunding }}
+              </strong>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- SIDE STATS -->
+
+        <div class="finance-side-stats">
+
+
+          <div class="mini-stat active-funding">
+
+            <span class="mini-icon">
+              ✓
+            </span>
+
+            <div>
+
+              <strong>
+                {{ activeFundingCount }}
+              </strong>
+
+              <span>
+                Active Grants
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="mini-stat total-grants">
+
+            <span class="mini-icon">
+              ◈
+            </span>
+
+            <div>
+
+              <strong>
+                {{ fundings.length }}
+              </strong>
+
+              <span>
+                Total Grants
+              </span>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </section>
+
+
+      <!-- SEARCH -->
+
+      <section class="filter-card">
+
+        <div class="search-box">
+
+          <span>
+            🔍
+          </span>
+
+          <input
+            type="text"
+            [(ngModel)]="searchText"
+            placeholder="Search funding, project or investigator...">
+
+        </div>
+
+
+        <span class="results-count">
+
+          {{ filteredFundings.length }} Funding Records
+
+        </span>
+
+      </section>
+
+
+      <!-- FUNDING RECORDS -->
+
+      <section class="funding-section">
+
+
+        <div class="section-heading">
+
+          <div>
+
+            <span>
+              FUNDING DIRECTORY
+            </span>
+
+            <h2>
+              Research Grant Records
+            </h2>
+
+          </div>
+
+        </div>
+
+
+        <div class="funding-list">
+
+
+          @for (
+            funding of filteredFundings;
+            track funding.id
+          ) {
+
+            <div class="funding-card">
+
+
+              <!-- TOP -->
+
+              <div class="funding-top">
+
+
+                <div class="funding-title">
+
+                  <span class="funding-id">
+
+                    {{ funding.fundingId }}
+
+                  </span>
+
+
+                  <h3>
+
+                    {{ funding.projectTitle }}
+
+                  </h3>
+
+
+                  <p>
+
+                    {{ funding.fundingAgency }}
+
+                  </p>
+
+                </div>
+
+
+                <span
+                  class="funding-status"
+                  [class.completed]="
+                    funding.status === 'Completed'
+                  ">
+
+                  {{ funding.status }}
+
+                </span>
+
+
+              </div>
+
+
+              <!-- INFORMATION -->
+
+              <div class="funding-info">
+
+
+                <div>
+
+                  <span>
+                    PRINCIPAL INVESTIGATOR
+                  </span>
+
+                  <strong>
+
+                    {{ funding.principalInvestigator }}
+
+                  </strong>
+
+                </div>
+
+
+                <div>
+
+                  <span>
+                    DEPARTMENT
+                  </span>
+
+                  <strong>
+
+                    {{ funding.department }}
+
+                  </strong>
+
+                </div>
+
+
+                <div>
+
+                  <span>
+                    FUNDING PERIOD
+                  </span>
+
+                  <strong>
+
+                    {{ funding.startDate }} - {{ funding.endDate }}
+
+                  </strong>
+
+                </div>
+
+              </div>
+
+
+              <!-- FINANCIAL BREAKDOWN -->
+
+              <div class="financial-breakdown">
+
+
+                <div class="amount-item total-amount">
+
+                  <span>
+                    TOTAL GRANT
+                  </span>
+
+                  <strong>
+
+                    ₹{{ funding.totalAmount }}
+
+                  </strong>
+
+                </div>
+
+
+                <div class="amount-item used-amount">
+
+                  <span>
+                    UTILIZED
+                  </span>
+
+                  <strong>
+
+                    ₹{{ funding.utilizedAmount }}
+
+                  </strong>
+
+                </div>
+
+
+                <div class="amount-item available-amount">
+
+                  <span>
+                    AVAILABLE
+                  </span>
+
+                  <strong>
+
+                    ₹{{ funding.remainingAmount }}
+
+                  </strong>
+
+                </div>
+
+              </div>
+
+
+              <!-- UTILIZATION -->
+
+              <div class="utilization-section">
+
+
+                <div class="utilization-header">
+
+                  <span>
+                    Budget Utilization
+                  </span>
+
+                  <strong>
+
+                    {{ getUtilizationPercentage(funding) }}%
+
+                  </strong>
+
+                </div>
+
+
+                <div class="utilization-track">
+
+                  <div
+                    class="utilization-fill"
+                    [style.width.%]="
+                      getUtilizationPercentage(funding)
+                    ">
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <!-- ACTIONS -->
+
+              <div class="funding-actions">
+
+
+                <button
+                  type="button"
+                  class="view-btn">
+
+                  View Details →
+
+                </button>
+
+
+                <button
+                  type="button"
+                  class="delete-btn"
+                  (click)="deleteFunding(funding.id)">
+
+                  Delete
+
+                </button>
+
+              </div>
+
+
+            </div>
+
+          } @empty {
+
+            <div class="empty-state">
+
+              No funding records found.
+
+            </div>
+
+          }
+
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+</div>

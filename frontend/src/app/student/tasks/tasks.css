@@ -1,0 +1,1974 @@
+:host {
+  display: block;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+/* =========================
+   PAGE LAYOUT
+========================= */
+
+.tasks-layout {
+  min-height: 100vh;
+}
+
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+.main-content {
+  margin-left: 245px;
+  min-height: 100vh;
+}
+
+
+/* =========================
+   TASK CONTENT
+========================= */
+
+.tasks-content {
+  max-width: 1600px;
+  margin: auto;
+  padding: 32px 34px 55px;
+}
+
+
+/* =========================
+   PAGE HEADER
+========================= */
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 25px;
+
+  margin-bottom: 25px;
+}
+
+
+.page-label {
+  display: block;
+
+  margin-bottom: 7px;
+
+font-size: 13px;
+  font-weight: 700;
+
+  letter-spacing: 1.3px;
+}
+
+
+.page-header h1 {
+  margin: 0;
+
+font-size: 32px;
+  font-weight: 700;
+}
+
+
+.page-header p {
+  margin: 8px 0 0;
+
+font-size: 15px;
+
+  line-height: 1.6;
+}
+
+
+/* =========================
+   PHASE BADGE
+========================= */
+
+.phase-badge {
+  padding: 14px 18px;
+
+  border: 1px solid #99F6E4;
+
+  border-radius: 10px;
+
+display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+
+  white-space: nowrap;
+}
+
+
+.phase-badge span {
+font-size: 12px;
+  font-weight: 700;
+}
+
+
+.phase-badge strong {
+font-size: 15px;
+}
+
+
+/* =========================
+   STATS
+========================= */
+
+.stats-grid {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 17px;
+
+  margin-bottom: 25px;
+}
+
+
+.stat-card {
+  padding: 20px;
+
+border: 1px solid #CCFBF1;
+
+  border-radius: 13px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+}
+
+
+.stat-icon {
+  width: 48px;
+  height: 48px;
+
+  flex-shrink: 0;
+
+  border-radius: 11px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 20px;
+  font-weight: 700;
+}
+
+
+.completed-icon {
+color: #1a816e;
+}
+
+
+.progress-icon {
+color: #111111;
+}
+
+
+.review-icon {
+color: #0f2ef5;
+}
+
+
+.pending-icon {
+color: #111111;
+}
+
+
+.stat-card > div:last-child {
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+
+.stat-card span {
+font-size: 12px;
+  font-weight: 700;
+}
+
+
+.stat-card strong {
+font-size: 28px;
+
+  line-height: 1;
+}
+
+
+.stat-card small {
+font-size: 14px;
+}
+
+
+/* =========================
+   FILTER
+========================= */
+
+.filter-section {
+  padding: 15px 18px;
+
+border: 1px solid #CCFBF1;
+
+  border-radius: 11px;
+
+  margin-bottom: 25px;
+}
+
+
+.filter-left {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  flex-wrap: wrap;
+}
+
+
+.filter-label {
+font-size: 12px;
+  font-weight: 700;
+
+  margin-right: 5px;
+}
+
+
+.filter-left button {
+  padding: 9px 15px;
+
+  border: 1px solid #99F6E4;
+
+  border-radius: 7px;
+
+color: #111111;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: .2s ease;
+}
+
+
+.filter-left button:hover {
+color: #111111;
+
+}
+
+
+.filter-left button.active {
+border-color: #111111;
+
+}
+
+
+/* =========================
+   SECTION
+========================= */
+
+.section-header {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-bottom: 17px;
+}
+
+
+.section-label {
+  display: block;
+
+  margin-bottom: 5px;
+
+font-size: 12px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.1px;
+}
+
+
+.section-header h2 {
+  margin: 0;
+
+font-size: 22px;
+
+  font-weight: 700;
+}
+
+
+.task-count {
+  padding: 8px 12px;
+
+  border-radius: 20px;
+
+color: #111111;
+
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+
+/* =========================
+   TASK LIST
+========================= */
+
+.task-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 17px;
+}
+
+
+.task-card {
+  padding: 22px;
+
+border: 1px solid #CCFBF1;
+
+  border-radius: 14px;
+
+  transition: box-shadow .2s ease,
+              border-color .2s ease;
+}
+
+
+.task-card:hover {
+}
+
+
+.task-top {
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+
+.task-title-area {
+  display: flex;
+
+  align-items: center;
+
+  gap: 13px;
+}
+
+
+.task-number {
+  width: 42px;
+  height: 42px;
+
+  flex-shrink: 0;
+
+  border-radius: 10px;
+
+color: #111111;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  font-size: 15px;
+
+  font-weight: 700;
+}
+
+
+.task-title-area h3 {
+  margin: 0 0 6px;
+
+font-size: 18px;
+
+  font-weight: 700;
+}
+
+
+.task-meta {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+font-size: 13px;
+}
+
+
+.task-badges {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+
+.priority-badge,
+.status-badge {
+  padding: 7px 11px;
+
+  border-radius: 20px;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  white-space: nowrap;
+color: #066bdf;
+}
+
+
+.priority-badge.high {
+color: #111111;
+}
+
+
+.priority-badge.medium {
+color: #111111;
+}
+
+
+.priority-badge.low {
+color: #111111;
+}
+
+
+.status-badge {
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+}
+
+
+.status-badge.completed {
+color: #16a34a;
+}
+
+
+.status-badge.review {
+color: #0918f3;
+}
+
+
+.status-badge.progress {
+color: #0a3bec;
+}
+
+
+.status-badge.pending {
+color: #111111;
+}
+
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+}
+
+
+/* =========================
+   DESCRIPTION
+========================= */
+.task-description {
+  margin: 18px 0;
+
+  max-width: 1000px;
+
+font-size: 16px;
+
+  line-height: 1.8;
+}
+
+/* =========================
+   PROGRESS
+========================= */
+
+.task-progress {
+  margin-bottom: 20px;
+}
+
+
+.progress-heading {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-bottom: 8px;
+}
+
+
+.progress-heading span {
+font-size: 13px;
+}
+
+
+.progress-heading strong {
+font-size: 14px;
+}
+
+
+.progress-track {
+  height: 9px;
+
+border-radius: 20px;
+
+  overflow: hidden;
+}
+
+
+.progress-fill {
+  height: 100%;
+
+border-radius: 20px;
+
+  transition: width .3s ease;
+}
+
+
+/* =========================
+   BOTTOM
+========================= */
+
+/* =========================
+   TASK CARD BOTTOM
+========================= */
+
+.task-bottom {
+  padding-top: 17px;
+  border-top: 1px solid #e3edf8;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+  width: 100%;
+}
+
+.dates {
+  display: flex;
+  gap: 35px;
+}
+
+.dates > div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.dates span {
+font-size: 14px;
+  font-weight: 700;
+}
+
+.dates strong {
+font-size: 13px;
+}
+
+.view-task-button {
+  margin-left: auto;
+
+  height: 52px;
+  min-width: 185px;
+
+  padding: 0 22px;
+
+  border: 1px solid #99F6E4;
+  border-radius: 10px;
+
+color: #0D9488;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  transition: 0.2s ease;
+}
+
+.view-task-button:hover {
+color: #0F766E;
+}
+/* =========================
+   TEACHER REMARK
+========================= */
+
+.teacher-remark {
+  margin-top: 17px;
+
+  padding: 15px;
+
+border: 1px solid #CCFBF1;
+
+  border-radius: 9px;
+
+  display: flex;
+
+  gap: 11px;
+}
+
+
+.remark-icon {
+  width: 32px;
+  height: 32px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+color: #111111;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  font-size: 11px;
+
+  font-weight: 700;
+}
+
+
+.teacher-remark span {
+font-size: 12px;
+
+  font-weight: 700;
+}
+
+
+.teacher-remark p {
+  margin: 5px 0 0;
+
+font-size: 13px;
+
+  line-height: 1.6;
+}
+
+
+/* =========================
+   EMPTY STATE
+========================= */
+
+.empty-state {
+  padding: 70px 20px;
+
+border: 1px solid #CCFBF1;
+
+  border-radius: 14px;
+
+  text-align: center;
+}
+
+
+.empty-state > div {
+  width: 50px;
+  height: 50px;
+
+  margin: auto;
+
+  border-radius: 50%;
+
+color: #111111;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  font-size: 20px;
+}
+
+
+.empty-state h3 {
+  margin: 15px 0 5px;
+
+font-size: 20px;
+}
+
+
+.empty-state p {
+  margin: 0;
+
+font-size: 14px;
+}
+
+
+/* =========================
+   MODAL
+========================= */
+
+.modal-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 100;
+
+display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 25px;
+}
+
+
+.task-modal {
+  width: 100%;
+
+  max-width: 760px;
+
+  max-height: 90vh;
+
+  overflow-y: auto;
+
+border-radius: 16px;
+
+}
+
+
+.modal-header {
+  padding: 23px 25px;
+
+  border-bottom: 1px solid #CCFBF1;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+
+.modal-label {
+  display: block;
+
+  margin-bottom: 5px;
+
+font-size: 12px;
+
+  font-weight: 700;
+
+  letter-spacing: 1px;
+}
+
+
+.modal-header h2 {
+  margin: 0;
+
+font-size: 24px;
+
+  font-weight: 700;
+}
+
+
+.close-button {
+  width: 38px;
+  height: 38px;
+
+  border: none;
+
+  border-radius: 8px;
+
+color: #0b0b0b;
+
+  font-size: 23px;
+
+  cursor: pointer;
+}
+
+
+.close-button:hover {
+}
+
+
+.modal-body {
+  padding: 25px;
+}
+
+
+.detail-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 13px;
+
+  margin-bottom: 20px;
+}
+
+
+.detail-grid > div {
+  padding: 14px;
+
+border: 1px solid #e5eef8;
+
+  border-radius: 9px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 6px;
+}
+
+
+.detail-grid span {
+font-size: 11px;
+
+  font-weight: 700;
+}
+
+
+.detail-grid strong {
+font-size: 13px;
+}
+
+
+.description-box {
+  padding: 16px;
+
+border: 1px solid #e5eef8;
+
+  border-radius: 9px;
+
+  margin-bottom: 20px;
+}
+
+
+.description-box > span {
+font-size: 12px;
+
+  font-weight: 700;
+}
+
+
+.description-box p {
+  margin: 7px 0 0;
+
+font-size: 15px;
+
+  line-height: 1.8;
+}
+
+
+/* =========================
+   CURRENT PROGRESS
+========================= */
+
+.current-progress-box {
+  padding: 18px;
+
+  border: 1px solid #CCFBF1;
+
+border-radius: 10px;
+
+  margin-bottom: 16px;
+}
+
+
+.current-progress-box > div:first-child {
+  display: flex;
+
+  justify-content: space-between;
+
+  margin-bottom: 9px;
+}
+
+
+.current-progress-box span {
+font-size: 13px;
+}
+
+
+.current-progress-box strong {
+font-size: 15px;
+}
+
+
+.modal-progress-track {
+  height: 9px;
+
+border-radius: 20px;
+
+  overflow: hidden;
+}
+
+
+.modal-progress-fill {
+  height: 100%;
+
+border-radius: 20px;
+}
+
+
+/* =========================
+   MODAL REMARK
+========================= */
+
+.modal-remark {
+  padding: 15px;
+
+border: 1px solid #CCFBF1;
+
+  border-radius: 9px;
+
+  margin-bottom: 18px;
+}
+
+
+.modal-remark span {
+font-size: 13px;
+
+  font-weight: 700;
+}
+
+
+.modal-remark p {
+  margin: 5px 0 0;
+
+font-size: 13px;
+
+  line-height: 1.6;
+}
+
+
+/* =========================
+   PRIMARY BUTTON
+========================= */
+
+.primary-button {
+  width: 100%;
+
+  height: 46px;
+
+  border: none;
+
+  border-radius: 9px;
+
+color: #ffffff;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 9px;
+}
+
+
+.primary-button:hover {
+}
+
+
+/* =========================
+   UPDATE FORM
+========================= */
+
+.update-form {
+  border-top: 1px solid #CCFBF1;
+
+  padding-top: 20px;
+}
+
+
+.form-title {
+  margin-bottom: 20px;
+}
+
+
+.form-title h3 {
+  margin: 0 0 5px;
+
+font-size: 20px;
+}
+
+
+.form-title p {
+  margin: 0;
+
+font-size: 13px;
+}
+
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+
+.form-group label {
+  display: block;
+
+  margin-bottom: 8px;
+
+font-size: 13px;
+
+  font-weight: 700;
+}
+
+
+.form-group input[type="range"] {
+  width: 100%;
+
+}
+
+
+.form-group textarea {
+  width: 100%;
+
+  padding: 13px;
+
+  border: 1px solid #cfe0f5;
+
+  border-radius: 8px;
+
+  outline: none;
+
+  resize: vertical;
+
+font-family: inherit;
+
+  font-size: 14px;
+
+  line-height: 1.7;
+}
+
+
+.form-group textarea:focus {
+}
+
+
+.submission-info {
+  padding: 13px;
+
+border: 1px solid #CCFBF1;
+
+  border-radius: 8px;
+
+  display: flex;
+
+  gap: 9px;
+
+  margin-bottom: 16px;
+}
+
+
+.submission-info > span {
+  width: 24px;
+  height: 24px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+color: #111111;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  font-size: 13px;
+
+  font-weight: 700;
+}
+
+
+.submission-info p {
+  margin: 0;
+
+font-size: 13px;
+
+  line-height: 1.6;
+}
+
+
+.submission-message {
+  padding: 12px;
+
+  margin-bottom: 15px;
+
+  border-radius: 8px;
+
+color: #15803d;
+
+  font-size: 13px;
+
+  font-weight: 600;
+}
+
+
+.form-buttons {
+  display: flex;
+
+  justify-content: flex-end;
+
+  gap: 10px;
+}
+
+
+.cancel-button,
+.submit-button {
+  height: 43px;
+
+  padding: 0 17px;
+
+  border-radius: 8px;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+
+.cancel-button {
+  border: 1px solid #cfe0f5;
+
+color: #111111;
+}
+
+
+.submit-button {
+  border: none;
+
+color: #ffffff;
+}
+
+
+.submit-button:hover {
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1100px) {
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+
+@media (max-width: 850px) {
+
+  .main-content {
+    margin-left: 0;
+  }
+
+  .tasks-content {
+    padding: 25px 20px 45px;
+  }
+
+  .page-header {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .phase-badge {
+    width: 100%;
+  }
+
+  .task-top {
+    flex-direction: column;
+  }
+
+  .task-badges {
+    flex-wrap: wrap;
+  }
+
+  .detail-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-header h1 {
+    font-size: 28px;
+  }
+
+  .task-bottom {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .dates {
+    width: 100%;
+
+    justify-content: space-between;
+  }
+
+  .view-task-button {
+    width: 100%;
+
+    justify-content: center;
+  }
+
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-buttons {
+    flex-direction: column;
+  }
+
+  .cancel-button,
+  .submit-button {
+    width: 100%;
+  }
+
+}
+
+/* =========================================================
+   PROJECTTRACK — WHITE + BLACK + BROWN THEME
+   =========================================================
+   Page background : White
+   Cards           : White
+   Normal text     : Black
+   Headings        : Brown
+   Labels          : Brown
+   Primary buttons : Brown
+   Success         : Green
+   Progress        : Light Green
+   ========================================================= */
+
+/* ---------- PAGE ---------- */
+
+.tasks-layout,
+.main-content {
+  background: #FFFFFF;
+}
+
+
+/* ---------- NORMAL TEXT ---------- */
+
+.task-description,
+.task-meta,
+.dates strong,
+.detail-grid strong,
+.description-box p,
+.current-progress-box strong,
+.modal-remark p,
+.form-title p,
+.submission-info p,
+.empty-state p {
+  color: #111111;
+}
+
+
+/* ---------- MAIN HEADINGS — BROWN ---------- */
+
+.page-label,
+.page-header h1,
+.section-label,
+.section-header h2,
+.modal-label,
+.modal-header h2,
+.task-title-area h3,
+.form-title h3,
+.empty-state h3 {
+  color: #7A4E2D;
+}
+
+
+/* ---------- SECONDARY LABELS — BROWN ---------- */
+
+.page-header p,
+.phase-badge span,
+.phase-badge strong,
+.stat-card span,
+.stat-card strong,
+.stat-card small,
+.filter-label,
+.progress-heading span,
+.progress-heading strong,
+.dates span,
+.teacher-remark span,
+.detail-grid span,
+.description-box > span,
+.current-progress-box span,
+.modal-remark span,
+.form-group label {
+  color: #7A4E2D;
+}
+
+
+/* ---------- WHITE SURFACES ---------- */
+
+.phase-badge,
+.stat-card,
+.filter-section,
+.task-card,
+.teacher-remark,
+.empty-state,
+.task-modal,
+.detail-grid > div,
+.description-box,
+.current-progress-box,
+.modal-remark,
+.submission-info,
+.close-button,
+.cancel-button,
+.form-group textarea,
+.task-number,
+.priority-badge,
+.status-badge,
+.task-count,
+.view-task-button {
+  background: #FFFFFF;
+}
+
+
+/* ---------- BORDERS ---------- */
+
+.phase-badge,
+.stat-card,
+.filter-section,
+.task-card,
+.teacher-remark,
+.empty-state,
+.detail-grid > div,
+.description-box,
+.current-progress-box,
+.modal-remark,
+.submission-info,
+.view-task-button,
+.cancel-button,
+.form-group textarea {
+  border-color: #E5DED7;
+}
+
+
+/* ---------- ICON BACKGROUNDS ---------- */
+
+.stat-icon,
+.completed-icon,
+.progress-icon,
+.review-icon,
+.pending-icon,
+.remark-icon,
+.empty-state > div,
+.submission-info > span,
+.task-number {
+  background: #F5EFEA;
+  color: #7A4E2D;
+}
+
+
+/* ---------- FILTER BUTTONS ---------- */
+
+.filter-left button {
+  background: #FFFFFF;
+  color: #111111;
+  border-color: #E5DED7;
+}
+
+.filter-left button:hover {
+  background: #F5EFEA;
+  color: #7A4E2D;
+  border-color: #7A4E2D;
+}
+
+.filter-left button.active {
+  background: #7A4E2D;
+  color: #FFFFFF;
+  border-color: #7A4E2D;
+}
+
+
+/* ---------- TASK COUNT ---------- */
+
+.task-count {
+  color: #111111;
+  border: 1px solid #E5DED7;
+}
+
+
+/* ---------- PRIORITY / STATUS ---------- */
+
+.priority-badge,
+.status-badge {
+  background: #FFFFFF;
+  border-color: #E5DED7;
+  color: #111111;
+}
+
+.priority-badge.high,
+.priority-badge.medium,
+.priority-badge.low {
+  color: #111111;
+}
+
+.status-badge.completed {
+  color: #198754;
+}
+
+.status-badge.review,
+.status-badge.progress {
+  color: #2563EB;
+}
+
+.status-badge.pending {
+  color: #111111;
+}
+
+
+/* ---------- PROGRESS ---------- */
+
+.progress-heading span,
+.progress-heading strong,
+.current-progress-box span {
+  color: #7A4E2D;
+}
+
+.progress-track,
+.modal-progress-track {
+  background: #F0ECE8;
+}
+
+.progress-fill,
+.modal-progress-fill {
+  background: #A8CBA8;
+}
+
+
+/* ---------- TASK BOTTOM ---------- */
+
+.task-bottom {
+  border-top-color: #E5DED7;
+}
+
+.view-task-button {
+  color: #7A4E2D;
+  border-color: #E5DED7;
+}
+
+.view-task-button:hover {
+  background: #F5EFEA;
+  color: #5F3B22;
+  border-color: #7A4E2D;
+}
+
+
+/* ---------- TASK HOVER ---------- */
+
+.task-card:hover {
+  border-color: #7A4E2D;
+  box-shadow: 0 8px 28px rgba(122, 78, 45, 0.10);
+}
+
+
+/* ---------- TEACHER REMARK ---------- */
+
+.teacher-remark {
+  background: #FFFFFF;
+  border-color: #E5DED7;
+}
+
+.teacher-remark span {
+  color: #7A4E2D;
+}
+
+.teacher-remark p {
+  color: #111111;
+}
+
+
+/* ---------- EMPTY STATE ---------- */
+
+.empty-state {
+  background: #FFFFFF;
+  border-color: #E5DED7;
+}
+
+.empty-state > div {
+  background: #F5EFEA;
+  color: #7A4E2D;
+}
+
+.empty-state h3 {
+  color: #7A4E2D;
+}
+
+.empty-state p {
+  color: #111111;
+}
+
+
+/* ---------- MODAL ---------- */
+
+.modal-overlay {
+  background: rgba(35, 30, 25, 0.45);
+}
+
+.task-modal {
+  background: #FFFFFF;
+}
+
+.modal-header {
+  border-bottom-color: #E5DED7;
+}
+
+.close-button {
+  background: #FFFFFF;
+  color: #111111;
+}
+
+.close-button:hover {
+  background: #F5EFEA;
+  color: #7A4E2D;
+}
+
+
+/* ---------- MODAL DETAILS ---------- */
+
+.detail-grid > div,
+.description-box,
+.current-progress-box {
+  background: #FFFFFF;
+  border-color: #E5DED7;
+}
+
+.detail-grid span,
+.description-box > span,
+.current-progress-box span {
+  color: #7A4E2D;
+}
+
+.detail-grid strong,
+.description-box p,
+.current-progress-box strong {
+  color: #111111;
+}
+
+
+/* ---------- MODAL REMARK ---------- */
+
+.modal-remark {
+  background: #FFFFFF;
+  border-color: #E5DED7;
+}
+
+.modal-remark span {
+  color: #7A4E2D;
+}
+
+.modal-remark p {
+  color: #111111;
+}
+
+
+/* ---------- FORM ---------- */
+
+.update-form {
+  border-top-color: #E5DED7;
+}
+
+.form-title h3 {
+  color: #7A4E2D;
+}
+
+.form-title p,
+.form-group label {
+  color: #111111;
+}
+
+.form-group textarea {
+  background: #FFFFFF;
+  color: #111111;
+  border-color: #E5DED7;
+}
+
+.form-group textarea::placeholder {
+  color: #999999;
+}
+
+.form-group textarea:focus {
+  border-color: #7A4E2D;
+  box-shadow: 0 0 0 3px rgba(122, 78, 45, 0.12);
+}
+
+.form-group input[type="range"] {
+  accent-color: #7A4E2D;
+}
+
+
+/* ---------- SUBMISSION INFO ---------- */
+
+.submission-info {
+  background: #FFFFFF;
+  border-color: #E5DED7;
+}
+
+.submission-info > span {
+  background: #F5EFEA;
+  color: #7A4E2D;
+}
+
+.submission-info p {
+  color: #111111;
+}
+
+.submission-message {
+  background: #F5EFEA;
+  color: #198754;
+}
+
+
+/* ---------- BUTTONS ---------- */
+
+.primary-button,
+.submit-button {
+  background: #7A4E2D;
+  color: #FFFFFF;
+  border: none;
+}
+
+.primary-button:hover,
+.submit-button:hover {
+  background: #5F3B22;
+  color: #FFFFFF;
+}
+
+.cancel-button {
+  background: #FFFFFF;
+  color: #111111;
+  border-color: #E5DED7;
+}
+
+.cancel-button:hover {
+  background: #F5EFEA;
+  color: #7A4E2D;
+  border-color: #7A4E2D;
+}
+
+
+/* ---------- SCROLLBAR ---------- */
+
+.tasks-layout ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.tasks-layout ::-webkit-scrollbar-track {
+  background: #FFFFFF;
+}
+
+.tasks-layout ::-webkit-scrollbar-thumb {
+  background: #D8CFC7;
+  border-radius: 10px;
+}
+
+.tasks-layout ::-webkit-scrollbar-thumb:hover {
+  background: #7A4E2D;
+}
+
+/* Match the student team page palette. */
+.tasks-layout,
+.main-content {
+  background: #f6f8fc;
+}
+
+.page-label,
+.page-header h1,
+.section-label,
+.section-header h2,
+.modal-label,
+.modal-header h2,
+.task-title-area h3,
+.form-title h3,
+.empty-state h3 {
+  color: #172033;
+}
+
+.page-header p,
+.phase-badge span,
+.phase-badge strong,
+.stat-card span,
+.stat-card strong,
+.stat-card small,
+.filter-label,
+.progress-heading span,
+.progress-heading strong,
+.dates span,
+.teacher-remark span,
+.detail-grid span,
+.description-box > span,
+.current-progress-box span,
+.modal-remark span,
+.form-group label {
+  color: #0D9488;
+}
+
+.phase-badge,
+.stat-card,
+.filter-section,
+.task-card,
+.teacher-remark,
+.empty-state,
+.task-modal,
+.detail-grid > div,
+.description-box,
+.current-progress-box,
+.modal-remark,
+.submission-info,
+.close-button,
+.cancel-button,
+.form-group textarea,
+.task-number,
+.priority-badge,
+.status-badge,
+.task-count,
+.view-task-button {
+  background: #ffffff;
+  border-color: #e6ebf1;
+}
+
+.stat-icon,
+.completed-icon,
+.progress-icon,
+.review-icon,
+.pending-icon,
+.remark-icon,
+.empty-state > div,
+.submission-info > span,
+.task-number {
+  background: #F0FDFA;
+  color: #0D9488;
+}
+
+.filter-left button {
+  background: #ffffff;
+  color: #172033;
+  border-color: #e6ebf1;
+}
+
+.filter-left button:hover,
+.filter-left button.active,
+.view-task-button:hover,
+.cancel-button:hover,
+.close-button:hover {
+  background: #F0FDFA;
+  color: #0D9488;
+  border-color: #0D9488;
+}
+
+.filter-left button.active {
+  background: #0D9488;
+  color: #ffffff;
+}
+
+.priority-badge,
+.status-badge,
+.task-count {
+  color: #172033;
+}
+
+.status-badge.completed {
+  color: #16a34a;
+}
+
+.status-badge.review,
+.status-badge.progress {
+  color: #2563EB;
+}
+
+.progress-track,
+.modal-progress-track {
+  background: #edf1f6;
+}
+
+.progress-fill{
+  background: #0f766daf;
+}
+.modal-progress-fill,
+.primary-button,
+.submit-button {
+  background: #0F766E;
+}
+
+.task-bottom,
+.modal-header,
+.update-form {
+  border-color: #e6ebf1;
+}
+
+.task-card:hover {
+  border-color: #0D9488;
+  box-shadow: 0 8px 28px rgba(15, 23, 42, .07);
+}
+
+.modal-overlay {
+  background: rgba(15, 23, 42, .45);
+}
+
+.form-group textarea:focus {
+  border-color: #0D9488;
+}
+
+.primary-button:hover,
+.submit-button:hover {
+  border-color: #0D9488;
+  background: #0F766E;
+}
+
+.form-group input[type="range"] {
+  accent-color: #0D9488;
+}
+
+.tasks-layout ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+}
+
+.tasks-layout ::-webkit-scrollbar-thumb:hover {
+  background: #0D9488;
+}
+
+/* Stats card colors. */
+.stat-card span {
+  color: #7A4E2D;
+}
+
+.stat-card strong,
+.stat-card small {
+  color: #111111;
+}
+
+.stat-card .progress-icon {
+  background: #f0f2f0;
+  color: #10e682;
+}
+
+.tasks-layout,
+.main-content {
+  background: #F8F9FA;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.add-task-button {
+  height: 46px;
+  padding: 0 18px;
+  border: none;
+  border-radius: 9px;
+  background: #7A4E2D;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.add-task-button:hover {
+  background: #5F3B22;
+}
+
+.filter-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.sort-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sort-group select,
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group select {
+  height: 42px;
+  padding: 0 12px;
+  border: 1px solid #E5DED7;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #111111;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.page-error {
+  margin-bottom: 16px;
+  padding: 12px 14px;
+  border: 1px solid #E5DED7;
+  border-radius: 8px;
+  background: #F5EFEA;
+  color: #7A4E2D;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.modal-remark small {
+  display: block;
+  margin-top: 8px;
+  color: #7A4E2D;
+}
+
+@media (max-width: 700px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}

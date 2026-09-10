@@ -1,0 +1,123 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* ================================================
+   NEW COLOR SYSTEM - Professional Dashboard Theme
+   ================================================ */
+
+:root {
+  /* Page & Card Backgrounds */
+  --bg-page: #F3F6FA;
+  --bg-card: #FFFFFF;
+
+  /* Text Colors */
+  --text-primary: #172033;
+  --text-secondary: #334155;
+  --text-muted: #64748B;
+
+  /* Primary Blue - Actions & Accents */
+  --primary-blue: #2F61C9;
+  --primary-blue-hover: #244FA8;
+  --primary-blue-light: #EAF1FF;
+  --primary-blue-dark: #183B73;
+
+  /* Secondary Blue */
+  --secondary-blue: #4F7FD4;
+  --secondary-blue-light: #EAF1FF;
+
+  /* Label Colors */
+  --label-primary: #315FA8;
+  --label-secondary: #3B67A8;
+
+  /* Status Colors */
+  --success: #16A36A;
+  --success-dark: #16805A;
+  --success-light: #E8F7F0;
+
+  --warning: #D99000;
+  --warning-dark: #B77900;
+  --warning-light: #FFF4D8;
+
+  --danger: #DC3F4B;
+  --danger-light: #FFF0F1;
+
+  --purple: #7357C8;
+  --purple-light: #F0EBFF;
+
+  /* Borders & Surfaces */
+  --border: #D9E2EF;
+  --border-light: #E2E8F0;
+  --surface-hover: #F8FAFC;
+
+  /* Role-based theming */
+  --role-primary: #2F61C9;
+  --role-primary-dark: #244FA8;
+  --role-soft: #EAF1FF;
+}
+
+body.theme-admin {
+  --role-primary: #2F61C9;
+  --role-primary-dark: #244FA8;
+  --role-soft: #EAF1FF;
+}
+
+body.theme-teacher {
+  --role-primary: #8B5CF6;
+  --role-primary-dark: #7C3AED;
+  --role-soft: #F3E8FF;
+}
+
+body.theme-student {
+  --role-primary: #0D9488;
+  --role-primary-dark: #0F766E;
+  --role-soft: #F0FDFA;
+}
+
+/* ================================================
+   CARD ANIMATIONS
+   ================================================ */
+
+@keyframes cardPulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 4px 18px rgba(23, 32, 51, 0.05);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 8px 28px rgba(23, 32, 51, 0.12);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 4px 18px rgba(23, 32, 51, 0.05);
+  }
+}
+
+@keyframes cardClick {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes colorShift {
+  0%, 100% {
+    border-left-color: currentColor;
+  }
+  50% {
+    border-left-color: var(--primary-blue);
+  }
+}
+
+/* Card interaction classes */
+.card-clicked {
+  animation: cardClick 0.4s ease-out !important;
+}
+
+.card-highlighted {
+  box-shadow: 0 8px 32px rgba(47, 97, 201, 0.2);
+  border-color: var(--primary-blue);
+}

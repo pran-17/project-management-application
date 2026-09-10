@@ -1,0 +1,237 @@
+<div class="page-layout">
+
+  <app-sidebar></app-sidebar>
+
+  <main class="main-content">
+
+    <app-header></app-header>
+
+    <div class="page-content">
+
+      <!-- PAGE HEADER -->
+
+      <div class="page-header">
+
+        <div>
+          <span></span>
+
+          <h1>My Profile</h1>
+
+          <p>
+            View your academic and project information.
+          </p>
+        </div>
+
+      </div>
+
+
+      <!-- PROFILE -->
+
+      <section class="profile-card">
+
+        <div class="profile-top">
+
+          <div class="profile-avatar">
+            {{ student.name.charAt(0) }}
+          </div>
+
+          <div class="profile-name">
+
+            <h2>
+              {{ student.name }}
+            </h2>
+
+            <span>
+              {{ student.registerNumber }}
+            </span>
+
+            <small>
+              {{ student.year }}
+              ·
+              {{ student.department }}
+            </small>
+
+          </div>
+
+        </div>
+
+
+        <div class="divider"></div>
+
+
+        <!-- BASIC INFORMATION -->
+
+        <div class="section-label">
+          PERSONAL & ACADEMIC INFORMATION
+        </div>
+
+        <div class="information-grid">
+
+          <div class="information-item">
+
+            <span>EMAIL</span>
+
+            <strong>
+              {{ student.email }}
+            </strong>
+
+          </div>
+
+
+          <div class="information-item">
+
+            <span>PHONE</span>
+
+            <strong>
+              {{ student.phone }}
+            </strong>
+
+          </div>
+
+
+          <div class="information-item">
+
+            <span>DEPARTMENT</span>
+
+            <strong>
+              {{ student.department }}
+            </strong>
+
+          </div>
+
+
+          <div class="information-item">
+
+            <span>YEAR</span>
+
+            <strong>
+              {{ student.year }}
+            </strong>
+
+          </div>
+
+
+          <div class="information-item">
+
+            <span>SEMESTER</span>
+
+            <strong>
+              {{ student.semester }}
+            </strong>
+
+          </div>
+
+
+          <div class="information-item">
+
+            <span>REGISTER NUMBER</span>
+
+            <strong>
+              {{ student.registerNumber }}
+            </strong>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- PROJECT INFORMATION -->
+
+      <section class="project-card">
+
+        <div class="section-header">
+
+          <div>
+
+            <span>PROJECT INFORMATION</span>
+
+            <h2>
+              
+            </h2>
+
+          </div>
+
+        </div>
+
+
+        <div class="project-grid">
+
+          <div class="project-item">
+
+            <span>PROJECT NAME</span>
+
+            <strong>
+              {{ student.project }}
+            </strong>
+
+          </div>
+
+
+          <div class="project-item">
+
+            <span>PROJECT TYPE</span>
+
+            <strong>
+              {{ student.projectType }}
+            </strong>
+
+          </div>
+
+
+          <div class="project-item">
+
+            <span>PROJECT GUIDE</span>
+
+            <strong>
+              {{ student.guide }}
+            </strong>
+
+          </div>
+
+
+          <div class="project-item">
+
+            <span>YOUR ROLE</span>
+
+            <strong>
+              {{ student.role }}
+            </strong>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- INFORMATION NOTICE -->
+
+      <div class="profile-note">
+
+        <div class="note-icon">
+          i
+        </div>
+
+        <div>
+
+          <strong>
+            Profile Information
+          </strong>
+
+          <p>
+            Your academic and project information is managed
+            by the institution. Contact your project guide or
+            administrator if any information needs to be updated.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+</div>

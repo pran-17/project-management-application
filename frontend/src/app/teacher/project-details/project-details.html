@@ -1,0 +1,538 @@
+<div class="page-layout">
+
+  <!-- TEACHER SIDEBAR -->
+
+  <app-teacher-sidebar></app-teacher-sidebar>
+
+
+  <!-- MAIN CONTENT -->
+
+  <main class="main-content">
+
+    <app-header></app-header>
+
+
+    <div class="page-content">
+
+
+      <!-- BACK -->
+
+      <a
+        routerLink="/teacher/projects"
+        class="back-button">
+
+        ← Back to Projects
+
+      </a>
+
+
+      <!-- PROJECT HEADER -->
+
+      <section class="project-header">
+
+        <div class="project-heading">
+
+          <div class="project-type">
+            {{ project.projectType }}
+          </div>
+
+          <h1>
+            {{ project.name }}
+          </h1>
+
+          <p>
+            {{ project.description }}
+          </p>
+
+        </div>
+
+
+        <div class="project-progress-card">
+
+          <span>
+            OVERALL PROGRESS
+          </span>
+
+          <strong>
+            {{ project.overallProgress }}%
+          </strong>
+
+          <div class="progress-track">
+
+            <div
+              [style.width.%]="project.overallProgress">
+            </div>
+
+          </div>
+
+          <small>
+            {{ project.currentPhase }}
+          </small>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- PROJECT INFORMATION -->
+
+      <section class="section">
+
+
+        <div class="section-title">
+
+          <div>
+
+            <span>
+              PROJECT INFORMATION
+            </span>
+
+            <h2>
+              Project Overview
+            </h2>
+
+          </div>
+
+        </div>
+
+
+        <div class="info-grid">
+
+
+          <div class="info-item">
+
+            <span>
+              PROJECT GUIDE
+            </span>
+
+            <strong>
+              {{ project.guide }}
+            </strong>
+
+          </div>
+
+
+          <div class="info-item">
+
+            <span>
+              DEPARTMENT
+            </span>
+
+            <strong>
+              {{ project.department }}
+            </strong>
+
+          </div>
+
+
+          <div class="info-item">
+
+            <span>
+              PROJECT TYPE
+            </span>
+
+            <strong>
+              {{ project.projectType }}
+            </strong>
+
+          </div>
+
+
+          <div class="info-item">
+
+            <span>
+              CATEGORY
+            </span>
+
+            <strong>
+              {{ project.category }}
+            </strong>
+
+          </div>
+
+
+          <div class="info-item">
+
+            <span>
+              START DATE
+            </span>
+
+            <strong>
+              {{ project.startDate }}
+            </strong>
+
+          </div>
+
+
+          <div class="info-item">
+
+            <span>
+              EXPECTED COMPLETION
+            </span>
+
+            <strong>
+              {{ project.expectedDate }}
+            </strong>
+
+          </div>
+
+
+        </div>
+
+      </section>
+
+
+
+      <!-- TEAM MEMBERS -->
+
+      <section class="section">
+
+
+        <div class="section-title">
+
+          <div>
+
+            <span>
+              PROJECT TEAM
+            </span>
+
+            <h2>
+              Students Involved
+            </h2>
+
+          </div>
+
+
+          <span class="member-count">
+
+            {{ teamMembers.length }} Students
+
+          </span>
+
+        </div>
+
+
+        <div class="team-table">
+
+
+          <!-- HEADER -->
+
+          <div class="team-header">
+
+            <span>
+              STUDENT
+            </span>
+
+            <span>
+              ROLE
+            </span>
+
+            <span>
+              MODULE
+            </span>
+
+            <span>
+              PROGRESS
+            </span>
+
+            <span>
+              STATUS
+            </span>
+
+          </div>
+
+
+          <!-- MEMBERS -->
+
+          @for (
+            member of teamMembers;
+            track member.registerNumber
+          ) {
+
+            <div class="team-row">
+
+
+              <!-- STUDENT -->
+
+              <div class="student-cell">
+
+                <div class="avatar">
+
+                  {{ member.name.charAt(0) }}
+
+                </div>
+
+
+                <div>
+
+                  <strong>
+                    {{ member.name }}
+                  </strong>
+
+                  <span>
+                    {{ member.registerNumber }}
+                  </span>
+
+                </div>
+
+              </div>
+
+
+              <!-- ROLE -->
+
+              <div class="role-cell">
+
+                {{ member.role }}
+
+              </div>
+
+
+              <!-- MODULE -->
+
+              <div class="module-cell">
+
+                {{ member.module }}
+
+              </div>
+
+
+              <!-- PROGRESS -->
+
+              <div class="member-progress">
+
+                <div class="member-progress-top">
+
+                  <span>
+                    Progress
+                  </span>
+
+                  <strong>
+                    {{ member.progress }}%
+                  </strong>
+
+                </div>
+
+
+                <div class="member-track">
+
+                  <div
+                    [style.width.%]="member.progress">
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <!-- STATUS -->
+
+              <div>
+
+                <span
+                  class="member-status"
+                  [class.completed]="
+                    member.status === 'Completed'
+                  ">
+
+                  {{ member.status }}
+
+                </span>
+
+              </div>
+
+
+            </div>
+
+          }
+
+
+        </div>
+
+      </section>
+
+
+
+      <!-- PROJECT PHASES -->
+
+      <section class="section">
+
+
+        <div class="section-title">
+
+          <div>
+
+            <span>
+              PROJECT WORKFLOW
+            </span>
+
+            <h2>
+              Project Phases
+            </h2>
+
+          </div>
+
+
+          <a
+            routerLink="/teacher/phases"
+            class="manage-button">
+
+            Manage Phases →
+
+          </a>
+
+        </div>
+
+
+        <div class="phase-grid">
+
+
+          @for (
+            phase of phases;
+            track phase.number
+          ) {
+
+            <div
+              class="phase-card"
+              [class.completed-card]="
+                phase.status === 'Completed'
+              "
+              [class.active-card]="
+                phase.status === 'In Progress'
+              ">
+
+
+              <div class="phase-top">
+
+                <div class="phase-number">
+
+                  {{ phase.number }}
+
+                </div>
+
+
+                <span
+                  class="phase-status"
+                  [ngClass]="
+                    getPhaseClass(phase.status)
+                  ">
+
+                  {{ phase.status }}
+
+                </span>
+
+              </div>
+
+
+              <h3>
+                {{ phase.name }}
+              </h3>
+
+
+              <p>
+                {{ phase.description }}
+              </p>
+
+
+              <div class="phase-progress">
+
+                <div class="phase-progress-top">
+
+                  <span>
+                    Progress
+                  </span>
+
+                  <strong>
+                    {{ phase.progress }}%
+                  </strong>
+
+                </div>
+
+
+                <div class="phase-track">
+
+                  <div
+                    [style.width.%]="phase.progress">
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <div class="completion-date">
+
+                <span>
+                  Completion Date
+                </span>
+
+                <strong>
+                  {{ phase.completedDate }}
+                </strong>
+
+              </div>
+
+
+            </div>
+
+          }
+
+        </div>
+
+      </section>
+
+
+
+      <!-- OBJECTIVES -->
+
+      <section class="section objectives-section">
+
+
+        <div class="section-title">
+
+          <div>
+
+            <span>
+              PROJECT DETAILS
+            </span>
+
+            <h2>
+              Project Objectives
+            </h2>
+
+          </div>
+
+        </div>
+
+
+        <div class="objective-list">
+
+          @for (
+            objective of project.objectives;
+            track objective
+          ) {
+
+            <div class="objective-item">
+
+              <span class="check">
+                ✓
+              </span>
+
+              <span>
+                {{ objective }}
+              </span>
+
+            </div>
+
+          }
+
+        </div>
+
+      </section>
+
+
+    </div>
+
+  </main>
+
+</div>

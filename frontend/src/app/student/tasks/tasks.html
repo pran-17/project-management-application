@@ -1,0 +1,943 @@
+<div class="tasks-layout">
+
+  <app-sidebar></app-sidebar>
+
+
+  <main class="main-content">
+
+    <app-header></app-header>
+
+
+    <div class="tasks-content">
+
+      <section class="page-header">
+
+        <div>
+
+          <span class="page-label">
+            PROJECT WORK
+          </span>
+
+          <h1>
+            Tasks & Work Updates
+          </h1>
+
+          <p>
+            Manage your assigned tasks and submit completed work for teacher review.
+          </p>
+
+        </div>
+
+
+        <div class="header-actions">
+
+          <div class="phase-badge">
+
+            <span>
+              CURRENT PHASE
+            </span>
+
+            <strong>
+              {{ currentPhaseLabel }}
+            </strong>
+
+          </div>
+
+          <button type="button" class="add-task-button" (click)="openAddForm()">
+            + Add Task
+          </button>
+
+        </div>
+
+      </section>
+
+
+      @if (errorMessage && !showAddForm && !selectedTask) {
+        <div class="page-error">{{ errorMessage }}</div>
+      }
+
+
+      <section class="stats-grid">
+
+        <div class="stat-card">
+
+          <div class="stat-icon completed-icon">
+            ✓
+          </div>
+
+          <div>
+
+            <span>
+              COMPLETED
+            </span>
+
+            <strong>
+              {{ getCompletedCount() }}
+            </strong>
+
+            <small>
+              Tasks completed
+            </small>
+
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-icon progress-icon">
+            ◔
+          </div>
+
+          <div>
+
+            <span>
+              IN PROGRESS
+            </span>
+
+            <strong>
+              {{ getProgressCount() }}
+            </strong>
+
+            <small>
+              Currently working
+            </small>
+
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-icon review-icon">
+            ◷
+          </div>
+
+          <div>
+
+            <span>
+              UNDER REVIEW
+            </span>
+
+            <strong>
+              {{ getReviewCount() }}
+            </strong>
+
+            <small>
+              Waiting for teacher
+            </small>
+
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-icon pending-icon">
+            !
+          </div>
+
+          <div>
+
+            <span>
+              PENDING
+            </span>
+
+            <strong>
+              {{ getPendingCount() }}
+            </strong>
+
+            <small>
+              Not started
+            </small>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <section class="filter-section">
+
+        <div class="filter-left">
+
+          <span class="filter-label">
+            FILTER TASKS
+          </span>
+
+
+          <button
+            type="button"
+            [class.active]="selectedFilter === 'All'"
+            (click)="selectedFilter = 'All'">
+            All
+          </button>
+
+
+          <button
+            type="button"
+            [class.active]="selectedFilter === 'In Progress'"
+            (click)="selectedFilter = 'In Progress'">
+            In Progress
+          </button>
+
+
+          <button
+            type="button"
+            [class.active]="selectedFilter === 'Under Review'"
+            (click)="selectedFilter = 'Under Review'">
+            Under Review
+          </button>
+
+
+          <button
+            type="button"
+            [class.active]="selectedFilter === 'Completed'"
+            (click)="selectedFilter = 'Completed'">
+            Completed
+          </button>
+
+
+          <button
+            type="button"
+            [class.active]="selectedFilter === 'Pending'"
+            (click)="selectedFilter = 'Pending'">
+            Pending
+          </button>
+
+        </div>
+
+        <div class="sort-group">
+          <span class="filter-label">SORT</span>
+          <select [(ngModel)]="selectedSort">
+            <option value="updated">Recently Updated</option>
+            <option value="due">Due Date</option>
+            <option value="priority">Priority</option>
+            <option value="progress">Progress</option>
+          </select>
+        </div>
+
+      </section>
+
+
+      <section class="tasks-section">
+
+        <div class="section-header">
+
+          <div>
+            <span class="section-label">
+              ASSIGNED WORK
+            </span>
+
+            <h2>
+              My Project Tasks
+            </h2>
+          </div>
+
+          <span class="task-count">
+            {{ filteredTasks.length }} Tasks
+          </span>
+
+        </div>
+
+
+        <div class="task-list">
+
+          @for (task of filteredTasks; track task.id; let i = $index) {
+
+            <div class="task-card">
+
+              <div class="task-top">
+
+                <div class="task-title-area">
+
+                  <div class="task-number">
+                    {{ i + 1 }}
+                  </div>
+
+
+                  <div class="task-title-content">
+
+                    <h3>
+                      {{ task.title }}
+                    </h3>
+
+                    <div class="task-meta">
+
+                      <span>
+                        {{ task.projectTitle }}
+                      </span>
+
+                      <span class="meta-dot">
+                        •
+                      </span>
+
+                      <span>
+                        {{ task.phaseLabel }}
+                      </span>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+
+                <div class="task-badges">
+
+                  <span
+                    class="priority-badge"
+                    [class]="getPriorityClass(task.priority)">
+
+                    {{ task.priority }} Priority
+
+                  </span>
+
+
+                  <span
+                    class="status-badge"
+                    [class]="getStatusClass(task.status)">
+
+                    <span class="status-dot"></span>
+
+                    {{ task.status }}
+
+                  </span>
+
+                </div>
+
+              </div>
+
+
+              <div class="task-description-section">
+
+                <p class="task-description">
+                  {{ task.description }}
+                </p>
+
+              </div>
+
+
+              <div class="task-progress">
+
+                <div class="progress-heading">
+
+                  <span>
+                    Task Progress
+                  </span>
+
+                  <strong>
+                    {{ task.progress }}%
+                  </strong>
+
+                </div>
+
+
+                <div class="progress-track">
+
+                  <div
+                    class="progress-fill"
+                    [style.width.%]="task.progress">
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <div class="task-bottom">
+
+                <div class="dates">
+
+                  <div class="date-item">
+
+                    <span>
+                      ASSIGNED
+                    </span>
+
+                    <strong>
+                      {{ formatDate(task.assignedDate) }}
+                    </strong>
+
+                  </div>
+
+                  <div class="date-item">
+
+                    <span>
+                      DUE DATE
+                    </span>
+
+                    <strong>
+                      {{ formatDate(task.dueDate) }}
+                    </strong>
+
+                  </div>
+
+                </div>
+
+                <button
+                  type="button"
+                  class="view-task-button"
+                  (click)="selectTask(task)">
+
+                  <span>
+                    View & Update
+                  </span>
+
+                  <span class="button-arrow">
+                    →
+                  </span>
+
+                </button>
+
+              </div>
+
+
+              @if (task.teacherRemark) {
+
+                <div class="teacher-remark">
+
+                  <div class="remark-icon">
+                    T
+                  </div>
+
+
+                  <div class="remark-content">
+
+                    <span>
+                      TEACHER REMARK
+                    </span>
+
+                    <p>
+                      {{ task.teacherRemark }}
+                    </p>
+
+                  </div>
+
+                </div>
+
+              }
+
+            </div>
+
+          }
+
+
+          @if (!isLoading && filteredTasks.length === 0) {
+
+            <div class="empty-state">
+
+              <div class="empty-icon">
+                ✓
+              </div>
+
+              <h3>
+                No tasks found
+              </h3>
+
+              <p>
+                There are no tasks matching the selected filter. Use Add Task to create your first work item.
+              </p>
+
+            </div>
+
+          }
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+@if (showAddForm) {
+
+  <div class="modal-overlay" (click)="closeAddForm()">
+
+    <div class="task-modal" (click)="$event.stopPropagation()">
+
+      <div class="modal-header">
+
+        <div>
+
+          <span class="modal-label">
+            NEW TASK
+          </span>
+
+          <h2>
+            Add Task
+          </h2>
+
+        </div>
+
+        <button type="button" class="close-button" (click)="closeAddForm()">×</button>
+
+      </div>
+
+      <div class="modal-body">
+
+        @if (errorMessage) {
+          <div class="page-error">{{ errorMessage }}</div>
+        }
+
+        <div class="form-group">
+          <label>Task Title</label>
+          <input type="text" [(ngModel)]="newTask.title" placeholder="e.g. Develop Login API">
+        </div>
+
+        <div class="form-group">
+          <label>Description</label>
+          <textarea [(ngModel)]="newTask.description" rows="3" placeholder="Describe the task..."></textarea>
+        </div>
+
+        <div class="form-row">
+
+          <div class="form-group">
+            <label>Project Phase</label>
+            <select [(ngModel)]="newTask.phase">
+              <option value="">Select phase</option>
+              @for (phase of phases; track phase.id) {
+                <option [value]="phase.id">
+                  Phase {{ phase.phaseNumber }} - {{ phase.phaseName }}
+                </option>
+              }
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Priority</label>
+            <select [(ngModel)]="newTask.priority">
+              <option value="Low">Low</option>
+              <option value="Medium">Medium</option>
+              <option value="High">High</option>
+            </select>
+          </div>
+
+        </div>
+
+        <div class="form-row">
+
+          <div class="form-group">
+            <label>Assigned Date</label>
+            <input type="date" [(ngModel)]="newTask.assignedDate">
+          </div>
+
+          <div class="form-group">
+            <label>Due Date</label>
+            <input type="date" [(ngModel)]="newTask.dueDate">
+          </div>
+
+        </div>
+
+        <div class="form-group">
+          <label>Student Work</label>
+          <textarea [(ngModel)]="newTask.studentWork" rows="3" placeholder="Work completed so far..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Progress: {{ newTask.progress }}%</label>
+          <input type="range" min="0" max="100" step="5" [(ngModel)]="newTask.progress">
+        </div>
+
+        <div class="form-group">
+          <label>Status</label>
+          <select [(ngModel)]="newTask.status">
+            <option value="Pending">Pending</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Under Review">Under Review</option>
+            <option value="Completed">Completed</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Student Remark</label>
+          <textarea [(ngModel)]="newTask.studentRemark" rows="2" placeholder="Optional remark for your guide..."></textarea>
+        </div>
+
+        <div class="form-buttons">
+          <button type="button" class="cancel-button" (click)="closeAddForm()">Cancel</button>
+          <button type="button" class="submit-button" [disabled]="isSaving" (click)="createTask()">
+            {{ isSaving ? 'Saving...' : 'Create Task' }}
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+}
+
+
+@if (selectedTask) {
+
+  <div
+    class="modal-overlay"
+    (click)="closeTask()">
+
+
+    <div
+      class="task-modal"
+      (click)="$event.stopPropagation()">
+
+
+      <div class="modal-header">
+
+        <div>
+
+          <span class="modal-label">
+            TASK DETAILS
+          </span>
+
+          <h2>
+            {{ selectedTask.title }}
+          </h2>
+
+        </div>
+
+
+        <button
+          type="button"
+          class="close-button"
+          (click)="closeTask()">
+
+          ×
+
+        </button>
+
+      </div>
+
+
+      <div class="modal-body">
+
+        <div class="detail-grid">
+
+          <div>
+
+            <span>
+              PROJECT
+            </span>
+
+            <strong>
+              {{ selectedTask.projectTitle }}
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              PROJECT PHASE
+            </span>
+
+            <strong>
+              {{ selectedTask.phaseLabel }}
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              PRIORITY
+            </span>
+
+            <strong>
+              {{ selectedTask.priority }}
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              STATUS
+            </span>
+
+            <strong>
+              {{ selectedTask.status }}
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              ASSIGNED DATE
+            </span>
+
+            <strong>
+              {{ formatDate(selectedTask.assignedDate) }}
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              DUE DATE
+            </span>
+
+            <strong>
+              {{ formatDate(selectedTask.dueDate) }}
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <div class="description-box">
+
+          <span>
+            TASK DESCRIPTION
+          </span>
+
+          <p>
+            {{ selectedTask.description || 'No description provided.' }}
+          </p>
+
+        </div>
+
+
+        @if (!showUpdateForm) {
+
+          <div class="current-progress-box">
+
+            <div>
+
+              <span>
+                CURRENT PROGRESS
+              </span>
+
+              <strong>
+                {{ selectedTask.progress }}%
+              </strong>
+
+            </div>
+
+
+            <div class="modal-progress-track">
+
+              <div
+                class="modal-progress-fill"
+                [style.width.%]="selectedTask.progress">
+              </div>
+
+            </div>
+
+          </div>
+
+
+          @if (selectedTask.studentWork) {
+            <div class="description-box">
+              <span>STUDENT WORK</span>
+              <p>{{ selectedTask.studentWork }}</p>
+            </div>
+          }
+
+          @if (selectedTask.studentRemark) {
+            <div class="description-box">
+              <span>STUDENT REMARK</span>
+              <p>{{ selectedTask.studentRemark }}</p>
+            </div>
+          }
+
+          @if (selectedTask.teacherRemark) {
+
+            <div class="modal-remark">
+
+              <span>
+                TEACHER REMARK
+              </span>
+
+              <p>
+                {{ selectedTask.teacherRemark }}
+              </p>
+
+              @if (selectedTask.reviewedAt) {
+                <small>Reviewed: {{ formatDate(selectedTask.reviewedAt) }}</small>
+              }
+
+            </div>
+
+          }
+
+
+          <button
+            type="button"
+            class="primary-button"
+            (click)="openUpdateForm()">
+
+            Update My Work
+
+            <span>
+              →
+            </span>
+
+          </button>
+
+        }
+
+
+        @if (showUpdateForm) {
+
+          <div class="update-form">
+
+            <div class="form-title">
+
+              <h3>
+                Submit Work Update
+              </h3>
+
+              <p>
+                Describe the work you have completed.
+              </p>
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label>
+                Work Progress: {{ updateProgress }}%
+              </label>
+
+              <input
+                type="range"
+                min="0"
+                max="100"
+                step="5"
+                [(ngModel)]="updateProgress">
+
+            </div>
+
+            <div class="form-group">
+              <label>Status</label>
+              <select [(ngModel)]="updateStatus">
+                <option value="Pending">Pending</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Under Review">Under Review</option>
+                <option value="Completed">Completed</option>
+              </select>
+            </div>
+
+
+            <div class="form-group">
+
+              <label>
+                Work Description
+              </label>
+
+              <textarea
+                [(ngModel)]="workDescription"
+                rows="5"
+                placeholder="Describe what you completed, what you implemented and any important details...">
+              </textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label>
+                Student Remark
+              </label>
+
+              <textarea
+                [(ngModel)]="studentRemark"
+                rows="3"
+                placeholder="Add any additional remarks for your teacher...">
+              </textarea>
+
+            </div>
+
+
+            <div class="submission-info">
+
+              <span>
+                i
+              </span>
+
+              <p>
+                After submission, your teacher will review the work and either
+                approve it or request changes.
+              </p>
+
+            </div>
+
+
+            @if (submissionMessage) {
+
+              <div class="submission-message">
+
+                {{ submissionMessage }}
+
+              </div>
+
+            }
+
+            @if (errorMessage) {
+              <div class="page-error">{{ errorMessage }}</div>
+            }
+
+
+            <div class="form-buttons">
+
+              <button
+                type="button"
+                class="cancel-button"
+                (click)="cancelUpdate()">
+
+                Cancel
+
+              </button>
+
+
+              <button
+                type="button"
+                class="cancel-button"
+                [disabled]="isSaving"
+                (click)="submitWorkUpdate()">
+
+                Save Update
+
+              </button>
+
+              <button
+                type="button"
+                class="submit-button"
+                [disabled]="isSaving"
+                (click)="submitForReview()">
+
+                Submit for Teacher Review
+
+              </button>
+
+            </div>
+
+          </div>
+
+        }
+
+      </div>
+
+    </div>
+
+  </div>
+
+}

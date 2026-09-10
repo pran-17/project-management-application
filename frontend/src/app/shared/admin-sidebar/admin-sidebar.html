@@ -1,0 +1,214 @@
+<aside class="admin-sidebar" [class.sidebar-collapsed]="!sidebarOpen()">
+
+  <!-- LOGO -->
+
+  <div class="sidebar-logo">
+
+    <div class="logo-icon">
+      A
+    </div>
+
+    <div class="logo-text">
+
+      <strong>
+        ProjectHub
+      </strong>
+
+      <span>
+        ADMIN PANEL
+      </span>
+
+    </div>
+
+    <button class="sidebar-toggle" (click)="toggleSidebar()" aria-label="Toggle sidebar">
+      {{ sidebarOpen() ? '✕' : '☰' }}
+    </button>
+
+  </div>
+
+
+  <!-- MAIN -->
+
+  <div class="sidebar-section">
+
+    <span class="sidebar-title">
+      MAIN
+    </span>
+
+
+    <a
+      routerLink="/admin/dashboard"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }">
+
+      <span class="menu-icon">
+        ⌂
+      </span>
+
+      Dashboard
+
+    </a>
+
+  </div>
+
+
+  <!-- USER MANAGEMENT -->
+
+  <div class="sidebar-section">
+
+    <span class="sidebar-title">
+      USER MANAGEMENT
+    </span>
+
+
+    <a
+      routerLink="/admin/students"
+      routerLinkActive="active">
+
+      <span class="menu-icon">
+        👨‍🎓
+      </span>
+
+      Students
+
+    </a>
+
+
+    <a
+      routerLink="/admin/teacher"
+      routerLinkActive="active">
+
+      <span class="menu-icon">
+        👨‍🏫
+      </span>
+
+      Teachers
+
+    </a>
+
+
+    <a
+      routerLink="/admin/assign-guide"
+      routerLinkActive="active">
+
+      <span class="menu-icon">
+        🔗
+      </span>
+
+      Assign Guide
+
+    </a>
+
+  </div>
+
+
+  <!-- PROJECT MANAGEMENT -->
+
+  <div class="sidebar-section">
+
+    <span class="sidebar-title">
+      PROJECT MANAGEMENT
+    </span>
+
+
+    <a
+      routerLink="/admin/projects"
+      routerLinkActive="active">
+
+      <span class="menu-icon">
+        ▣
+      </span>
+
+      Projects
+
+    </a>
+
+
+    <a
+      routerLink="/admin/phases"
+      routerLinkActive="active">
+
+      <span class="menu-icon">
+        ◫
+      </span>
+
+      Project Phases
+
+    </a>
+
+  </div>
+
+
+  <!-- RESEARCH -->
+
+  <div class="sidebar-section">
+
+    <span class="sidebar-title">
+      RESEARCH & FINANCE
+    </span>
+
+
+    <a
+      routerLink="/admin/research"
+      routerLinkActive="active">
+
+      <span class="menu-icon">
+        🔬
+      </span>
+
+      Research Projects
+
+    </a>
+
+
+    <a
+      routerLink="/admin/research-funding"
+      routerLinkActive="active">
+
+      <span class="menu-icon">
+        ₹
+      </span>
+
+      Research Funding
+
+    </a>
+
+  </div>
+
+
+  <!-- ANALYTICS -->
+
+  <div class="sidebar-section">
+
+    <span class="sidebar-title">
+      ANALYTICS
+    </span>
+
+
+    
+
+  </div>
+
+
+  <!-- BOTTOM -->
+
+  <div class="sidebar-bottom">
+
+  <a
+    routerLink="/login"
+    class="logout-button"
+  >
+    <span class="menu-icon">
+      ↪
+    </span>
+
+    <span class="logout-text">
+      Logout
+    </span>
+  </a>
+
+  <app-ai-chat></app-ai-chat>
+
+</div>
+
+</aside>

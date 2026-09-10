@@ -1,0 +1,758 @@
+<div class="page-layout">
+
+  <app-teacher-sidebar></app-teacher-sidebar>
+
+
+  <main class="main-content">
+
+    <app-header></app-header>
+
+
+    <div class="page-content">
+
+
+      <!-- BACK -->
+
+      <a
+        routerLink="/teacher/students"
+        class="back-button">
+
+        ← Back to My Students
+
+      </a>
+
+
+      <!-- STUDENT HEADER -->
+
+      <section class="student-header">
+
+
+        <div class="student-main">
+
+
+          <div class="large-avatar">
+
+            {{ student.name.charAt(0) }}
+
+          </div>
+
+
+          <div>
+
+            <span class="student-label">
+              STUDENT PROFILE
+            </span>
+
+            <h1>
+              {{ student.name }}
+            </h1>
+
+            <p>
+              {{ student.registerNumber }}
+              ·
+              {{ student.year }}
+              ·
+              {{ student.department }}
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="student-status">
+
+          <span>
+            PROJECT STATUS
+          </span>
+
+          <strong>
+            {{ student.projectStatus }}
+          </strong>
+
+        </div>
+
+
+      </section>
+
+
+
+      <!-- PROJECT OVERVIEW -->
+
+      <section class="section">
+
+
+        <div class="section-title">
+
+          <div>
+
+            <span>
+              PROJECT INFORMATION
+            </span>
+
+            <h2>
+              Current Project
+            </h2>
+
+          </div>
+
+        </div>
+
+
+        <div class="project-overview">
+
+
+          <div class="project-name">
+
+            <span>
+              PROJECT NAME
+            </span>
+
+            <h3>
+              {{ student.projectName }}
+            </h3>
+
+            <span class="project-type">
+
+              {{ student.projectType }}
+
+            </span>
+
+          </div>
+
+
+          <div class="project-stat">
+
+            <span>
+              ASSIGNED ROLE
+            </span>
+
+            <strong>
+              {{ student.role }}
+            </strong>
+
+          </div>
+
+
+          <div class="project-stat">
+
+            <span>
+              ASSIGNED MODULE
+            </span>
+
+            <strong>
+              {{ student.assignedModule }}
+            </strong>
+
+          </div>
+
+
+          <div class="project-stat">
+
+            <span>
+              CURRENT PHASE
+            </span>
+
+            <strong>
+              {{ student.currentPhase }}
+            </strong>
+
+          </div>
+
+
+          <div class="project-stat">
+
+            <span>
+              PROJECT GUIDE
+            </span>
+
+            <strong>
+              {{ student.guide }}
+            </strong>
+
+          </div>
+
+
+        </div>
+
+
+        <!-- OVERALL PROGRESS -->
+
+        <div class="overall-progress">
+
+
+          <div class="overall-progress-header">
+
+            <div>
+
+              <span>
+                STUDENT PROJECT PROGRESS
+              </span>
+
+              <strong>
+                {{ student.overallProgress }}%
+              </strong>
+
+            </div>
+
+          </div>
+
+
+          <div class="overall-track">
+
+            <div
+              [style.width.%]="student.overallProgress">
+            </div>
+
+          </div>
+
+
+        </div>
+
+
+      </section>
+
+
+
+      <!-- STUDENT INFORMATION -->
+
+      <section class="section">
+
+
+        <div class="section-title">
+
+          <div>
+
+            <span>
+              STUDENT INFORMATION
+            </span>
+
+            <h2>
+              Contact & Academic Details
+            </h2>
+
+          </div>
+
+        </div>
+
+
+        <div class="info-grid">
+
+
+          <div>
+
+            <span>
+              REGISTER NUMBER
+            </span>
+
+            <strong>
+              {{ student.registerNumber }}
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              EMAIL
+            </span>
+
+            <strong>
+              {{ student.email }}
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              PHONE
+            </span>
+
+            <strong>
+              {{ student.phone }}
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              DEPARTMENT
+            </span>
+
+            <strong>
+              {{ student.department }}
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              PROJECT START
+            </span>
+
+            <strong>
+              {{ student.projectStartDate }}
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              EXPECTED COMPLETION
+            </span>
+
+            <strong>
+              {{ student.expectedCompletion }}
+            </strong>
+
+          </div>
+
+
+        </div>
+
+      </section>
+
+
+
+      <!-- TEAM MEMBERS -->
+
+      <section class="section">
+
+
+        <div class="section-title">
+
+          <div>
+
+            <span>
+              TEAM INFORMATION
+            </span>
+
+            <h2>
+              Project Team
+            </h2>
+
+          </div>
+
+
+          <span class="team-count">
+
+            {{ teamMembers.length }} Members
+
+          </span>
+
+        </div>
+
+
+        <div class="team-grid">
+
+
+          @for (
+            member of teamMembers;
+            track member.registerNumber
+          ) {
+
+
+            <div
+              class="team-member"
+              [class.current-student]="
+                member.registerNumber ===
+                student.registerNumber
+              ">
+
+
+              <div class="member-avatar">
+
+                {{ member.name.charAt(0) }}
+
+              </div>
+
+
+              <div class="member-details">
+
+                <strong>
+                  {{ member.name }}
+                </strong>
+
+                <span>
+                  {{ member.registerNumber }}
+                </span>
+
+                <small>
+                  {{ member.role }}
+                </small>
+
+              </div>
+
+
+              @if (
+                member.registerNumber ===
+                student.registerNumber
+              ) {
+
+                <span class="you-label">
+                  YOU
+                </span>
+
+              }
+
+
+            </div>
+
+          }
+
+
+        </div>
+
+      </section>
+
+
+
+      <!-- PHASE HISTORY -->
+
+      <section class="section">
+
+
+        <div class="section-title">
+
+          <div>
+
+            <span>
+              PROJECT WORKFLOW
+            </span>
+
+            <h2>
+              Phase History
+            </h2>
+
+          </div>
+
+        </div>
+
+
+        <div class="timeline">
+
+
+          @for (
+            phase of phaseHistory;
+            track phase.number
+          ) {
+
+
+            <div class="timeline-item">
+
+
+              <div
+                class="timeline-number"
+                [ngClass]="
+                  getPhaseClass(phase.status)
+                ">
+
+                @if (
+                  phase.status === 'Completed'
+                ) {
+
+                  ✓
+
+                } @else {
+
+                  {{ phase.number }}
+
+                }
+
+              </div>
+
+
+              <div class="timeline-content">
+
+
+                <div class="timeline-top">
+
+                  <div>
+
+                    <h3>
+                      {{ phase.name }}
+                    </h3>
+
+                    <span>
+                      {{ phase.startDate }}
+                    </span>
+
+                  </div>
+
+
+                  <span
+                    class="phase-status"
+                    [ngClass]="
+                      getPhaseClass(
+                        phase.status
+                      )
+                    ">
+
+                    {{ phase.status }}
+
+                  </span>
+
+                </div>
+
+
+                <div class="timeline-progress">
+
+                  <div class="timeline-track">
+
+                    <div
+                      [style.width.%]="
+                        phase.progress
+                      ">
+                    </div>
+
+                  </div>
+
+                  <strong>
+                    {{ phase.progress }}%
+                  </strong>
+
+                </div>
+
+
+                @if (
+                  phase.completedDate !== '-'
+                ) {
+
+                  <span class="completed-date">
+
+                    Completed:
+                    {{ phase.completedDate }}
+
+                  </span>
+
+                }
+
+
+              </div>
+
+            </div>
+
+          }
+
+
+        </div>
+
+      </section>
+
+
+
+      <!-- WORK HISTORY -->
+
+      <section class="section">
+
+
+        <div class="section-title">
+
+          <div>
+
+            <span>
+              STUDENT WORK
+            </span>
+
+            <h2>
+              Completed & Current Work
+            </h2>
+
+          </div>
+
+
+          <div class="work-count">
+
+            <span>
+              Completed
+            </span>
+
+            <strong>
+              {{ getCompletedWork() }}
+            </strong>
+
+            <span>
+              Pending
+            </span>
+
+            <strong>
+              {{ getPendingWork() }}
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <div class="work-list">
+
+
+          @for (
+            work of workItems;
+            track work.id
+          ) {
+
+
+            <div class="work-card">
+
+
+              <div class="work-top">
+
+
+                <div class="work-title">
+
+                  <div class="work-icon">
+
+                    @if (
+                      work.status ===
+                      'Completed'
+                    ) {
+
+                      ✓
+
+                    } @else {
+
+                      →
+
+                    }
+
+                  </div>
+
+
+                  <div>
+
+                    <h3>
+                      {{ work.title }}
+                    </h3>
+
+                    <span>
+                      {{ work.module }}
+                    </span>
+
+                  </div>
+
+                </div>
+
+
+                <span
+                  class="work-status"
+                  [ngClass]="
+                    getWorkStatusClass(
+                      work.status
+                    )
+                  ">
+
+                  {{ work.status }}
+
+                </span>
+
+              </div>
+
+
+              <p class="work-description">
+
+                {{ work.description }}
+
+              </p>
+
+
+              <div class="work-progress">
+
+
+                <div>
+
+                  <span>
+                    Progress
+                  </span>
+
+                  <strong>
+                    {{ work.progress }}%
+                  </strong>
+
+                </div>
+
+
+                <div class="work-track">
+
+                  <div
+                    [style.width.%]="
+                      work.progress
+                    ">
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <!-- REMARKS -->
+
+              <div class="remarks-grid">
+
+
+                <div class="remark student-remark">
+
+                  <span>
+                    STUDENT REMARK
+                  </span>
+
+                  <p>
+                    {{ work.studentRemark }}
+                  </p>
+
+                </div>
+
+
+                <div class="remark teacher-remark">
+
+                  <span>
+                    TEACHER REMARK
+                  </span>
+
+                  <p>
+                    {{ work.teacherRemark }}
+                  </p>
+
+                </div>
+
+
+              </div>
+
+
+              <div class="work-footer">
+
+                <span>
+                  {{ work.phase }}
+                </span>
+
+                <span>
+                  {{ work.completedDate }}
+                </span>
+
+              </div>
+
+
+            </div>
+
+          }
+
+
+        </div>
+
+      </section>
+
+
+    </div>
+
+  </main>
+
+</div>

@@ -1,0 +1,496 @@
+<div class="admin-layout">
+
+  <!-- SIDEBAR -->
+
+  <app-admin-sidebar></app-admin-sidebar>
+
+
+  <!-- MAIN CONTENT -->
+
+  <main class="admin-main">
+
+    <div class="page-content">
+
+
+      <!-- PAGE HEADER -->
+
+      <section class="page-header">
+
+        <div>
+
+          <span>
+            GUIDE MANAGEMENT
+          </span>
+
+          <h1>
+            Assign Project Guides
+          </h1>
+
+          <p>
+            Assign teachers as project guides for registered students.
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- SUMMARY CARDS -->
+
+      <section class="summary-grid">
+
+
+        <!-- TOTAL STUDENTS -->
+
+        <div class="summary-card">
+
+          <span>
+            TOTAL STUDENTS
+          </span>
+
+          <strong>
+            {{ students.length }}
+          </strong>
+
+          <p>
+            Registered students
+          </p>
+
+        </div>
+
+
+        <!-- TOTAL TEACHERS -->
+
+        <div class="summary-card teacher-card">
+
+          <span>
+            TOTAL TEACHERS
+          </span>
+
+          <strong>
+            {{ teachers.length }}
+          </strong>
+
+          <p>
+            Available project guides
+          </p>
+
+        </div>
+
+
+        <!-- PENDING -->
+
+        <div class="summary-card pending-card">
+
+          <span>
+            GUIDE PENDING
+          </span>
+
+          <strong>
+            {{ pendingStudents.length }}
+          </strong>
+
+          <p>
+            Students need a guide
+          </p>
+
+        </div>
+
+
+        <!-- ASSIGNED -->
+
+        <div class="summary-card assigned-card">
+
+          <span>
+            GUIDES ASSIGNED
+          </span>
+
+          <strong>
+            {{ assignedStudents.length }}
+          </strong>
+
+          <p>
+            Students with assigned guides
+          </p>
+
+        </div>
+
+
+      </section>
+
+
+      <!-- PENDING ASSIGNMENTS -->
+
+      <section class="assignment-card">
+
+
+        <div class="card-header">
+
+          <div>
+
+            <span>
+              PENDING ASSIGNMENTS
+            </span>
+
+            <h2>
+              Students Without a Guide
+            </h2>
+
+          </div>
+
+        </div>
+
+
+        @if (pendingStudents.length > 0) {
+
+          <div class="table-wrapper">
+
+            <table>
+
+              <thead>
+
+                <tr>
+
+                  <th>
+                    STUDENT
+                  </th>
+
+                  <th>
+                    REGISTER NUMBER
+                  </th>
+
+                  <th>
+                    DEPARTMENT
+                  </th>
+
+                  <th>
+                    SELECT GUIDE
+                  </th>
+
+                  <th>
+                    ACTION
+                  </th>
+
+                </tr>
+
+              </thead>
+
+
+              <tbody>
+
+                @for (
+                  student of pendingStudents;
+                  track student.id
+                ) {
+
+                  <tr>
+
+
+                    <!-- STUDENT -->
+
+                    <td>
+
+                      <div class="student-info">
+
+                        <div class="student-avatar">
+
+                          {{ student.name.charAt(0) }}
+
+                        </div>
+
+
+                        <div>
+
+                          <strong>
+
+                            {{ student.name }}
+
+                          </strong>
+
+
+                          <small>
+
+                            {{ student.email }}
+
+                          </small>
+
+                        </div>
+
+                      </div>
+
+                    </td>
+
+
+                    <!-- REGISTER NUMBER -->
+
+                    <td>
+
+                      {{ student.registerNumber }}
+
+                    </td>
+
+
+                    <!-- DEPARTMENT -->
+
+                    <td>
+
+                      {{ student.department }}
+
+                    </td>
+
+
+                    <!-- SELECT TEACHER -->
+
+                    <td>
+
+                      <select
+                        [(ngModel)]="selectedGuides[student.id]">
+
+                        <option value="">
+
+                          Select Teacher
+
+                        </option>
+
+
+                        @for (
+                          teacher of teachers;
+                          track teacher.id
+                        ) {
+
+                          <option
+                            [value]="teacher.name">
+
+                            {{ teacher.name }}
+                            -
+                            {{ teacher.specialization }}
+
+                          </option>
+
+                        }
+
+                      </select>
+
+                    </td>
+
+
+                    <!-- ASSIGN BUTTON -->
+
+                    <td>
+
+                      <button
+                        type="button"
+                        class="assign-button"
+                        (click)="assignGuide(student)">
+
+                        Assign Guide
+
+                      </button>
+
+                    </td>
+
+
+                  </tr>
+
+                }
+
+              </tbody>
+
+            </table>
+
+          </div>
+
+        } @else {
+
+          <div class="empty-state">
+
+            <div class="empty-icon">
+
+              ✓
+
+            </div>
+
+            <h3>
+              All students have been assigned a guide
+            </h3>
+
+            <p>
+              There are no pending guide assignments.
+            </p>
+
+          </div>
+
+        }
+
+      </section>
+
+
+      <!-- ASSIGNED GUIDES -->
+
+      <section class="assignment-card assigned-section">
+
+
+        <div class="card-header">
+
+          <div>
+
+            <span>
+              ASSIGNED GUIDES
+            </span>
+
+            <h2>
+              Current Student Guide Assignments
+            </h2>
+
+          </div>
+
+        </div>
+
+
+        @if (assignedStudents.length > 0) {
+
+          <div class="table-wrapper">
+
+            <table>
+
+              <thead>
+
+                <tr>
+
+                  <th>
+                    STUDENT
+                  </th>
+
+                  <th>
+                    REGISTER NUMBER
+                  </th>
+
+                  <th>
+                    DEPARTMENT
+                  </th>
+
+                  <th>
+                    ASSIGNED GUIDE
+                  </th>
+
+                  <th>
+                    ACTION
+                  </th>
+
+                </tr>
+
+              </thead>
+
+
+              <tbody>
+
+                @for (
+                  student of assignedStudents;
+                  track student.id
+                ) {
+
+                  <tr>
+
+
+                    <td>
+
+                      <div class="student-info">
+
+                        <div class="student-avatar">
+
+                          {{ student.name.charAt(0) }}
+
+                        </div>
+
+
+                        <div>
+
+                          <strong>
+
+                            {{ student.name }}
+
+                          </strong>
+
+
+                          <small>
+
+                            {{ student.email }}
+
+                          </small>
+
+                        </div>
+
+                      </div>
+
+                    </td>
+
+
+                    <td>
+
+                      {{ student.registerNumber }}
+
+                    </td>
+
+
+                    <td>
+
+                      {{ student.department }}
+
+                    </td>
+
+
+                    <td>
+
+                      <span class="guide-badge">
+
+                        {{ student.guide }}
+
+                      </span>
+
+                    </td>
+
+
+                    <td>
+
+                      <button
+                        type="button"
+                        class="remove-button"
+                        (click)="removeGuide(student)">
+
+                        Remove Guide
+
+                      </button>
+
+                    </td>
+
+
+                  </tr>
+
+                }
+
+              </tbody>
+
+            </table>
+
+          </div>
+
+        } @else {
+
+          <div class="empty-state">
+
+            <h3>
+              No guides assigned yet
+            </h3>
+
+          </div>
+
+        }
+
+      </section>
+
+
+    </div>
+
+  </main>
+
+</div>

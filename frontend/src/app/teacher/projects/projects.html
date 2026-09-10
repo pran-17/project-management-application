@@ -1,0 +1,170 @@
+<div class="page-layout">
+
+  <!-- TEACHER SIDEBAR -->
+  <app-teacher-sidebar></app-teacher-sidebar>
+
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+
+    <app-header></app-header>
+
+
+    <div class="page-content">
+
+      <!-- PAGE HEADER -->
+
+      <div class="page-heading">
+
+        <div>
+
+          <span>
+            PROJECT MANAGEMENT
+          </span>
+
+          <h1>
+            Student Projects
+          </h1>
+
+          <p>
+            Manage projects assigned to you and monitor
+            student project progress.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- PROJECT CARDS -->
+
+      <div class="project-grid">
+
+        @for (project of projects; track project.id) {
+
+          <div class="project-card">
+
+
+            <!-- TOP -->
+
+            <div class="project-top">
+
+              <span
+                class="type"
+                [class.team]="project.type === 'Team Project'"
+                [class.individual]="project.type === 'Individual'">
+
+                {{ project.type }}
+
+              </span>
+
+
+              <span
+                class="status"
+                [class.completed]="project.status === 'Completed'">
+
+                {{ project.status }}
+
+              </span>
+
+            </div>
+
+
+            <!-- PROJECT NAME -->
+
+            <h2>
+              {{ project.name }}
+            </h2>
+
+
+            <!-- DETAILS -->
+
+            <div class="project-details">
+
+
+              <div>
+
+                <span>
+                  STUDENTS
+                </span>
+
+                <strong>
+                  {{ project.students }}
+                </strong>
+
+              </div>
+
+
+              <div>
+
+                <span>
+                  CURRENT PHASE
+                </span>
+
+                <strong>
+                  {{ project.phase }}
+                </strong>
+
+              </div>
+
+
+            </div>
+
+
+            <!-- PROGRESS -->
+
+            <div class="progress">
+
+              <div class="progress-header">
+
+                <span>
+                  Project Progress
+                </span>
+
+                <strong>
+                  {{ project.progress }}%
+                </strong>
+
+              </div>
+
+
+              <div class="track">
+
+                <div
+                  [style.width.%]="project.progress">
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <!-- BUTTON -->
+
+            <a
+              class="view-button"
+              [routerLink]="[
+                '/teacher/project-details',
+                project.id
+              ]">
+
+              View Project
+
+              <span>
+                →
+              </span>
+
+            </a>
+
+
+          </div>
+
+        }
+
+      </div>
+
+    </div>
+
+  </main>
+
+</div>

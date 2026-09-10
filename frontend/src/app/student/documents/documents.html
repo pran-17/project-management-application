@@ -1,0 +1,241 @@
+<div class="page-layout">
+
+  <app-sidebar></app-sidebar>
+
+
+  <main class="main-content">
+
+    <app-header></app-header>
+
+
+    <div class="page-content">
+
+
+      <!-- HEADER -->
+
+      <div class="page-header">
+
+        <div>
+
+          <span>
+            PROJECT DOCUMENTATION
+          </span>
+
+          <h1>
+            Documents
+          </h1>
+
+          <p>
+            Upload and track documents related to your final year project.
+          </p>
+
+        </div>
+
+
+        <button class="upload-button">
+
+          + Upload Document
+
+        </button>
+
+      </div>
+
+
+      <!-- SUMMARY -->
+
+      <div class="summary-grid">
+
+
+        <div class="summary-card">
+
+          <span>
+            TOTAL DOCUMENTS
+          </span>
+
+          <strong>
+            {{ documents.length }}
+          </strong>
+
+        </div>
+
+
+        <div class="summary-card approved-card">
+
+          <span>
+            APPROVED
+          </span>
+
+          <strong>
+            {{ getApprovedCount() }}
+          </strong>
+
+        </div>
+
+
+        <div class="summary-card review-card">
+
+          <span>
+            UNDER REVIEW
+          </span>
+
+          <strong>
+            {{ getReviewCount() }}
+          </strong>
+
+        </div>
+
+
+        <div class="summary-card changes-card">
+
+          <span>
+            CHANGES REQUESTED
+          </span>
+
+          <strong>
+            {{ getChangesCount() }}
+          </strong>
+
+        </div>
+
+
+      </div>
+
+
+      <!-- FILTER -->
+
+      <div class="document-toolbar">
+
+        <button
+          [class.selected]="selectedFilter === 'All'"
+          (click)="selectedFilter = 'All'">
+
+          All
+
+        </button>
+
+
+        <button
+          [class.selected]="selectedFilter === 'Approved'"
+          (click)="selectedFilter = 'Approved'">
+
+          Approved
+
+        </button>
+
+
+        <button
+          [class.selected]="selectedFilter === 'Under Review'"
+          (click)="selectedFilter = 'Under Review'">
+
+          Under Review
+
+        </button>
+
+
+        <button
+          [class.selected]="selectedFilter === 'Changes Requested'"
+          (click)="selectedFilter = 'Changes Requested'">
+
+          Changes Requested
+
+        </button>
+
+      </div>
+
+
+      <!-- DOCUMENT LIST -->
+
+      <section class="document-section">
+
+
+        @for (
+          document of filteredDocuments;
+          track document.id
+        ) {
+
+
+          <div class="document-card">
+
+
+            <div class="document-icon">
+
+              PDF
+
+            </div>
+
+
+            <div class="document-main">
+
+              <h3>
+                {{ document.name }}
+              </h3>
+
+              <div class="document-meta">
+
+                <span>
+                  {{ document.phase }}
+                </span>
+
+                <span>
+                  {{ document.version }}
+                </span>
+
+                <span>
+                  {{ document.size }}
+                </span>
+
+                <span>
+                  {{ document.uploadedDate }}
+                </span>
+
+              </div>
+
+
+              <div class="remark">
+
+                <strong>
+                  Teacher Remark:
+                </strong>
+
+                {{ document.teacherRemark }}
+
+              </div>
+
+            </div>
+
+
+            <div class="document-right">
+
+
+              <span
+                class="status"
+                [ngClass]="
+                  getStatusClass(document.status)
+                ">
+
+                {{ document.status }}
+
+              </span>
+
+
+              <button class="view-button">
+                View
+              </button>
+
+
+            </div>
+
+
+          </div>
+
+        }
+
+
+      </section>
+
+
+    </div>
+
+  </main>
+
+</div>

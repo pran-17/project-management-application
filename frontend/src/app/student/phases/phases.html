@@ -1,0 +1,317 @@
+<div class="page-layout">
+
+  <app-sidebar></app-sidebar>
+
+  <main class="main-content">
+
+    <app-header></app-header>
+
+    <div class="page-content">
+
+
+      <div class="page-header">
+
+        <div>
+
+          <span>
+            PROJECT WORKFLOW
+          </span>
+
+          <h1>
+            Project Phases
+          </h1>
+
+          <p>
+            Track the progress of your final year project for your department.
+          </p>
+
+        </div>
+
+      </div>
+
+      @if (errorMessage) {
+        <p class="phase-error">{{ errorMessage }}</p>
+      }
+
+
+      <div class="summary-card">
+
+        <div class="summary-icon">
+          ✓
+        </div>
+
+        <div>
+
+          <span>
+            CURRENT PHASE
+          </span>
+
+          <strong>
+            @if (currentPhase) {
+              Phase {{ currentPhase.phaseNumber }} - {{ currentPhase.phaseName }}
+            } @else {
+              No department phase assigned
+            }
+          </strong>
+
+        </div>
+
+        <div class="summary-progress">
+
+          <span>
+            Overall Progress
+          </span>
+
+          <strong>
+            {{ overallProgress }}%
+          </strong>
+
+          <div class="summary-track">
+
+            <div
+              [style.width.%]="overallProgress">
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="phase-grid">
+
+
+        @for (
+          phase of phases;
+          track phase.id
+        ) {
+
+
+          <div
+            class="phase-card"
+            [class.current-phase]="
+              phase.status === 'Active'
+            "
+            (click)="openPhase(phase)">
+
+
+            <div class="phase-top">
+
+              <div
+                class="phase-number"
+                [ngClass]="
+                  getPhaseClass(
+                    phase.status
+                  )
+                ">
+
+                @if (
+                  phase.status === 'Completed'
+                ) {
+
+                  ✓
+
+                } @else {
+
+                  {{ phase.phaseNumber }}
+
+                }
+
+              </div>
+
+
+              <span
+                class="phase-status"
+                [ngClass]="
+                  getPhaseClass(
+                    phase.status
+                  )
+                ">
+
+                {{ phase.status }}
+
+              </span>
+
+            </div>
+
+
+            <h2>
+              Phase {{ phase.phaseNumber }} -
+              {{ phase.phaseName }}
+            </h2>
+
+
+            <p class="description">
+
+              {{ phase.description }}
+
+            </p>
+
+            <p class="description">
+              {{ phase.department }}
+            </p>
+
+
+            <div class="dates">
+
+
+              <div>
+
+                <span>
+                  START DATE
+                </span>
+
+                <strong>
+                  {{ formatDate(phase.startDate) }}
+                </strong>
+
+              </div>
+
+
+              <div>
+
+                <span>
+                  DUE DATE
+                </span>
+
+                <strong>
+                  {{ formatDate(phase.endDate) }}
+                </strong>
+
+              </div>
+
+
+            </div>
+
+
+            <div class="progress-area">
+
+
+              <div class="progress-header">
+
+                <span>
+                  Progress
+                </span>
+
+                <strong>
+                  {{ phase.progress }}%
+                </strong>
+
+              </div>
+
+
+              <div class="progress-track">
+
+                <div
+                  [style.width.%]="
+                    phase.progress
+                  ">
+                </div>
+
+              </div>
+
+
+            </div>
+
+            <div class="dates">
+              <div>
+                <span>TASKS</span>
+                <strong>{{ phase.taskCount }}</strong>
+              </div>
+              <div>
+                <span>COMPLETED</span>
+                <strong>{{ phase.completedTasks }}</strong>
+              </div>
+              <div>
+                <span>IN PROGRESS</span>
+                <strong>{{ phase.inProgressTasks }}</strong>
+              </div>
+              <div>
+                <span>PENDING</span>
+                <strong>{{ phase.pendingTasks }}</strong>
+              </div>
+            </div>
+
+
+          </div>
+
+        }
+
+      </div>
+
+
+      <div class="guide-message">
+
+        <div class="message-icon">
+          ✓
+        </div>
+
+        <div>
+
+          <h3>
+            Phase Completion
+          </h3>
+
+          <p>
+            Complete your assigned work and submit it
+            to your project guide for review. Your guide
+            will update the phase status after reviewing
+            your submission.
+          </p>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </main>
+
+</div>
+
+
+@if (selectedPhase) {
+
+  <div class="phase-modal-overlay" (click)="closePhase()">
+
+    <div class="phase-details-modal" (click)="$event.stopPropagation()">
+
+      <div class="phase-modal-header">
+        <div>
+          <span>PHASE {{ selectedPhase.phaseNumber }}</span>
+          <h2>{{ selectedPhase.phaseName }}</h2>
+        </div>
+        <button type="button" (click)="closePhase()">×</button>
+      </div>
+
+      <p>{{ selectedPhase.description }}</p>
+      <p><strong>{{ selectedPhase.department }}</strong></p>
+      <p>{{ formatDate(selectedPhase.startDate) }} – {{ formatDate(selectedPhase.endDate) }}</p>
+      <p>Status: {{ selectedPhase.status }} | Progress: {{ selectedPhase.progress }}%</p>
+      <p>
+        Tasks: {{ selectedPhase.taskCount }} |
+        Completed: {{ selectedPhase.completedTasks }} |
+        In Progress: {{ selectedPhase.inProgressTasks }} |
+        Pending: {{ selectedPhase.pendingTasks }}
+      </p>
+
+      <h3>Phase Tasks</h3>
+
+      @if (phaseTasks.length === 0) {
+        <p>No tasks created for this phase yet.</p>
+      }
+
+      @for (task of phaseTasks; track task.id) {
+        <div class="phase-task-row">
+          <strong>{{ task.title }}</strong>
+          <span>{{ task.status }} · {{ task.progress }}%</span>
+        </div>
+      }
+
+    </div>
+
+  </div>
+
+}
