@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { TeacherSidebar } from '../../shared/teacher-sidebar/teacher-sidebar';
-import { Header } from '../../shared/header/header';
 
 
 interface ReviewSubmission {
@@ -44,7 +43,7 @@ interface ReviewSubmission {
     CommonModule,
     RouterModule,
     TeacherSidebar,
-    Header
+
   ],
 
   templateUrl: './dashboard.html',
