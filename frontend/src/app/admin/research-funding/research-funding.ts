@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+
 
 import { AdminSidebar } from '../../shared/admin-sidebar/admin-sidebar';
 
@@ -16,7 +16,6 @@ import {
   imports: [
     CommonModule,
     FormsModule,
-    RouterLink,
     AdminSidebar
   ],
   templateUrl: './research-funding.html',
